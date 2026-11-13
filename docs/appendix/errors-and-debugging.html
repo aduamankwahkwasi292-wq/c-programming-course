@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Errors and Debugging Guide · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Errors and Debugging Guide · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link active" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="errors-and-debugging-guide">Errors and Debugging Guide</h1>
+<blockquote>
+<p>Every programmer — including your professor — spends a large part of their life fixing mistakes. The skill is not &quot;never making mistakes&quot;. The skill is <strong>finding and fixing them quickly and calmly.</strong></p>
+</blockquote>
+<hr>
+<h2 id="1-the-three-kinds-of-bugs">1. The three kinds of bugs</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>When you meet it</th>
+<th>Example</th>
+<th>How you find it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Syntax / compile error</strong></td>
+<td>The compiler refuses to build your program</td>
+<td>missing <code>;</code>, misspelled <code>printf</code></td>
+<td>read the compiler message</td>
+</tr>
+<tr>
+<td><strong>Runtime error</strong></td>
+<td>The program starts, then crashes or hangs</td>
+<td>divide by zero, bad pointer, infinite loop</td>
+<td>find <em>where</em> it dies</td>
+</tr>
+<tr>
+<td><strong>Logic error</strong></td>
+<td>The program runs but gives the <strong>wrong answer</strong></td>
+<td><code>+</code> instead of <code>-</code>, off-by-one</td>
+<td>trace by hand, print values</td>
+</tr>
+</tbody>
+</table></div>
+<p>Logic errors are the hardest because <strong>nothing complains</strong>. Trust your tests, not your feelings.</p>
+<hr>
+<h2 id="2-reading-compiler-messages">2. Reading compiler messages</h2>
+<p>A message has a <strong>file</strong>, a <strong>line number</strong>, a <strong>kind</strong> (<code>error</code> or <code>warning</code>) and a <strong>description</strong>:</p>
+<pre class="plain"><code>prog.c:7:5: error: &#x27;total&#x27; undeclared (first use in this function)</code></pre>
+<p><strong>Golden rules</strong></p>
+<ol>
+<li>Fix the <strong>first</strong> error first — later ones are often &quot;echoes&quot; of it.</li>
+<li>Look at the reported line <strong>and the line above it</strong>. A missing <code>;</code> or <code>}</code> is usually noticed one line late.</li>
+<li><strong>Recompile after every fix.</strong></li>
+<li><strong>Never ignore warnings.</strong> A warning is the compiler saying &quot;this looks like a bug&quot;. Compile with <code>-Wall -Wextra</code> (GCC) or <code>/W3</code> (Microsoft).</li>
+</ol>
+<h3 id="common-compile-time-errors">Common compile-time errors</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Message (GCC style)</th>
+<th>Microsoft style</th>
+<th>Usual cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expected ';' before ...</code></td>
+<td><code>C2143: syntax error: missing ';'</code></td>
+<td>forgot a semicolon</td>
+<td>add <code>;</code> (on the previous line)</td>
+</tr>
+<tr>
+<td><code>'x' undeclared</code></td>
+<td><code>C2065: undeclared identifier</code></td>
+<td>variable not declared, or misspelled / wrong case</td>
+<td>declare it; check spelling</td>
+</tr>
+<tr>
+<td><code>implicit declaration of function 'foo'</code></td>
+<td><code>C4013: 'foo' undefined; assuming extern</code></td>
+<td>function used before its prototype, or missing <code>#include</code></td>
+<td>add the <code>#include</code> or a prototype</td>
+</tr>
+<tr>
+<td><code>missing terminating &quot; character</code></td>
+<td><code>C2001: newline in constant</code></td>
+<td>unclosed string</td>
+<td>add the closing <code>&quot;</code></td>
+</tr>
+<tr>
+<td><code>expected declaration or statement at end of input</code></td>
+<td><code>C1075: no matching token found</code></td>
+<td>missing <code>}</code></td>
+<td>balance the braces</td>
+</tr>
+<tr>
+<td><code>too few arguments to function 'f'</code></td>
+<td><code>C2198: too few arguments for call</code></td>
+<td>wrong number of arguments</td>
+<td>match the prototype</td>
+</tr>
+<tr>
+<td><code>conflicting types for 'f'</code></td>
+<td>only a warning, <code>C4142: benign redefinition of type</code> (so read warnings!)</td>
+<td>prototype and definition disagree</td>
+<td>make them identical</td>
+</tr>
+<tr>
+<td><code>assignment of read-only variable 'x'</code></td>
+<td><code>C2166: l-value specifies const object</code></td>
+<td>assigning to a <code>const</code></td>
+<td>remove the assignment</td>
+</tr>
+<tr>
+<td><code>invalid operands to binary % (have 'double' and 'int')</code></td>
+<td><code>C2296: '%': illegal, left operand has type 'double'</code></td>
+<td><code>%</code> on decimals</td>
+<td>use integers or <code>fmod</code></td>
+</tr>
+<tr>
+<td><code>warning: format '%d' expects argument of type 'int', but argument 2 has type 'double'</code></td>
+<td><code>C4477: format string mismatch</code></td>
+<td>wrong <code>printf</code> specifier</td>
+<td>match specifier and type</td>
+</tr>
+<tr>
+<td><code>warning: 'x' is used uninitialized</code></td>
+<td><code>C4700: uninitialized local variable</code></td>
+<td>read before assigning</td>
+<td>initialise it</td>
+</tr>
+<tr>
+<td><code>warning: ... makes integer from pointer without a cast</code></td>
+<td><code>C4047: differs in levels of indirection</code></td>
+<td><code>char c = &quot;A&quot;;</code> or similar</td>
+<td><code>'A'</code> for a char</td>
+</tr>
+<tr>
+<td><code>undefined reference to 'f'</code> (linker)</td>
+<td><code>LNK2019: unresolved external symbol</code></td>
+<td>function declared but never defined; or misspelled <code>main</code></td>
+<td>define it; check spelling and case</td>
+</tr>
+<tr>
+<td><code>undefined reference to 'sqrt'</code></td>
+<td><code>LNK2019</code></td>
+<td>math library not linked (GCC)</td>
+<td>add <code>-lm</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="3-runtime-errors">3. Runtime errors</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&quot;Segmentation fault&quot;</strong> / program crashes</td>
+<td>using a pointer that has no valid address (uninitialised, <code>NULL</code>, freed, or pointing to a dead local); array index out of range; writing into a string literal; forgetting <code>&amp;</code> in <code>scanf</code>; <code>printf(&quot;%s&quot;)</code> on something that is not a string</td>
+<td>every pointer is initialised; every index is within <code>0 … size−1</code>; arrays are big enough (including the <code>'\0'</code>)</td>
+</tr>
+<tr>
+<td><strong>Stack overflow</strong> (crash with no message)</td>
+<td>recursion without a base case, or too deep</td>
+<td>does every call move towards the base case?</td>
+</tr>
+<tr>
+<td><strong>Program never ends</strong></td>
+<td>infinite loop (no update, wrong condition, stray <code>;</code> after the loop header, a <code>float</code> counter)</td>
+<td>trace the loop variable by hand; <code>Ctrl + C</code> stops the program</td>
+</tr>
+<tr>
+<td><strong>&quot;Floating point exception&quot;</strong></td>
+<td>integer division or <code>%</code> by zero</td>
+<td>check the divisor first</td>
+</tr>
+<tr>
+<td><strong>Garbage numbers</strong></td>
+<td>uninitialised variable or array; wrong <code>printf</code> specifier; reading past the end of an array</td>
+<td>initialise; match types</td>
+</tr>
+<tr>
+<td><strong>Output &quot;jumps&quot; / input skipped</strong></td>
+<td>leftover newline in the input buffer</td>
+<td><code>&quot; %c&quot;</code>; <code>getchar()</code> before <code>fgets</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="4-finding-logic-errors-a-toolkit">4. Finding logic errors — a toolkit</h2>
+<h3 id="technique-1-predict-then-check">Technique 1 — Predict, then check</h3>
+<p>Before you run the program, write down what <strong>you</strong> expect it to print for a small input. When the real output differs, you have found the area of the bug.</p>
+<h3 id="technique-2-trace-table">Technique 2 — Trace table</h3>
+<p>Work through the program by hand, one statement at a time, recording every variable in a table (as in Chapters 0 and 5). This is the single most effective technique for beginners.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>step</th>
+<th>i</th>
+<th>sum</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>loop</td>
+<td>2</td>
+<td>1</td>
+<td>added 1</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="technique-3-print-debugging">Technique 3 — Print debugging</h3>
+<p>Add temporary <code>printf</code>s to <strong>look inside</strong> the program:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"DEBUG: i=%d sum=%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+</code></pre></div>
+<p>Print values <strong>before</strong> and <strong>after</strong> the suspicious statement. Remove them when done.</p>
+<h3 id="technique-4-divide-and-conquer">Technique 4 — Divide and conquer</h3>
+<p>Comment out half of the program (<code>/* … */</code> or <code>//</code>) and see whether the bug is still there. Keep halving. Test each <strong>function</strong> alone from a tiny <code>main</code>.</p>
+<h3 id="technique-5-shrink-the-problem">Technique 5 — Shrink the problem</h3>
+<p>Reproduce the bug with the <strong>smallest</strong> program and smallest input. Bugs hide in big programs and show themselves in small ones.</p>
+<h3 id="technique-6-explain-it-aloud-rubber-duck-debugging">Technique 6 — Explain it aloud (&quot;rubber-duck debugging&quot;)</h3>
+<p>Explain your code, line by line, to a friend — or a rubber duck. Very often you discover the bug while explaining.</p>
+<h3 id="technique-7-test-the-edges">Technique 7 — Test the edges</h3>
+<p>Always test: the <strong>smallest</strong> input (0, 1, empty), <strong>negative</strong> numbers, the <strong>largest</strong> value, an array that is <strong>full</strong>, input that is <strong>invalid</strong>, and a case where the answer is <strong>&quot;not found&quot;</strong>.</p>
+<hr>
+<h2 id="5-using-a-debugger">5. Using a debugger</h2>
+<p>A <strong>debugger</strong> runs your program under your control: you can pause it, step through line by line, and look at variables.</p>
+<p><strong>In an IDE</strong> (Code::Blocks, VS Code, Visual Studio):</p>
+<ol>
+<li>Click in the margin next to a line to set a <strong>breakpoint</strong> (the program will pause there).</li>
+<li>Start debugging (F5 / the <em>Debug</em> button).</li>
+<li>Use <strong>Step Over</strong> (F10) to run one line, <strong>Step Into</strong> (F11) to enter a function, <strong>Continue</strong> (F5) to run to the next breakpoint.</li>
+<li>Watch the <strong>Variables / Watch</strong> window to see values change.</li>
+</ol>
+<p><strong>With GCC's GDB</strong> (command line). Compile with <code>-g</code>: <code>gcc -g prog.c -o prog</code>, then:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gdb ./prog</code></td>
+<td>start the debugger</td>
+</tr>
+<tr>
+<td><code>break main</code> / <code>break 25</code></td>
+<td>stop at a function / at line 25</td>
+</tr>
+<tr>
+<td><code>run</code></td>
+<td>start the program</td>
+</tr>
+<tr>
+<td><code>next</code> / <code>step</code></td>
+<td>execute one line (stepping over / into functions)</td>
+</tr>
+<tr>
+<td><code>print x</code> / <code>print a[2]</code> / <code>print *p</code></td>
+<td>show a value</td>
+</tr>
+<tr>
+<td><code>backtrace</code> (<code>bt</code>)</td>
+<td>show the chain of function calls (great for crashes!)</td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td>run on until the next breakpoint</td>
+</tr>
+<tr>
+<td><code>quit</code></td>
+<td>leave GDB</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Extra safety nets</strong> (GCC/Clang on Linux/macOS): compile with <code>-fsanitize=address,undefined -g</code>. The program then reports out-of-bounds accesses, use-after-free and other undefined behaviour <strong>as soon as they happen</strong>, with the line number.</p>
+<hr>
+<h2 id="6-how-to-avoid-bugs-in-the-first-place">6. How to avoid bugs in the first place</h2>
+<ol>
+<li><strong>Plan before you code</strong> (pseudocode / flowchart). Most logic errors are <em>design</em> errors.</li>
+<li><strong>Write a little, test a little.</strong> Compile after every few lines.</li>
+<li><strong>Initialise</strong> every variable and pointer.</li>
+<li>Use <strong>meaningful names</strong> and <strong>consistent indentation</strong>. Always use braces.</li>
+<li>Use <strong>constants</strong> (<code>#define SIZE 10</code>) instead of &quot;magic numbers&quot;.</li>
+<li>Keep <strong>functions short</strong>, with one job each.</li>
+<li><strong>Check inputs</strong> — validate what the user types; check <code>scanf</code>'s return value; check <code>malloc</code> for <code>NULL</code>.</li>
+<li><strong>Compile with warnings on</strong> and fix every warning.</li>
+<li><strong>Comment the <em>why</em></strong> (not the obvious <em>what</em>).</li>
+<li>Keep a <strong>bug diary</strong> (Ex 1.43): write down each bug and its cause. Patterns will emerge, and you will stop making the same mistakes.</li>
+</ol>
+<hr>
+<h2 id="7-quick-checklist-when-it-doesnt-work">7. Quick checklist when &quot;it doesn't work&quot;</h2>
+<ul>
+<li>[ ] Did I read the <strong>first</strong> error message, slowly?</li>
+<li>[ ] Are all variables <strong>declared</strong> and <strong>initialised</strong>?</li>
+<li>[ ] <code>=</code> or <code>==</code>? <code>&amp;&amp;</code> or <code>||</code>? <code>&lt;</code> or <code>&lt;=</code>?</li>
+<li>[ ] Does every <code>scanf</code> have the right specifier and <code>&amp;</code>?</li>
+<li>[ ] Are all <strong>array indices</strong> within range? Is there room for the <code>'\0'</code>?</li>
+<li>[ ] Does every loop <strong>update</strong> its variable and have the right condition?</li>
+<li>[ ] Is there an accidental <strong><code>;</code></strong> after <code>if (…)</code>, <code>for (…)</code> or <code>while (…)</code>?</li>
+<li>[ ] Integer <strong>division</strong> where I wanted decimals?</li>
+<li>[ ] Have I <strong>traced</strong> a small example by hand?</li>
+<li>[ ] Have I printed the values in the middle of the program?</li>
+</ul>
+
+    </article>
+
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#1-the-three-kinds-of-bugs">1. The three kinds of bugs</a>
+<a class="toc-2" href="#2-reading-compiler-messages">2. Reading compiler messages</a>
+<a class="toc-3" href="#common-compile-time-errors">Common compile-time errors</a>
+<a class="toc-2" href="#3-runtime-errors">3. Runtime errors</a>
+<a class="toc-2" href="#4-finding-logic-errors-a-toolkit">4. Finding logic errors — a toolkit</a>
+<a class="toc-3" href="#technique-1-predict-then-check">Technique 1 — Predict, then check</a>
+<a class="toc-3" href="#technique-2-trace-table">Technique 2 — Trace table</a>
+<a class="toc-3" href="#technique-3-print-debugging">Technique 3 — Print debugging</a>
+<a class="toc-3" href="#technique-4-divide-and-conquer">Technique 4 — Divide and conquer</a>
+<a class="toc-3" href="#technique-5-shrink-the-problem">Technique 5 — Shrink the problem</a>
+<a class="toc-3" href="#technique-6-explain-it-aloud-rubber-duck-debugging">Technique 6 — Explain it aloud (&quot;rubber-duck debugging&quot;)</a>
+<a class="toc-3" href="#technique-7-test-the-edges">Technique 7 — Test the edges</a>
+<a class="toc-2" href="#5-using-a-debugger">5. Using a debugger</a>
+<a class="toc-2" href="#6-how-to-avoid-bugs-in-the-first-place">6. How to avoid bugs in the first place</a>
+<a class="toc-2" href="#7-quick-checklist-when-it-doesnt-work">7. Quick checklist when &quot;it doesn&#x27;t work&quot;</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C Cheat Sheet · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="C Cheat Sheet · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link active" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="c-cheat-sheet">C Cheat Sheet</h1>
+<blockquote>
+<p>A one-stop summary of everything in the course. Print it. Keep it next to your keyboard.
+<em>Details and explanations are in the chapters; reference tables are in <a href="reference-tables.html">reference-tables.md</a>.</em></p>
+</blockquote>
+<hr>
+<h2 id="1-the-skeleton-of-every-program">1. The skeleton of every program</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="w">            </span><span class="c1">// header files first</span>
+
+<span class="cp">#define SIZE 10               </span><span class="c1">// constants (no = and no ;)</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">        </span><span class="c1">// function prototypes</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">                </span><span class="c1">// execution starts here</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">   </span><span class="c1">// statements end with ;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                 </span><span class="c1">// 0 = success</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">         </span><span class="c1">// function definitions</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Compile &amp; run</strong> (GCC): <code>gcc prog.c -o prog</code> then <code>./prog</code> (Windows: <code>prog</code>). With warnings: <code>gcc -Wall -Wextra prog.c -o prog</code>. Math library: add <code>-lm</code>.</p>
+<p><strong>Comments:</strong> <code>// one line</code> and <code>/* many lines */</code>.</p>
+<hr>
+<h2 id="2-data-types">2. Data types</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Holds</th>
+<th>Typical size</th>
+<th><code>printf</code></th>
+<th><code>scanf</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>char</code></td>
+<td>one character</td>
+<td>1</td>
+<td><code>%c</code></td>
+<td><code>%c</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>whole number</td>
+<td>4</td>
+<td><code>%d</code></td>
+<td><code>%d</code></td>
+</tr>
+<tr>
+<td><code>unsigned int</code></td>
+<td>non-negative whole</td>
+<td>4</td>
+<td><code>%u</code></td>
+<td><code>%u</code></td>
+</tr>
+<tr>
+<td><code>long</code> / <code>long long</code></td>
+<td>big whole</td>
+<td>4 or 8 / 8</td>
+<td><code>%ld</code> / <code>%lld</code></td>
+<td><code>%ld</code> / <code>%lld</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>decimal (~7 digits)</td>
+<td>4</td>
+<td><code>%f</code></td>
+<td><code>%f</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>decimal (~15 digits)</td>
+<td>8</td>
+<td><code>%f</code></td>
+<td><strong><code>%lf</code></strong></td>
+</tr>
+<tr>
+<td>string</td>
+<td><code>char</code> array + <code>'\0'</code></td>
+<td>length + 1</td>
+<td><code>%s</code></td>
+<td><code>%s</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Qualifiers: <code>short</code>, <code>long</code>, <code>signed</code>, <code>unsigned</code> (sign only for <code>int</code>/<code>char</code>). Constants: <code>const double PI = 3.14;</code> or <code>#define PI 3.14</code>.
+Casting: <code>(double) a / b</code>. <code>sizeof(x)</code> gives bytes (<code>%zu</code>).</p>
+<hr>
+<h2 id="3-operators-high-low-precedence">3. Operators (high → low precedence)</h2>
+<pre class="plain"><code> () [] postfix++ --        highest
+ prefix++ -- ! ~ (type) * &amp; sizeof  unary + -      (right to left)
+ * / %
+ + -
+ &lt;&lt; &gt;&gt;
+ &lt; &lt;= &gt; &gt;=
+ == !=
+ &amp;   ^   |
+ &amp;&amp;  ||
+ ?:                                                  (right to left)
+ = += -= *= /= %= &lt;&lt;= &gt;&gt;= &amp;= ^= |=                   (right to left)
+ ,                         lowest</code></pre>
+<ul>
+<li>Integer <code>/</code> truncates: <code>9 / 2 == 4</code>. <code>%</code> is the remainder (integers only).</li>
+<li><code>a++</code> use then add 1; <code>++a</code> add 1 then use.</li>
+<li>True = any non-zero; false = <code>0</code>. Comparisons give <code>1</code> or <code>0</code>.</li>
+<li><code>&amp;&amp;</code>, <code>||</code> short-circuit. <code>=</code> assigns, <code>==</code> compares.</li>
+<li><code>cond ? a : b</code> picks <code>a</code> if true, else <code>b</code>.</li>
+<li>Bits: <code>&amp; | ^ ~ &lt;&lt; &gt;&gt;</code>; <code>x &lt;&lt; n</code> = <code>x * 2^n</code>; <code>(x &gt;&gt; k) &amp; 1</code> tests bit <code>k</code>.</li>
+</ul>
+<hr>
+<h2 id="4-input-and-output">4. Input and output</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Age: %d, Price: %.2f, Grade: %c, Name: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">grade</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"[%5d] [%-5d] [%05d] [%8.3f] [%10s] [%-10s]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">   </span><span class="c1">// width / left / zeros / precision</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">age</span><span class="p">);</span><span class="w">              </span><span class="c1">// &amp; for ordinary variables</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">price</span><span class="p">);</span><span class="w">           </span><span class="c1">// double</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">" %c"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ch</span><span class="p">);</span><span class="w">              </span><span class="c1">// space skips leftover newline</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">"%49s"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w">            </span><span class="c1">// one word, NO &amp; for arrays</span>
+<span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span><span class="w">               </span><span class="c1">// a whole line (keeps '\n')</span>
+<span class="n">line</span><span class="p">[</span><span class="n">strcspn</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span><span class="w">               </span><span class="c1">// remove the '\n'  (needs &lt;string.h&gt;)</span>
+<span class="n">putchar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getchar</span><span class="p">();</span><span class="w">  </span><span class="n">puts</span><span class="p">(</span><span class="s">"text"</span><span class="p">);</span>
+</code></pre></div>
+<p><code>scanf</code> returns the number of items read. <strong>Never use <code>gets</code>.</strong></p>
+<hr>
+<h2 id="5-decisions">5. Decisions</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cond2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="w">                     </span><span class="c1">// int or char only</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w">  </span><span class="p">...;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">          </span><span class="c1">// break to stop; without it you "fall through"</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w">  </span><span class="p">...;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">          </span><span class="c1">// several cases, same code</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="p">...;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="6-loops">6. Loops</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">                         </span><span class="c1">// test first</span>
+<span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cond</span><span class="p">);</span><span class="w">                     </span><span class="c1">// test last (note ;), runs at least once</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">          </span><span class="c1">// init; test; update  -&gt; runs n times</span>
+<span class="k">break</span><span class="p">;</span><span class="w">      </span><span class="c1">// leave the loop      continue;   // skip to the next iteration</span>
+</code></pre></div>
+<p>Rule of braces: a single statement needs no <code>{ }</code> — but always using them is safer.</p>
+<p><strong>Nested loops</strong> (tables, patterns): outer loop = rows/lines, inner loop = columns; <code>printf(&quot;\n&quot;)</code> after the inner loop.</p>
+<hr>
+<h2 id="7-functions">7. Functions</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">double</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">       </span><span class="c1">// prototype (declaration)</span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">        </span><span class="c1">// definition: type name(parameters)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hi</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w">      </span><span class="c1">// void: no result; (void): no parameters</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">average</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">                        </span><span class="c1">// call</span>
+</code></pre></div>
+<ul>
+<li>Arguments are <strong>copied</strong> (pass by value).</li>
+<li><code>static int n = 0;</code> inside a function remembers its value between calls.</li>
+<li>Local variables live inside a function; globals outside (avoid them).</li>
+<li><strong>Recursion:</strong> needs a <strong>base case</strong> and a smaller recursive call.</li>
+</ul>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<hr>
+<h2 id="8-arrays">8. Arrays</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w">                         </span><span class="c1">// indices 0..4 (NO bounds checking!)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w">                </span><span class="c1">// rest become 0</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">};</span><span class="w">             </span><span class="c1">// size counted by compiler</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"> </span><span class="c1">// number of elements</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">...</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w">                      </span><span class="c1">// 2D: m[row][col]</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">cube</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w">                </span><span class="c1">// 3D</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">         </span><span class="c1">// array parameter: pass the size too</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[][</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rows</span><span class="p">);</span><span class="w">     </span><span class="c1">// 2D parameter: columns must be given</span>
+</code></pre></div>
+<ul>
+<li>Can't copy (<code>b = a</code>) or compare (<code>a == b</code>) arrays — use loops.</li>
+<li>A function <strong>can</strong> change the caller's array elements.</li>
+</ul>
+<p><strong>Typical algorithms:</strong> sum/average, max/min (start with the first element!), linear search, reverse (swap <code>i</code> and <code>n-1-i</code>), bubble sort, binary search (sorted data), counting array (<code>count[value]++</code>).</p>
+<hr>
+<h2 id="9-pointers">9. Pointers</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w">          </span><span class="c1">// p holds the address of x</span>
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">              </span><span class="c1">// changes x</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">        </span><span class="c1">// points to nothing — check before use</span>
+<span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1">// next element;   a[i]  ==  *(a + i)</span>
+</code></pre></div>
+<ul>
+<li><code>&amp;x</code> address of x · <code>*p</code> the value p points to · pointer type must match (<code>void *</code> is the exception).</li>
+<li><strong>Pass by reference:</strong> <code>void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }</code> … <code>swap(&amp;x, &amp;y);</code></li>
+<li>Never return the address of a local variable.</li>
+<li><code>malloc</code> / <code>free</code>: <code>int *a = malloc(n * sizeof(int)); if (a == NULL) ...; ...; free(a);</code></li>
+<li>Function pointer: <code>int (*f)(int, int) = add;  f(2, 3);</code></li>
+</ul>
+<hr>
+<h2 id="10-strings">10. Strings</h2>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">char</span><span class="w"> </span><span class="n">s1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Kumasi"</span><span class="p">;</span><span class="w">        </span><span class="c1">// 7 bytes: 6 letters + '\0'  (modifiable)</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Kumasi"</span><span class="p">;</span><span class="w">         </span><span class="c1">// points to a read-only literal (don't modify)</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w">               </span><span class="c1">// room for 29 characters + '\0'</span>
+</code></pre></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length</td>
+<td><code>strlen(s)</code></td>
+</tr>
+<tr>
+<td>copy</td>
+<td><code>strcpy(dest, src)</code> (dest must be big enough)</td>
+</tr>
+<tr>
+<td>append</td>
+<td><code>strcat(dest, src)</code></td>
+</tr>
+<tr>
+<td>compare</td>
+<td><code>strcmp(a, b) == 0</code> equal · <code>&lt; 0</code> a first · <code>&gt; 0</code> b first</td>
+</tr>
+<tr>
+<td>find char / substring</td>
+<td><code>strchr(s, 'c')</code> · <code>strrchr</code> · <code>strstr(s, &quot;sub&quot;)</code> (NULL if not found)</td>
+</tr>
+<tr>
+<td>duplicate</td>
+<td><code>p = strdup(s);</code> … <code>free(p);</code></td>
+</tr>
+<tr>
+<td>build text safely</td>
+<td><code>snprintf(buf, sizeof(buf), &quot;Item %d&quot;, n);</code></td>
+</tr>
+<tr>
+<td>parse text</td>
+<td><code>sscanf(text, &quot;%d/%d/%d&quot;, &amp;d, &amp;m, &amp;y);</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Walk a string:</strong> <code>for (i = 0; s[i] != '\0'; i++)</code> or <code>while (*p) { ... p++; }</code>.
+<strong>Digit char → number:</strong> <code>c - '0'</code>. <strong>Letter → index:</strong> <code>c - 'a'</code>. <strong>Lower → upper:</strong> <code>c - 32</code> (or <code>toupper</code>).</p>
+<hr>
+<h2 id="11-headers-you-will-use">11. Headers you will use</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Header</th>
+<th>For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;stdio.h&gt;</code></td>
+<td><code>printf scanf getchar putchar puts fgets</code></td>
+</tr>
+<tr>
+<td><code>&lt;string.h&gt;</code></td>
+<td><code>strlen strcpy strcat strcmp strchr strstr strdup</code></td>
+</tr>
+<tr>
+<td><code>&lt;math.h&gt;</code></td>
+<td><code>sqrt pow fabs ceil floor round</code></td>
+</tr>
+<tr>
+<td><code>&lt;ctype.h&gt;</code></td>
+<td><code>toupper tolower isdigit isalpha isspace</code></td>
+</tr>
+<tr>
+<td><code>&lt;stdlib.h&gt;</code></td>
+<td><code>malloc free abs rand srand exit qsort</code></td>
+</tr>
+<tr>
+<td><code>&lt;limits.h&gt;</code></td>
+<td><code>INT_MAX INT_MIN UCHAR_MAX …</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="12-ten-golden-rules">12. Ten golden rules</h2>
+<ol>
+<li><strong>Think first</strong> — write the algorithm (pseudocode) before the code.</li>
+<li>Initialise every variable (and every pointer).</li>
+<li><code>=</code> assigns, <code>==</code> compares.</li>
+<li><code>scanf</code> needs <code>&amp;</code> (except for strings/arrays); use <code>%lf</code> for <code>double</code>.</li>
+<li>Array indices run from <code>0</code> to <code>size − 1</code>.</li>
+<li>A string needs room for the <code>'\0'</code>.</li>
+<li>Compare strings with <code>strcmp</code>, never <code>==</code>.</li>
+<li>Integer ÷ integer is an integer — cast when you want decimals.</li>
+<li>Always use braces <code>{ }</code>; indent consistently.</li>
+<li>Read the <strong>first</strong> compiler error first, and test with small, tricky inputs.</li>
+</ol>
+
+    </article>
+
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#1-the-skeleton-of-every-program">1. The skeleton of every program</a>
+<a class="toc-2" href="#2-data-types">2. Data types</a>
+<a class="toc-2" href="#3-operators-high-low-precedence">3. Operators (high → low precedence)</a>
+<a class="toc-2" href="#4-input-and-output">4. Input and output</a>
+<a class="toc-2" href="#5-decisions">5. Decisions</a>
+<a class="toc-2" href="#6-loops">6. Loops</a>
+<a class="toc-2" href="#7-functions">7. Functions</a>
+<a class="toc-2" href="#8-arrays">8. Arrays</a>
+<a class="toc-2" href="#9-pointers">9. Pointers</a>
+<a class="toc-2" href="#10-strings">10. Strings</a>
+<a class="toc-2" href="#11-headers-you-will-use">11. Headers you will use</a>
+<a class="toc-2" href="#12-ten-golden-rules">12. Ten golden rules</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

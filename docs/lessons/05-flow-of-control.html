@@ -1,0 +1,1713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 5 — Flow of Control · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Chapter 5 — Flow of Control · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row on"><a class="nav-ch active" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="chapter-5-flow-of-control">Chapter 5 — Flow of Control</h1>
+<blockquote>
+<p><strong>Course:</strong> COE 281 — Programming and Problem-Solving 1<br>
+<strong>Based on slides:</strong> <code>05 Flow of Control.pdf</code><br>
+<strong>Solutions:</strong> <a href="../solutions/05-flow-of-control.html">Solutions to Chapter 5</a></p>
+</blockquote>
+<hr>
+<h2 id="what-you-will-learn">What you will learn</h2>
+<ol>
+<li>How to make a program <strong>decide</strong> — <code>if</code>, <code>else if</code>, <code>else</code>, <code>switch</code>.</li>
+<li>How to make a program <strong>repeat</strong> — <code>while</code>, <code>do while</code>, <code>for</code>.</li>
+<li>The <strong>rule of the braces</strong> <code>{ }</code> — when you may leave them out and when you shouldn't.</li>
+<li><strong>Nested</strong> statements — decisions inside loops, loops inside loops.</li>
+<li>Two extra tools every programmer uses: <code>break</code> and <code>continue</code>.</li>
+</ol>
+<p>This is the most important chapter so far. After it, you can solve <em>real</em> problems.</p>
+<hr>
+<h2 id="51-what-is-flow-of-control">5.1 What is &quot;flow of control&quot;?</h2>
+<p>So far your programs ran <strong>top to bottom, every line, once</strong>. Real programs (like real people) respond to changing circumstances:</p>
+<ul>
+<li><em>Choosing</em> one option out of several (e.g. which menu item the user picked).</li>
+<li><em>Repeating</em> an action many times (e.g. printing 100 results).</li>
+</ul>
+<p>The order in which statements are executed is the <strong>flow of control</strong>. Statements that change it are <strong>control statements</strong>. There are two major kinds:</p>
+<pre class="plain"><code>              Control statements
+        ┌──────────────┴───────────────┐
+     DECISIONS                       LOOPS
+  (choose a path)               (repeat a path)
+   if / else if / else           while
+   switch                        do ... while
+                                 for</code></pre>
+<hr>
+<h2 id="52-decision-statements">5.2 Decision statements</h2>
+<p>A <strong>decision statement</strong> lets the program <strong>select one option out of several</strong>, based on a <strong>condition</strong> that is true (or false) at that moment.</p>
+<p>It is just like your own decisions: <em>if you are hungry, you eat; if not, you don't.</em> Or: <em>choose what to eat depending on the time of day.</em></p>
+<h3 id="521-the-if-statement">5.2.1 The <code>if</code> statement</h3>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// run only when the condition is true</span>
+<span class="p">}</span>
+</code></pre></div>
+<pre class="plain"><code>        ┌──────────────┐
+        │  condition?  │──── false ───┐
+        └──────┬───────┘              │
+             true                     │
+        ┌──────▼───────┐              │
+        │  statements  │              │
+        └──────┬───────┘              │
+               └──────────┬───────────┘
+                    (program continues)</code></pre>
+<p>Remember from Chapter 3: a condition is any expression. <strong><code>0</code> means false; anything else means true.</strong> Relational and logical operators give <code>1</code> or <code>0</code>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">38</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">37</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"You have a fever.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Take care!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>You have a fever.
+Take care!</code></pre></div>
+<p>If <code>temperature</code> were <code>36</code>, only <code>Take care!</code> would be printed.</p>
+<h3 id="522-the-if-else-statement">5.2.2 The <code>if else</code> statement</h3>
+<p>Two options: one for <strong>true</strong>, one for <strong>false</strong>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// code to execute if the condition is true</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// code to execute if the condition is false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Read it as plain English: <em>&quot;if the condition is true do this, otherwise do that.&quot;</em></p>
+<p><strong>Example from the slides</strong> — even or odd:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"The value is even </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"The value is odd </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>&quot;If x modulus 2 is equal to zero, print 'The value is even', else print 'The value is odd'.&quot;</em> This is selecting <strong>one of two</strong> options.</p>
+<p>Better: let the <strong>user</strong> choose the value (also from the slides):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Please enter an integer value</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is even</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is odd</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Please enter an integer value
+7
+7 is odd</code></pre></div>
+<h3 id="523-the-else-if-ladder-more-than-two-options">5.2.3 The <code>else if</code> ladder — more than two options</h3>
+<p>For three or more options, add <strong><code>else if</code></strong> (with its own condition) as many times as you like:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">conditionA</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// if conditionA is true</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">conditionB</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// if conditionA is false but conditionB is true</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// if all the conditions above are false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Example from the slides</strong> — positive, negative or zero:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numb</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Please enter an integer value</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">numb</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numb</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is negative</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">numb</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numb</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is positive</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">numb</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is zero</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">numb</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Please enter an integer value
+-4
+-4 is negative</code></pre></div>
+<p><strong>How C reads a ladder:</strong> from the <strong>top, downwards</strong>. The <strong>very first condition that is true</strong> wins, its block runs, and <strong>all the rest are skipped</strong> — <em>even if later conditions are also true.</em></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"big</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">           </span><span class="cm">/* also true, but never reached */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"medium</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"small</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>big</code></pre></div>
+<blockquote class="callout tip">
+<p>💡 <strong>Contrast.</strong> If you write <strong>three separate <code>if</code>s</strong> (no <code>else</code>), <em>each one</em> is tested independently and several can run. A ladder runs <strong>at most one</strong>.</p>
+</blockquote>
+<p><strong>The final <code>else</code> is the &quot;default&quot;.</strong> If everything above is false, the <code>else</code> runs. It is <strong>optional</strong>: if you leave it out and no condition is true, nothing happens.</p>
+<p><strong>Order matters!</strong> Put the most specific / highest tests first. This grading program works because it tests from the highest score down:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter your score: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">score</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Grade A</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Grade B</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Grade C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Grade D</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Grade F</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter your score: 72
+Grade B</code></pre></div>
+<p>Notice we only test the <strong>lower</strong> limit of each band — if we got past <code>score &gt;= 80</code> being false, we already know the score is below 80.</p>
+<h3 id="524-nested-if-statements">5.2.4 Nested <code>if</code> statements</h3>
+<p>An <code>if</code> inside another <code>if</code>. The inner one is only reached when the outer condition is true.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">hasId</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter age and ID status (1 = has ID, 0 = no ID): "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hasId</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hasId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome in!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sorry, bring your ID.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sorry, you are too young.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter age and ID status (1 = has ID, 0 = no ID): 20 1
+Welcome in!</code></pre></div>
+<p>The same rule can often be written in one line with <code>&amp;&amp;</code>: <code>if (age &gt;= 18 &amp;&amp; hasId == 1)</code>. Use nesting when each level needs <em>its own</em> message.</p>
+<h3 id="525-common-if-mistakes">5.2.5 Common <code>if</code> mistakes</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Example</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code> instead of <code>==</code></td>
+<td><code>if (x = 5)</code></td>
+<td>assigns 5, always true</td>
+</tr>
+<tr>
+<td>Semicolon after the condition</td>
+<td><code>if (x &gt; 5);</code></td>
+<td>the <code>;</code> <em>is</em> the (empty) body! The next line always runs</td>
+</tr>
+<tr>
+<td>Missing braces for 2+ statements</td>
+<td><code>if (a) x++; y++;</code></td>
+<td><code>y++</code> is <strong>not</strong> part of the <code>if</code></td>
+</tr>
+<tr>
+<td>Chained comparison</td>
+<td><code>if (0 &lt; x &lt; 10)</code></td>
+<td>always true (Chapter 3)</td>
+</tr>
+<tr>
+<td>Comparing decimals with <code>==</code></td>
+<td><code>if (x == 0.1)</code></td>
+<td>may fail due to rounding</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-dangling-else">The dangling <code>else</code></h3>
+<p>Which <code>if</code> does an <code>else</code> belong to? <strong>The nearest unmatched <code>if</code></strong> — <em>indentation doesn't matter to the compiler</em>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"X</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w">                       </span><span class="cm">/* belongs to  if (b == 1), NOT if (a == 1)! */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Y</code></pre></div>
+<p>The <code>else</code> pairs with <code>if (b == 1)</code>. To avoid such traps — <strong>use braces</strong>.</p>
+<hr>
+<h2 id="53-the-switch-statement">5.3 The <code>switch</code> statement</h2>
+<p>When you compare <strong>one value</strong> against <strong>many exact possibilities</strong> (menu choices, a letter, a day number), a long <code>else if</code> ladder gets ugly. <code>switch</code> is cleaner.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">value1</span><span class="p">:</span>
+<span class="w">        </span><span class="n">statements</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">value2</span><span class="p">:</span>
+<span class="w">        </span><span class="n">statements</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="n">statements</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>How it works:</p>
+<ol>
+<li>The <code>expression</code> is evaluated <strong>once</strong>.</li>
+<li>Its value is compared with each <code>case</code> label. When one matches, execution <strong>starts at that label</strong>…</li>
+<li>…and <strong>continues downward until a <code>break</code></strong> (or the closing brace of the switch).</li>
+<li>If <strong>no case matches</strong>, the <code>default</code> block runs (it is optional).</li>
+</ol>
+<blockquote class="callout key">
+<p>🔑 <strong><code>break</code> means &quot;stop and exit the switch&quot;</strong> — like a car's brake. <strong>The matched case tells us where to start; <code>break</code> tells us where to stop.</strong></p>
+</blockquote>
+<p><strong>Example from the slides</strong> — are you Ghanaian?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">choice</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Are you a Ghanaian ? </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter y for yes or n for no </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">" %c"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'y'</span><span class="p">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Ghanaians are hospitable people </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'n'</span><span class="p">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"I don't know much about your country </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"You did not follow the instruction </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Are you a Ghanaian ?
+Enter y for yes or n for no
+y
+Ghanaians are hospitable people</code></pre></div>
+<ul>
+<li>Input <code>y</code> → prints the first message, then <code>break</code> exits.</li>
+<li>Input <code>n</code> → prints the second message, then <code>break</code> exits.</li>
+<li>Anything else → <code>default</code> runs.</li>
+</ul>
+<h3 id="what-if-you-forget-break-fall-through">What if you forget <code>break</code>? — &quot;fall-through&quot;</h3>
+<p>Without <code>break</code>, execution <strong>falls through</strong> into the next case, and the next, until a <code>break</code> appears:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter 1, 2, 3 or 4: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"one</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"two</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"three</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"four</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"other</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter 1, 2, 3 or 4: 2
+two
+three</code></pre></div>
+<p>Input 2 jumped to <code>case 2:</code>, printed <code>two</code>, <strong>fell through</strong> into <code>case 3:</code>, printed <code>three</code>, then hit <code>break</code>.</p>
+<p>Sometimes fall-through is <strong>useful</strong> — to give several cases the <strong>same</strong> action:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a lowercase letter: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">" %c"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ch</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'a'</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'e'</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'i'</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'o'</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'u'</span><span class="p">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c is a vowel</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c is a consonant</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a lowercase letter: e
+e is a vowel</code></pre></div>
+<h3 id="a-calculator-with-switch">A calculator with <code>switch</code></h3>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">op</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter an expression like 12 * 5: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %c %lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'+'</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'-'</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'*'</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'/'</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"Unknown operator</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter an expression like 12 * 5: 12 * 5
+60.00</code></pre></div>
+<h3 id="switch-rules-to-remember"><code>switch</code> rules to remember</h3>
+<ul>
+<li>The switch expression must be an <strong>integer or character</strong> (<code>int</code>, <code>char</code>, …) — <strong>not</strong> a <code>float</code>/<code>double</code> or a string.</li>
+<li>Each <code>case</code> label must be a <strong>constant</strong> (like <code>3</code> or <code>'y'</code>) — not a variable and <strong>not a range</strong> (<code>case 1..5</code> does not exist in standard C).</li>
+<li>Two cases may not have the same value.</li>
+<li><code>default</code> can go anywhere, but it is usually last.</li>
+<li>Use <code>switch</code> for <strong>exact matches</strong>. Use <code>if / else if</code> for <strong>ranges and complicated conditions</strong> (<code>score &gt;= 80</code>).</li>
+</ul>
+<hr>
+<h2 id="54-loop-statements">5.4 Loop statements</h2>
+<p>A <strong>loop</strong> repeats a section of code <strong>as long as a condition is true</strong>. Each pass through the loop is called an <strong>iteration</strong>.</p>
+<p>C has three loops:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Loop</th>
+<th>Best when…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>while</code></td>
+<td>you don't know in advance how many times (repeat <em>while</em> something is true)</td>
+</tr>
+<tr>
+<td><code>do while</code></td>
+<td>the body must run <strong>at least once</strong> (menus, input validation)</td>
+</tr>
+<tr>
+<td><code>for</code></td>
+<td>you <strong>know</strong> how many times (counting)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="541-the-while-loop">5.4.1 The <code>while</code> loop</h3>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// repeated as long as the condition is true</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>Read it as:</em> <strong>&quot;while the condition is true, execute the statements.&quot;</strong> The condition is checked <strong>before</strong> each iteration — so if it is false at the start, the body <strong>never runs</strong>.</p>
+<pre class="plain"><code>            ┌─────────────┐
+      ┌────▶│ condition?  │─── false ──▶ (leave the loop)
+      │     └──────┬──────┘
+      │          true
+      │     ┌──────▼──────┐
+      └─────┤   body      │
+            └─────────────┘</code></pre>
+<p><strong>Example from the slides:</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">);</span>
+<span class="w">        </span><span class="n">q</span><span class="o">++</span><span class="p">;</span><span class="w">                     </span><span class="cm">/* increase q by 1 */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>5       6       7</code></pre></div>
+<p><strong>Step by step:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>q</th>
+<th><code>q &lt; 8</code>?</th>
+<th>action</th>
+<th>output so far</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>yes</td>
+<td>print 5, q becomes 6</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>yes</td>
+<td>print 6, q becomes 7</td>
+<td>5 6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>yes</td>
+<td>print 7, q becomes 8</td>
+<td>5 6 7</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>no</strong></td>
+<td>loop ends</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>A <strong>countdown</strong> (<code>b--</code> decreases the value):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="n">b</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>10      9       8       7</code></pre></div>
+<p><strong>The position of statements matters.</strong> Swap the two statements and the output changes:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">b</span><span class="o">--</span><span class="p">;</span><span class="w">                     </span><span class="cm">/* decrease FIRST ... */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">       </span><span class="cm">/* ... then print     */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>9       8       7       6</code></pre></div>
+<p>(Your slide shows this output as <code>9 8 76</code> because the tab spaces were lost — it really prints <code>9 8 7 6</code>. When <code>b</code> is 7 the condition is still true, <code>b</code> becomes 6 and <code>6</code> is printed.)</p>
+<p><strong>The three ingredients of every loop:</strong></p>
+<ol>
+<li><strong>Initialise</strong> — give the loop variable its starting value (<code>int q = 5;</code>).</li>
+<li><strong>Test</strong> — the condition (<code>q &lt; 8</code>).</li>
+<li><strong>Update</strong> — change the variable so the loop eventually stops (<code>q++</code>).</li>
+</ol>
+<blockquote class="callout warn">
+<p>⚠️ <strong>Forget the update and you get an infinite loop.</strong> The program never ends — press <strong>Ctrl + C</strong> to stop it.</p>
+</blockquote>
+<p><strong>A classic use: add up numbers 1 to N.</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter N: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sum of 1 to %d = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter N: 10
+Sum of 1 to 10 = 55</code></pre></div>
+<p><strong>Another classic: count digits</strong> (remember <code>n / 10</code> drops the last digit):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter an integer: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"It has %d digits</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter an integer: 4096
+It has 4 digits</code></pre></div>
+<h3 id="542-the-do-while-loop">5.4.2 The <code>do while</code> loop</h3>
+<p>Very similar, but the <strong>condition is checked at the END</strong>. The body therefore runs <strong>at least once</strong>, always.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">do</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w">       </span><span class="c1">// executed first</span>
+<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">);</span><span class="w">    </span><span class="c1">// &lt;-- NOTE the semicolon!</span>
+</code></pre></div>
+<pre class="plain"><code>            ┌─────────────┐
+      ┌────▶│   body      │
+      │     └──────┬──────┘
+      │     ┌──────▼──────┐
+      │true │ condition?  │─── false ──▶ (leave the loop)
+      └─────┤             │
+            └─────────────┘</code></pre>
+<p><strong>Examples from the slides:</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+<span class="w">        </span><span class="n">m</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1       2       3       4       5</code></pre></div>
+<p>Now a condition that is <strong>false from the start</strong>:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+<span class="w">        </span><span class="n">m</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w">          </span><span class="cm">/* after the first pass m is 2, so 2 &gt;= 5 is false */</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1</code></pre></div>
+<p>The body ran once even though the condition was false from the start. A <code>while</code> loop with the same condition would have printed nothing.</p>
+<p><strong><code>do while</code> is perfect for input validation</strong> — ask at least once, and repeat while the answer is bad:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a number from 1 to 10: "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Thank you. You entered %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a number from 1 to 10: 15
+Enter a number from 1 to 10: -3
+Enter a number from 1 to 10: 7
+Thank you. You entered 7</code></pre></div>
+<h3 id="543-the-for-loop">5.4.3 The <code>for</code> loop</h3>
+<p>The <code>for</code> loop is one of the most-used loops in C. It packs the three ingredients — initialise, test, update — <strong>into one line</strong>. It is ideal when you can say <em>how many times</em> to repeat, and it is the preferred loop for going through <strong>arrays</strong> (Chapter 7).</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">initialization</span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span><span class="w"> </span><span class="n">increment</span><span class="o">/</span><span class="n">decrement</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>The order of events:</strong></p>
+<pre class="plain"><code>   1. initialization       (done ONCE, at the very start)
+          │
+          ▼
+   2. condition?  ──── false ────▶ leave the loop
+          │ true
+          ▼
+   3. statements (the body)
+          │
+          ▼
+   4. increment / decrement
+          │
+          └─────────▶ back to step 2</code></pre>
+<blockquote class="callout key">
+<p>🔑 The update (step 4) happens <strong>after</strong> the body, <strong>not before</strong>.</p>
+</blockquote>
+<p><strong>Examples from the slides:</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>0       1       2       3</code></pre></div>
+<p>And a loop that <strong>doubles</strong> each time (<code>c *= 2</code>):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1       2       4       8</code></pre></div>
+<p>(1 → 2 → 4 → 8 → 16: when <code>c</code> becomes 16 the test <code>16 &lt; 10</code> is false, so 16 is never printed.)</p>
+<p><strong>Handy variations:</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w">            </span><span class="cm">/* count down  */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">         </span><span class="cm">/* step by 5   */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w">         </span><span class="cm">/* declare the counter in the loop (C99) */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">   </span><span class="cm">/* two variables (comma operator) */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"(%d,%d) "</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>10 9 8 7 6 5 4 3 2 1
+0 5 10 15 20
+1 4 9 16 25
+(0,10) (3,7)</code></pre></div>
+<p><strong>Pick the right loop</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Loop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;Do this 10 times&quot;, &quot;for each item&quot;</td>
+<td><code>for</code></td>
+</tr>
+<tr>
+<td>&quot;Keep going until the user types 0&quot;</td>
+<td><code>while</code></td>
+</tr>
+<tr>
+<td>&quot;Show the menu, then repeat if they didn't choose Exit&quot;</td>
+<td><code>do while</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="off-by-one-errors">Off-by-one errors</h3>
+<p>The most common loop bug: running one time too many or too few.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Runs for <code>i</code> =</th>
+<th>Times</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for (i = 0; i &lt; 5; i++)</code></td>
+<td>0, 1, 2, 3, 4</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td><code>for (i = 1; i &lt;= 5; i++)</code></td>
+<td>1, 2, 3, 4, 5</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td><code>for (i = 0; i &lt;= 5; i++)</code></td>
+<td>0 … 5</td>
+<td><strong>6</strong></td>
+</tr>
+<tr>
+<td><code>for (i = 10; i &gt; 0; i -= 2)</code></td>
+<td>10, 8, 6, 4, 2</td>
+<td><strong>5</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout tip">
+<p>💡 <code>for (i = 0; i &lt; n; i++)</code> is the standard way to run <code>n</code> times (it matches how arrays are numbered from 0 in Chapter 7).</p>
+</blockquote>
+<h3 id="544-break-and-continue">5.4.4 <code>break</code> and <code>continue</code></h3>
+<p>Two small but powerful statements (not in your slides, but you will use them constantly):</p>
+<ul>
+<li><strong><code>break</code></strong> — leave the loop (or <code>switch</code>) <strong>immediately</strong>.</li>
+<li><strong><code>continue</code></strong> — skip the <strong>rest of this iteration</strong> and go to the next one.</li>
+</ul>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span><span class="w">               </span><span class="cm">/* skip 4 */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w">                  </span><span class="cm">/* stop completely at 8 */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">stopped at i = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1 2 3 5 6 7
+stopped at i = 8</code></pre></div>
+<h3 id="545-common-loop-mistakes">5.4.5 Common loop mistakes</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no update (<code>while (i &lt; 5) { ... }</code> never changes <code>i</code>)</td>
+<td>infinite loop</td>
+</tr>
+<tr>
+<td><code>;</code> right after the header: <code>for (...);</code> <code>while (...);</code></td>
+<td>the loop's body is empty; the next block runs once</td>
+</tr>
+<tr>
+<td><code>&lt;=</code> instead of <code>&lt;</code> (or the reverse)</td>
+<td>off by one</td>
+</tr>
+<tr>
+<td>changing the loop counter inside a <code>for</code> body</td>
+<td>unpredictable</td>
+</tr>
+<tr>
+<td>using <code>float</code> counters (<code>for (x = 0; x != 1.0; x += 0.1)</code>)</td>
+<td>rounding → may never hit exactly 1.0</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="55-the-rule-of-the-braces">5.5 The rule of the braces <code>{ }</code></h2>
+<p>If the body of a decision, loop or function contains <strong>only one statement</strong>, the braces are <strong>optional</strong>. The statement can be an ordinary statement (ending with <code>;</code>) or even a whole compound statement such as another <code>if</code> or <code>for</code>.</p>
+<p>Your slide's example — these two loops are identical:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+</code></pre></div>
+<p>When there are no braces, the compiler assumes the loop has <strong>only the one statement that immediately follows</strong>. Therefore, in this slide example, the second <code>printf</code> is <strong>not</strong> part of the loop:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Done"</span><span class="p">);</span><span class="w">          </span><span class="cm">/* NOT inside the loop: runs once, after it */</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1       2       4       8
+Done</code></pre></div>
+<blockquote class="callout warn">
+<p>⚠️ <strong>The danger.</strong> The indentation of the second <code>printf</code> <em>looks</em> like it belongs to the loop. It doesn't — the compiler ignores indentation. Many bugs come from adding a second statement to a braceless <code>if</code> or loop.</p>
+</blockquote>
+<blockquote class="callout tip">
+<p>💡 <strong>Professional advice:</strong> <strong>always use braces</strong>, even for a single statement. It costs two characters and prevents a whole family of bugs. (We omit them in places in these notes only to save space.)</p>
+</blockquote>
+<hr>
+<h2 id="56-nested-statements">5.6 Nested statements</h2>
+<p>A <strong>nested statement</strong> is a compound statement (an <code>if</code>, <code>switch</code>, loop…) <strong>placed inside another</strong>. The inner statement can only run when the outer one lets it.</p>
+<p><strong>Example from the slides</strong> — an <code>if-else</code> inside a <code>while</code>:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">y</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">x</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>10      9       21      20      34</code></pre></div>
+<p>Trace table:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>x</th>
+<th>x even?</th>
+<th>action</th>
+<th>y</th>
+<th>printed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>yes</td>
+<td>y += 10</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>no</td>
+<td>y--</td>
+<td>9</td>
+<td>9</td>
+</tr>
+<tr>
+<td>12</td>
+<td>yes</td>
+<td>y += 12</td>
+<td>21</td>
+<td>21</td>
+</tr>
+<tr>
+<td>13</td>
+<td>no</td>
+<td>y--</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>14</td>
+<td>yes</td>
+<td>y += 14</td>
+<td>34</td>
+<td>34</td>
+</tr>
+<tr>
+<td>15</td>
+<td>—</td>
+<td><code>15 &lt; 15</code> false → stop</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Since both the <code>if</code> and the <code>else</code> hold one statement each, the <strong>rule of braces</strong> lets us drop their braces (compare the two versions in your slides):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">y</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="n">x</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="loops-inside-loops">Loops inside loops</h3>
+<p>A loop in a loop is the tool for <strong>tables, grids and patterns</strong>. The inner loop runs completely <strong>for every single iteration of the outer loop</strong>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w">         </span><span class="cm">/* outer: rows    */</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">row</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w">   </span><span class="cm">/* inner: columns */</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"*"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w">                           </span><span class="cm">/* end of the row */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>*
+**
+***
+****</code></pre></div>
+<p>How to think about it: when <code>row</code> is 3, the inner loop runs <code>col = 1, 2, 3</code> — printing three stars — and then <code>\n</code> ends that line.</p>
+<blockquote class="callout tip">
+<p>💡 <strong>Pattern-printing recipe:</strong> (1) the <strong>outer</strong> loop counts <strong>lines</strong>; (2) the <strong>inner</strong> loop prints what goes <strong>on one line</strong> (spaces, then symbols); (3) print <code>\n</code> <strong>after</strong> the inner loop.</p>
+</blockquote>
+<p><strong>A multiplication table:</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%4d"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>   1   2   3   4   5
+   2   4   6   8  10
+   3   6   9  12  15
+   4   8  12  16  20
+   5  10  15  20  25</code></pre></div>
+<p>(Remember Exercise 1.39? Four lines instead of five hand-typed rows — and it scales to 50 × 50 by changing one number.)</p>
+<p><strong>Prime test</strong> — a loop with a <code>break</code> inside:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">isPrime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter an integer greater than 1: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">isPrime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">      </span><span class="cm">/* found a divisor */</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w">            </span><span class="cm">/* no need to look further */</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isPrime</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is prime</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is not prime</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter an integer greater than 1: 29
+29 is prime</code></pre></div>
+<blockquote class="callout warn">
+<p>⚠️ <code>break</code> leaves <strong>only the innermost</strong> loop (or switch) it is in.</p>
+</blockquote>
+<hr>
+<h2 id="57-putting-it-all-together">5.7 Putting it all together</h2>
+<h3 id="a-menu-driven-program-do-while-switch">A menu-driven program (<code>do while</code> + <code>switch</code>)</h3>
+<p>This is the shape of countless real programs: show a menu, act on the choice, repeat until &quot;Exit&quot;.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">choice</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">1) Deposit  2) Withdraw  3) Balance  4) Exit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Choose: "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">                </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="n">balance</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Deposited %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">                </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Insufficient funds</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">else</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Withdrew %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Balance: %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Goodbye!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Invalid choice</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1) Deposit  2) Withdraw  3) Balance  4) Exit
+Choose: 1 500
+Deposited 500.00
+
+1) Deposit  2) Withdraw  3) Balance  4) Exit
+Choose: 2 120
+Withdrew 120.00
+
+1) Deposit  2) Withdraw  3) Balance  4) Exit
+Choose: 3
+Balance: 380.00
+
+1) Deposit  2) Withdraw  3) Balance  4) Exit
+Choose: 4
+Goodbye!</code></pre></div>
+<h3 id="a-number-guessing-game">A number-guessing game</h3>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="n">guess</span><span class="p">,</span><span class="w"> </span><span class="n">tries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Guess the number (1-100): "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">guess</span><span class="p">);</span>
+<span class="w">        </span><span class="n">tries</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">secret</span><span class="p">)</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Too low!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">secret</span><span class="p">)</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Too high!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">secret</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Correct! You needed %d tries.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">tries</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Guess the number (1-100): 50
+Too high!
+Guess the number (1-100): 25
+Too low!
+Guess the number (1-100): 37
+Correct! You needed 3 tries.</code></pre></div>
+<hr>
+<h2 id="58-how-to-design-a-program-with-control-flow">5.8 How to design a program with control flow</h2>
+<ol>
+<li><strong>Understand</strong> the problem (Chapter 0!). Write a few examples by hand.</li>
+<li>Decide <strong>what repeats</strong> (loop) and <strong>what branches</strong> (if/switch).</li>
+<li>Choose the <strong>right loop</strong>.</li>
+<li>Write the <strong>pseudocode</strong> first.</li>
+<li>Code it, then <strong>trace</strong> it with a table for a small input.</li>
+<li>Test the <strong>edges</strong>: the smallest input, zero, negatives, the largest.</li>
+</ol>
+<hr>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><strong>Decisions:</strong> <code>if</code>, <code>else if</code>, <code>else</code>, <code>switch</code>. In a ladder, the <strong>first</strong> true condition wins.</li>
+<li><code>switch</code> compares <strong>one integer/char</strong> against <strong>constant</strong> cases; use <strong><code>break</code></strong> to stop (otherwise it <em>falls through</em>); <code>default</code> handles everything else.</li>
+<li><strong>Loops:</strong> <code>while</code> (test first), <code>do while</code> (test last — runs at least once; note the <strong>semicolon</strong>), <code>for</code> (init; test; update).</li>
+<li>Every loop needs <strong>initialise → test → update</strong>. Forget the update → <strong>infinite loop</strong>.</li>
+<li><code>for (i = 0; i &lt; n; i++)</code> runs <code>n</code> times. Beware <strong>off-by-one</strong>.</li>
+<li><strong><code>break</code></strong> leaves the loop; <strong><code>continue</code></strong> skips to the next iteration.</li>
+<li><strong>Rule of braces:</strong> one statement → braces optional. <strong>But always using braces is safer.</strong></li>
+<li><strong>Nested</strong> statements: an inner statement runs only when the outer allows it. Nested loops → tables and patterns (outer loop = lines, inner loop = one line).</li>
+</ul>
+<hr>
+<h1 id="exercises-chapter-5">Exercises — Chapter 5</h1>
+<h2 id="part-a-quick-check">Part A — Quick check</h2>
+<p id="ex-5-1"><strong>Ex 5.1</strong> What are the two major categories of control statements? What is an <em>iteration</em>?</p>
+<p id="ex-5-2"><strong>Ex 5.2</strong> What does <code>if (x)</code> do when <code>x</code> is <code>7</code>? When <code>x</code> is <code>0</code>? When <code>x</code> is <code>-3</code>?</p>
+<p id="ex-5-3"><strong>Ex 5.3</strong> What is the difference between three separate <code>if</code> statements and one <code>if / else if / else</code> ladder?</p>
+<p id="ex-5-4"><strong>Ex 5.4</strong> In an <code>else if</code> ladder, two of the conditions are true. Which block runs? Why?</p>
+<p id="ex-5-5"><strong>Ex 5.5</strong> Is the final <code>else</code> mandatory? What does it do?</p>
+<p id="ex-5-6"><strong>Ex 5.6</strong> What does <code>break</code> do inside a <code>switch</code>? What happens if you forget it?</p>
+<p id="ex-5-7"><strong>Ex 5.7</strong> What kinds of expressions can a <code>switch</code> use? Can a <code>case</code> label be a variable? A range like <code>case 1..5</code>? A string?</p>
+<p id="ex-5-8"><strong>Ex 5.8</strong> What is the difference between <code>while</code> and <code>do while</code>? Which one always runs its body at least once?</p>
+<p id="ex-5-9"><strong>Ex 5.9</strong> Name the three parts of a <code>for</code> header and the order in which they are executed.</p>
+<p id="ex-5-10"><strong>Ex 5.10</strong> When may you leave out the braces of an <code>if</code> or a loop? Why can that be risky?</p>
+<p id="ex-5-11"><strong>Ex 5.11</strong> What is a nested statement? Give an example.</p>
+<p id="ex-5-12"><strong>Ex 5.12</strong> What is the difference between <code>break</code> and <code>continue</code> in a loop?</p>
+<p id="ex-5-13"><strong>Ex 5.13</strong> Which loop would you choose for each? (a) print 1 to 100; (b) keep asking for a password until it is right; (c) read numbers until the user types 0; (d) show a menu at least once and repeat until &quot;Exit&quot;.</p>
+<p id="ex-5-14"><strong>Ex 5.14</strong> How many times does the body run?
+(a) <code>for (i = 0; i &lt; 5; i++)</code> (b) <code>for (i = 1; i &lt;= 5; i++)</code> (c) <code>for (i = 0; i &lt;= 5; i++)</code> (d) <code>for (i = 10; i &gt; 0; i -= 2)</code> (e) <code>while (0)</code> (f) <code>do { ... } while (0);</code></p>
+<h2 id="part-b-predict-the-output">Part B — Predict the output</h2>
+<p><em>(Assume <code>&lt;stdio.h&gt;</code> is included and the fragments are inside <code>main</code>. Use a trace table where it helps.)</em></p>
+<p id="ex-5-15"><strong>Ex 5.15</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"A</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"B</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-16"><strong>Ex 5.16</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"big</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"medium</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"small</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-17"><strong>Ex 5.17</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"big</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"medium</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"positive</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-18"><strong>Ex 5.18</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"X</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Z</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-19"><strong>Ex 5.19</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"big</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-20"><strong>Ex 5.20</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"one</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"two</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"three</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"four</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"other</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-21"><strong>Ex 5.21</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"28 or 29"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">11</span><span class="p">:</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"30"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"31"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">" days</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-22"><strong>Ex 5.22</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-23"><strong>Ex 5.23</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-24"><strong>Ex 5.24</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="k">do</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span>
+<span class="w">    </span><span class="n">k</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-25"><strong>Ex 5.25</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-26"><strong>Ex 5.26</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-27"><strong>Ex 5.27</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"A"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"B"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-28"><strong>Ex 5.28</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-29"><strong>Ex 5.29</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">y</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="n">x</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-30"><strong>Ex 5.30</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-31"><strong>Ex 5.31</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-32"><strong>Ex 5.32</strong> What is printed?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-33"><strong>Ex 5.33</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-34"><strong>Ex 5.34</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">steps</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">steps</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-35"><strong>Ex 5.35</strong> (from your slides' idea — study the position of the statements)</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">b</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-36"><strong>Ex 5.36</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-37"><strong>Ex 5.37</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'a'</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">'e'</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'E'</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="sc">'A'</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</h2>
+<p id="ex-5-38"><strong>Ex 5.38</strong> It should print <code>ten</code> only when <code>x</code> is 10. It always prints it. Why?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"ten</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-39"><strong>Ex 5.39</strong> The program never ends. Why? Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-40"><strong>Ex 5.40</strong> The program never ends. Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-41"><strong>Ex 5.41</strong> It should print the <strong>name of the day</strong> only, but prints too much for <code>2</code>. Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Monday</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Tuesday</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Wednesday</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Another day</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-42"><strong>Ex 5.42</strong> Intended: print the numbers <strong>1 to 10</strong>. The result is <code>0 1 2 ... 9</code>. Fix it in two different ways.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-43"><strong>Ex 5.43</strong> The programmer wants to test that <code>x</code> is between 1 and 10 but it is always true. Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"in range</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-44"><strong>Ex 5.44</strong> This does not compile. Why? Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"big</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"really big</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"small</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-45"><strong>Ex 5.45</strong> This does not compile. Why?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">do</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"done</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-46"><strong>Ex 5.46</strong> Why does the compiler reject this?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.5</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mf">2.5</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"cheap</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"other</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-47"><strong>Ex 5.47</strong> The average of 3, 4 and 4 comes out as <code>3.000000</code>. Why? Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">avg</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-48"><strong>Ex 5.48</strong> Every score gets grade <code>D</code>. Fix the logic.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"D</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"B</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"A</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"F</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-5-49"><strong>Ex 5.49</strong> Intended: print <code>Hello</code> five times. It prints it once. Fix it.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">);</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-5-50"><strong>Ex 5.50</strong> Why does this not compile?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">limit</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"at the limit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"no</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="part-d1-write-the-program-decisions">Part D1 — Write the program: decisions</h2>
+<p><em>(Read the input with <code>scanf</code>. Give a prompt. Use <code>if</code>/<code>switch</code> as indicated.)</em></p>
+<p id="ex-5-51"><strong>Ex 5.51</strong> Read an integer and print whether it is <strong>even</strong> or <strong>odd</strong>.</p>
+<p id="ex-5-52"><strong>Ex 5.52</strong> Read an integer and print whether it is <strong>positive, negative or zero</strong>.</p>
+<p id="ex-5-53"><strong>Ex 5.53</strong> Read three integers and print the <strong>largest</strong> (use <code>if / else if</code>, not <code>?:</code>).</p>
+<p id="ex-5-54"><strong>Ex 5.54</strong> Read an exam score from 0 to 100 and print the <strong>grade</strong> (A ≥ 80, B ≥ 70, C ≥ 60, D ≥ 50, F otherwise). If the score is outside 0–100 print <code>Invalid score</code>.</p>
+<p id="ex-5-55"><strong>Ex 5.55</strong> Read a year and print whether it is a <strong>leap year</strong> (divisible by 4, except centuries unless divisible by 400).</p>
+<p id="ex-5-56"><strong>Ex 5.56</strong> Read three side lengths and print <code>Not a triangle</code>, <code>Equilateral</code>, <code>Isosceles</code> or <code>Scalene</code>.</p>
+<p id="ex-5-57"><strong>Ex 5.57</strong> Read a character and say whether it is a <strong>vowel</strong>, a <strong>consonant</strong> or <strong>not a letter</strong>. Use <code>switch</code> for the vowels and handle both upper and lower case.</p>
+<p id="ex-5-58"><strong>Ex 5.58</strong> Read a month number (1–12) and a year. Print the <strong>number of days</strong> in that month (use <code>switch</code> with grouped cases; February depends on the leap-year rule).</p>
+<p id="ex-5-59"><strong>Ex 5.59</strong> A <strong>calculator</strong>: read <code>a op b</code> (e.g. <code>8 / 2</code>) and print the result using a <code>switch</code> on the operator. Refuse to divide by zero and report unknown operators.</p>
+<p id="ex-5-60"><strong>Ex 5.60</strong> Read <code>a</code>, <code>b</code>, <code>c</code> of a quadratic equation <code>ax² + bx + c = 0</code> and print its roots: two real roots, one repeated root, or &quot;no real roots&quot;. If <code>a</code> is 0 print &quot;not a quadratic equation&quot;. (<code>sqrt</code> is in <code>&lt;math.h&gt;</code>.)</p>
+<p id="ex-5-61"><strong>Ex 5.61</strong> An <strong>electricity bill</strong>: the first 50 units cost GHS 0.50 each, the next 100 units GHS 0.80 each, and anything above 150 costs GHS 1.20 each. A fixed service charge of GHS 5.00 is added. Read the units used and print the bill.</p>
+<p id="ex-5-62"><strong>Ex 5.62</strong> Read a weight (kg) and height (m); compute the BMI and print its category: below 18.5 Underweight; below 25 Normal; below 30 Overweight; otherwise Obese.</p>
+<p id="ex-5-63"><strong>Ex 5.63</strong> Read three integers and print them in <strong>ascending order</strong> (no arrays, no sorting functions — use <code>if</code>s).</p>
+<p id="ex-5-64"><strong>Ex 5.64</strong> <strong>Rock–paper–scissors:</strong> two players each type <code>r</code>, <code>p</code> or <code>s</code>. Print who wins or <code>Draw</code>. (rock beats scissors, scissors beat paper, paper beats rock.)</p>
+<p id="ex-5-65"><strong>Ex 5.65</strong> Read a number from 1 to 7 (1 = Monday) and print the <strong>name of the day</strong>; then say whether it is a <strong>weekday</strong> or <strong>weekend</strong>.</p>
+<p id="ex-5-66"><strong>Ex 5.66</strong> <strong>ATM:</strong> the balance is GHS 1000. Read a withdrawal amount and: reject amounts ≤ 0, amounts above the balance, amounts that are not multiples of 10, and amounts above the daily limit of GHS 500. Otherwise dispense the cash and print the new balance.</p>
+<h2 id="part-d2-write-the-program-loops">Part D2 — Write the program: loops</h2>
+<p id="ex-5-67"><strong>Ex 5.67</strong> Read <code>N</code>. Print the numbers <strong>1 to N</strong> on one line, then <strong>N down to 1</strong> on the next.</p>
+<p id="ex-5-68"><strong>Ex 5.68</strong> Print all the <strong>multiples of 7</strong> from 7 to 100 on one line and then print <strong>how many</strong> there are.</p>
+<p id="ex-5-69"><strong>Ex 5.69</strong> Read <code>N</code>. Print the <strong>sum</strong> of 1 to N, the sum of the <strong>even</strong> numbers up to N and the sum of the <strong>odd</strong> numbers up to N.</p>
+<p id="ex-5-70"><strong>Ex 5.70</strong> Read <code>N</code> and print <strong>N!</strong> (N factorial). Use <code>unsigned long long</code>. What is the largest <code>N</code> that gives a correct answer?</p>
+<p id="ex-5-71"><strong>Ex 5.71</strong> Read <code>N</code> and print its <strong>multiplication table</strong> from 1 to 12, in the form <code>7 x 3 = 21</code>.</p>
+<p id="ex-5-72"><strong>Ex 5.72</strong> Read <code>N</code> and print the first <code>N</code> <strong>Fibonacci</strong> numbers (0 1 1 2 3 5 8 …).</p>
+<p id="ex-5-73"><strong>Ex 5.73</strong> Read an integer and print the <strong>number of its digits</strong> and the <strong>sum of its digits</strong>.</p>
+<p id="ex-5-74"><strong>Ex 5.74</strong> Read an integer, <strong>reverse</strong> it, and say whether it is a <strong>palindrome</strong> (reads the same both ways, e.g. 12321).</p>
+<p id="ex-5-75"><strong>Ex 5.75</strong> Read an integer <code>n &gt; 1</code> and say whether it is <strong>prime</strong>.</p>
+<p id="ex-5-76"><strong>Ex 5.76</strong> Read <code>N</code> and print <strong>all prime numbers</strong> from 2 to N.</p>
+<p id="ex-5-77"><strong>Ex 5.77</strong> Read two positive integers and print their <strong>GCD</strong> (greatest common divisor, using Euclid's algorithm) and their <strong>LCM</strong>.</p>
+<p id="ex-5-78"><strong>Ex 5.78</strong> Read a base <code>x</code> and an exponent <code>n ≥ 0</code> and compute <strong>xⁿ</strong> using a loop (don't use <code>pow</code>).</p>
+<p id="ex-5-79"><strong>Ex 5.79</strong> Read <code>N</code> and then <code>N</code> numbers; print their <strong>average</strong>.</p>
+<p id="ex-5-80"><strong>Ex 5.80</strong> Read <code>N</code> and then <code>N</code> integers; print the <strong>largest</strong> and the <strong>smallest</strong>.</p>
+<p id="ex-5-81"><strong>Ex 5.81</strong> Read integers until the user enters <code>0</code>. Print how many were <strong>positive</strong>, how many <strong>negative</strong>, and the <strong>sum</strong> of all of them.</p>
+<p id="ex-5-82"><strong>Ex 5.82</strong> Read <code>n</code> and say whether it is a <strong>perfect number</strong> (equal to the sum of its proper divisors; e.g. 6 = 1+2+3). Then list all perfect numbers up to 1000.</p>
+<p id="ex-5-83"><strong>Ex 5.83</strong> Print all <strong>Armstrong numbers</strong> between 100 and 999 (a 3-digit number equal to the sum of the cubes of its digits, e.g. 153 = 1³+5³+3³).</p>
+<p id="ex-5-84"><strong>Ex 5.84</strong> Read a non-negative integer and print its <strong>binary</strong> representation.</p>
+<p id="ex-5-85"><strong>Ex 5.85</strong> <strong>Collatz:</strong> read <code>n</code>. While <code>n ≠ 1</code>: if <code>n</code> is even halve it, otherwise replace it by <code>3n + 1</code>. Print every value and the number of steps.</p>
+<p id="ex-5-86"><strong>Ex 5.86</strong> Keep asking the user for a number from <strong>1 to 10</strong> until a valid one is entered (use <code>do while</code>).</p>
+<p id="ex-5-87"><strong>Ex 5.87</strong> A <strong>menu-driven bank account</strong> program (deposit, withdraw, show balance, exit) with input checks. <em>(Like the lesson's example, but extend it: reject negative amounts.)</em></p>
+<p id="ex-5-88"><strong>Ex 5.88</strong> Print a <strong>table</strong> converting 0 °C to 100 °C in steps of 10 into °F, in neat columns.</p>
+<p id="ex-5-89"><strong>Ex 5.89</strong> You save GHS 1000 at <strong>7%</strong> compound interest per year. Print a <strong>year-by-year table</strong> until the balance has <strong>doubled</strong>, and say how many years it took.</p>
+<p id="ex-5-90"><strong>Ex 5.90</strong> A <strong>guessing game</strong>: the secret number is <code>37</code>. Read guesses until correct; print <code>Too low</code> / <code>Too high</code>, and finally the <strong>number of tries</strong>.</p>
+<p id="ex-5-91"><strong>Ex 5.91</strong> Read <code>N</code> and print the sum <code>1 + 1/2 + 1/3 + … + 1/N</code>.</p>
+<p id="ex-5-92"><strong>Ex 5.92</strong> Approximate <strong>π</strong> with the Leibniz series <code>4 × (1 − 1/3 + 1/5 − 1/7 + …)</code>. Print the approximation for 10, 1000 and 100 000 terms.</p>
+<p id="ex-5-93"><strong>Ex 5.93</strong> Compute the <strong>square root</strong> of a positive number <code>a</code> using Newton's method: start with <code>x = a</code>, repeat <code>x = (x + a / x) / 2</code> until <code>x*x</code> is within <code>0.000000001</code> of <code>a</code>.</p>
+<p id="ex-5-94"><strong>Ex 5.94</strong> <strong>FizzBuzz:</strong> print the numbers 1 to 30, but print <code>Fizz</code> for multiples of 3, <code>Buzz</code> for multiples of 5 and <code>FizzBuzz</code> for multiples of both.</p>
+<p id="ex-5-95"><strong>Ex 5.95</strong> Read a <strong>line of text</strong> one character at a time (<code>getchar</code>) until Enter, and count its <strong>letters, digits, vowels and spaces</strong>.</p>
+<h2 id="part-d3-write-the-program-patterns">Part D3 — Write the program: patterns</h2>
+<p><em>(Read <code>N</code> (the size) where stated. Think: outer loop = lines, inner loop = one line.)</em></p>
+<p id="ex-5-96"><strong>Ex 5.96</strong> A <strong>right triangle</strong> of stars with <code>N</code> rows.</p>
+<p id="ex-5-97"><strong>Ex 5.97</strong> An <strong>inverted</strong> right triangle of stars with <code>N</code> rows.</p>
+<p id="ex-5-98"><strong>Ex 5.98</strong> A <strong>centred pyramid</strong> with <code>N</code> rows (row <em>i</em> has <code>2i − 1</code> stars).</p>
+<p id="ex-5-99"><strong>Ex 5.99</strong> The <strong>number triangle</strong>: row <em>i</em> prints <code>1 2 … i</code>.</p>
+<pre class="plain"><code>1
+12
+123
+1234</code></pre>
+<p id="ex-5-100"><strong>Ex 5.100</strong> <strong>Floyd's triangle</strong> (consecutive numbers fill the rows):</p>
+<pre class="plain"><code>1
+2 3
+4 5 6
+7 8 9 10</code></pre>
+<p id="ex-5-101"><strong>Ex 5.101</strong> A <strong>hollow rectangle</strong> of stars with <code>H</code> rows and <code>W</code> columns.</p>
+<p id="ex-5-102"><strong>Ex 5.102</strong> A <strong>diamond</strong> of stars with a maximum width of <code>2N − 1</code>.</p>
+<p id="ex-5-103"><strong>Ex 5.103</strong> An <code>N × N</code> <strong>multiplication grid</strong> with neat columns.</p>
+<p id="ex-5-104"><strong>Ex 5.104</strong> An 8 × 8 <strong>checkerboard</strong> using <code>#</code> and <code>.</code>.</p>
+<p id="ex-5-105"><strong>Ex 5.105</strong> The <strong>alphabet triangle</strong>:</p>
+<pre class="plain"><code>A
+AB
+ABC
+ABCD</code></pre>
+<p id="ex-5-106"><strong>Ex 5.106</strong> <strong>Pascal's triangle</strong> with <code>N</code> rows. <em>(Hint: each number equals the previous number in the row × (row − col) / col — start each row with 1.)</em></p>
+<p id="ex-5-107"><strong>Ex 5.107</strong> The <strong>number pyramid</strong>:</p>
+<pre class="plain"><code>    1
+   121
+  12321
+ 1234321</code></pre>
+<h2 id="part-e-challenges-and-mini-projects">Part E — Challenges and mini-projects</h2>
+<p id="ex-5-108"><strong>Ex 5.108 (prime factors)</strong> Read <code>n</code> and print its prime factorisation, e.g. <code>360 = 2 x 2 x 2 x 3 x 3 x 5</code>.</p>
+<p id="ex-5-109"><strong>Ex 5.109 (grade book)</strong> Read the number of students <code>N</code>, then each student's mark. Print a report: average, highest, lowest, number of <strong>passes</strong> (≥ 50) and number of <strong>distinctions</strong> (≥ 80).</p>
+<p id="ex-5-110"><strong>Ex 5.110 (ATM with PIN)</strong> Allow the user <strong>3 attempts</strong> to enter the PIN <code>1234</code>. If they succeed, show a simple menu (balance / withdraw / exit). If they fail three times, print <code>Card blocked</code>.</p>
+<p id="ex-5-111"><strong>Ex 5.111 (the computer guesses)</strong> The user thinks of a number from 1 to 100. The computer repeatedly guesses the <strong>middle</strong> of the possible range; the user answers <code>h</code> (higher), <code>l</code> (lower) or <code>c</code> (correct). Print the number of guesses. <em>(This is binary search from Chapter 0, Ex 0.32.)</em></p>
+<p id="ex-5-112"><strong>Ex 5.112 (digital root)</strong> Add the digits of a number repeatedly until a single digit remains (e.g. <code>9875 → 29 → 11 → 2</code>).</p>
+<p id="ex-5-113"><strong>Ex 5.113 (check digit)</strong> The <strong>Luhn algorithm</strong> validates card/ID numbers: from the right, double every second digit (subtract 9 if the result is above 9), sum everything; the number is valid if the sum is a multiple of 10. Read a number (as <code>long long</code>) and say whether it is valid. (<code>79927398713</code> is valid.)</p>
+<h2 id="part-f-research-tasks">Part F — Research tasks</h2>
+<p id="ex-5-114"><strong>Ex 5.114</strong> What does <code>goto</code> do? Why do most programmers avoid it? Is there any situation where it is acceptable?</p>
+<p id="ex-5-115"><strong>Ex 5.115</strong> What do <code>while (1)</code> and <code>for (;;)</code> mean? Write a program that reads numbers until the user types <code>0</code>, using an <strong>infinite loop with <code>break</code></strong>.</p>
+<p id="ex-5-116"><strong>Ex 5.116</strong> Look up <code>rand()</code>, <code>srand()</code> and <code>time(NULL)</code>. Rewrite Ex 5.90 so the secret is a <strong>random</strong> number from 1 to 100.</p>
+<hr>
+<p><em>End of Chapter 5. Next: <a href="06-functions.html">Chapter 6 — Functions</a></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../solutions/05-flow-of-control.html">Solutions to Chapter 5  →</a>
+<div class="pager-row">
+<a class="pager-prev" href="../lessons/04-data-input-and-output.html"><small>Previous</small>Chapter 4 — Data Input and Output</a>
+<a class="pager-next" href="../lessons/06-functions.html"><small>Next</small>Chapter 6 — Functions</a>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#what-you-will-learn">What you will learn</a>
+<a class="toc-2" href="#51-what-is-flow-of-control">5.1 What is &quot;flow of control&quot;?</a>
+<a class="toc-2" href="#52-decision-statements">5.2 Decision statements</a>
+<a class="toc-3" href="#521-the-if-statement">5.2.1 The if statement</a>
+<a class="toc-3" href="#522-the-if-else-statement">5.2.2 The if else statement</a>
+<a class="toc-3" href="#523-the-else-if-ladder-more-than-two-options">5.2.3 The else if ladder — more than two options</a>
+<a class="toc-3" href="#524-nested-if-statements">5.2.4 Nested if statements</a>
+<a class="toc-3" href="#525-common-if-mistakes">5.2.5 Common if mistakes</a>
+<a class="toc-3" href="#the-dangling-else">The dangling else</a>
+<a class="toc-2" href="#53-the-switch-statement">5.3 The switch statement</a>
+<a class="toc-3" href="#what-if-you-forget-break-fall-through">What if you forget break? — &quot;fall-through&quot;</a>
+<a class="toc-3" href="#a-calculator-with-switch">A calculator with switch</a>
+<a class="toc-3" href="#switch-rules-to-remember">switch rules to remember</a>
+<a class="toc-2" href="#54-loop-statements">5.4 Loop statements</a>
+<a class="toc-3" href="#541-the-while-loop">5.4.1 The while loop</a>
+<a class="toc-3" href="#542-the-do-while-loop">5.4.2 The do while loop</a>
+<a class="toc-3" href="#543-the-for-loop">5.4.3 The for loop</a>
+<a class="toc-3" href="#off-by-one-errors">Off-by-one errors</a>
+<a class="toc-3" href="#544-break-and-continue">5.4.4 break and continue</a>
+<a class="toc-3" href="#545-common-loop-mistakes">5.4.5 Common loop mistakes</a>
+<a class="toc-2" href="#55-the-rule-of-the-braces">5.5 The rule of the braces { }</a>
+<a class="toc-2" href="#56-nested-statements">5.6 Nested statements</a>
+<a class="toc-3" href="#loops-inside-loops">Loops inside loops</a>
+<a class="toc-2" href="#57-putting-it-all-together">5.7 Putting it all together</a>
+<a class="toc-3" href="#a-menu-driven-program-do-while-switch">A menu-driven program (do while + switch)</a>
+<a class="toc-3" href="#a-number-guessing-game">A number-guessing game</a>
+<a class="toc-2" href="#58-how-to-design-a-program-with-control-flow">5.8 How to design a program with control flow</a>
+<a class="toc-2" href="#key-takeaways">Key takeaways</a>
+<a class="toc-2" href="#part-a-quick-check">Part A — Quick check</a>
+<a class="toc-2" href="#part-b-predict-the-output">Part B — Predict the output</a>
+<a class="toc-2" href="#part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</a>
+<a class="toc-2" href="#part-d1-write-the-program-decisions">Part D1 — Write the program: decisions</a>
+<a class="toc-2" href="#part-d2-write-the-program-loops">Part D2 — Write the program: loops</a>
+<a class="toc-2" href="#part-d3-write-the-program-patterns">Part D3 — Write the program: patterns</a>
+<a class="toc-2" href="#part-e-challenges-and-mini-projects">Part E — Challenges and mini-projects</a>
+<a class="toc-2" href="#part-f-research-tasks">Part F — Research tasks</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

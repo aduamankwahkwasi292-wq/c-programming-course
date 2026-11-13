@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solutions — Chapter 1: C Basics · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Solutions — Chapter 1: C Basics · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row on"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol active" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="solutions-chapter-1-c-basics">Solutions — Chapter 1: C Basics</h1>
+<blockquote>
+<p>Back to the lesson: <a href="../lessons/01-c-basics.html">Chapter 1 lesson</a></p>
+</blockquote>
+<hr>
+<h2 id="part-a-quick-check">Part A — Quick check</h2>
+<p id="ex-1-1"><strong>Ex 1.1</strong> <strong>Dennis Ritchie</strong>, at Bell Labs, in the <strong>early 1970s</strong> (development began in 1972; by 1973 it was good enough to write the Unix kernel). C was first used to build (rewrite) the <strong>Unix operating system</strong>.</p>
+<p id="ex-1-2"><strong>Ex 1.2</strong> Any three of:</p>
+<ul>
+<li>It gives a clear mental model of how a computer works (memory, addresses).</li>
+<li>It is the &quot;lingua franca&quot;: most languages (Java, Python, JavaScript…) can interface with C.</li>
+<li>Many languages are written in C, so you need C to contribute to them / open-source projects.</li>
+<li>Its syntax is copied by C++, C#, Java, JavaScript and PHP, so you get a head start in them.</li>
+<li>It is used for embedded systems, robotics and efficient AI/hardware code.</li>
+</ul>
+<p id="ex-1-3"><strong>Ex 1.3</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Valid?</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>total</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>2ndPlace</code></td>
+<td>❌</td>
+<td>starts with a digit</td>
+</tr>
+<tr>
+<td><code>_count</code></td>
+<td>✅ (discouraged)</td>
+<td>valid, but a leading underscore is discouraged</td>
+</tr>
+<tr>
+<td><code>my-name</code></td>
+<td>❌</td>
+<td><code>-</code> is not allowed; it means subtraction</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>❌</td>
+<td>keyword</td>
+</tr>
+<tr>
+<td><code>Student_Name</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>x1</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>price$</code></td>
+<td>❌</td>
+<td><code>$</code> is not part of the C identifier character set (a few compilers accept it as an extension)</td>
+</tr>
+<tr>
+<td><code>while</code></td>
+<td>❌</td>
+<td>keyword</td>
+</tr>
+<tr>
+<td><code>first name</code></td>
+<td>❌</td>
+<td>contains a space</td>
+</tr>
+<tr>
+<td><code>Int</code></td>
+<td>✅</td>
+<td>different from the keyword <code>int</code> (but confusing — avoid)</td>
+</tr>
+<tr>
+<td><code>GPA_2024</code></td>
+<td>✅</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p id="ex-1-4"><strong>Ex 1.4</strong></p>
+<ol>
+<li><strong>False.</strong> C is case sensitive; the program entry point must be <code>main</code>.</li>
+<li><strong>False.</strong> The keyword is <code>int</code> (lowercase). <code>Int</code> is just an ordinary identifier.</li>
+<li><strong>False.</strong> Comments are ignored by the compiler.</li>
+<li><strong>True.</strong> (<code>#include</code> lines are preprocessor commands, and <code>{ }</code> blocks are not statements by themselves.)</li>
+<li><strong>False.</strong> A program must have exactly one <code>main()</code>.</li>
+<li><strong>False.</strong> C comments cannot be nested. The first <code>*/</code> ends the comment, so <code> c */</code> is left over as stray code and causes an error.</li>
+</ol>
+<p id="ex-1-5"><strong>Ex 1.5</strong> It tells the preprocessor to bring in the <strong>standard input/output header file</strong>, which contains the declarations of <code>printf</code>, <code>scanf</code>, <code>getchar</code>, <code>putchar</code>, <code>puts</code> … If you leave it out, the compiler does not know what <code>printf</code> is: older compilers give a warning (&quot;implicit declaration of function&quot;) and may still run the program; modern compilers treat it as an <strong>error</strong>. Always include it.</p>
+<p id="ex-1-6"><strong>Ex 1.6</strong> <code>main()</code>. <strong>Execution of every C program starts at <code>main()</code></strong> (wherever it appears in the file), and it is mandatory.</p>
+<p id="ex-1-7"><strong>Ex 1.7</strong> It reports the value <code>0</code> to the operating system, which means <strong>&quot;the program finished successfully&quot;</strong>. A non-zero value signals an error.</p>
+<p id="ex-1-8"><strong>Ex 1.8</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="c1">// A single-line comment (ends at the end of the line)</span>
+
+<span class="cm">/* A multi-line</span>
+<span class="cm">   comment */</span>
+</code></pre></div>
+<p>Neither is executed: the compiler ignores comments.</p>
+<p id="ex-1-9"><strong>Ex 1.9</strong></p>
+<ul>
+<li><code>\n</code> — newline (cursor to the start of the next line)</li>
+<li><code>\t</code> — horizontal tab</li>
+<li><code>\\</code> — prints a single backslash</li>
+<li><code>\&quot;</code> — prints a double quote</li>
+<li><code>\'</code> — prints a single quote (apostrophe)</li>
+</ul>
+<p id="ex-1-10"><strong>Ex 1.10</strong> (1) <strong>Write</strong> the code; (2) <strong>save</strong> it with a <code>.c</code> extension; (3) <strong>build</strong> (compile + link) it; (4) <strong>run</strong> it.</p>
+<hr>
+<h2 id="part-b-predict-the-output">Part B — Predict the output</h2>
+<p id="ex-1-11"><strong>Ex 1.11</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>A
+B
+C</code></pre></div>
+<p id="ex-1-12"><strong>Ex 1.12</strong> No newline between the first two <code>printf</code>s:</p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>AB
+C</code></pre></div>
+<p id="ex-1-13"><strong>Ex 1.13</strong> (<code>\t</code> moves to the next tab stop)</p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Name:   Ama
+Age:    19</code></pre></div>
+<p id="ex-1-14"><strong>Ex 1.14</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>She said &quot;Hi&quot;</code></pre></div>
+<p id="ex-1-15"><strong>Ex 1.15</strong> Each <code>\\</code> prints one backslash:</p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>C:\temp\new</code></pre></div>
+<p>(If we had written <code>\t</code> and <code>\n</code> with single backslashes the output would have been a tab and a newline instead!)</p>
+<p id="ex-1-16"><strong>Ex 1.16</strong> <code>Two</code>, <code>Three</code> and <code>Four</code> are all inside comments:</p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>One
+Five</code></pre></div>
+<p id="ex-1-17"><strong>Ex 1.17</strong> The last <code>printf</code> has no <code>\n</code>, so the text ends without a newline:</p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>HelloWorld
+Hello
+World</code></pre></div>
+<p id="ex-1-18"><strong>Ex 1.18</strong> <strong>4 lines</strong>: an empty line, another empty line, the line <code>Hi</code>, and one more empty line. (The cursor then rests at the start of a 5th line.)</p>
+<hr>
+<h2 id="part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</h2>
+<p id="ex-1-19"><strong>Ex 1.19</strong> Missing <code>;</code> after the <code>printf(...)</code>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-20"><strong>Ex 1.20</strong> C is case sensitive — <code>Printf</code> is not <code>printf</code>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-21"><strong>Ex 1.21</strong> The closing double quote is missing.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-22"><strong>Ex 1.22</strong> The line <code>#include &lt;stdio.h&gt;</code> is missing (so <code>printf</code> is unknown).</p>
+<p id="ex-1-23"><strong>Ex 1.23</strong> The <code>/*</code> comment is never closed with <code>*/</code>, so the compiler swallows the rest of the file. Fix:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cm">/* This program prints a greeting */</span>
+</code></pre></div>
+<p id="ex-1-24"><strong>Ex 1.24</strong> The closing brace <code>}</code> of <code>main</code> is missing. Add it after <code>return 0;</code>.</p>
+<p id="ex-1-25"><strong>Ex 1.25</strong> <code>Main</code> should be <code>main</code>. (Typical symptom: the compiler is happy, but the <strong>linker</strong> says &quot;undefined reference to <code>main</code>&quot; — there is no entry point.)</p>
+<p id="ex-1-26"><strong>Ex 1.26</strong> Two mistakes:</p>
+<ol>
+<li><code>'Akwaaba!\n'</code> uses single quotes. Strings need <strong>double</strong> quotes.</li>
+<li><code>return 0</code> has no semicolon.</li>
+</ol>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Akwaaba!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<hr>
+<h2 id="part-d-write-the-program">Part D — Write the program</h2>
+<p id="ex-1-27"><strong>Ex 1.27</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Name: Kofi Mensah</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Programme: Computer Engineering</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Level: 200</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Name: Kofi Mensah
+Programme: Computer Engineering
+Level: 200</code></pre></div>
+<p id="ex-1-28"><strong>Ex 1.28</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Department of Computer Engineering</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"KNUST</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Kumasi, Ghana</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Department of Computer Engineering
+KNUST
+Kumasi, Ghana</code></pre></div>
+<p id="ex-1-29"><strong>Ex 1.29</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Item</span><span class="se">\t\t</span><span class="s">Price (GHS)</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Rice</span><span class="se">\t\t</span><span class="s">12.50</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Gari</span><span class="se">\t\t</span><span class="s">8.00</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Kenkey</span><span class="se">\t\t</span><span class="s">5.00</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Item            Price (GHS)
+Rice            12.50
+Gari            8.00
+Kenkey          5.00</code></pre></div>
+<p>(We used two tabs so the second column lines up even for the short words. Tab stops are normally 8 characters wide, so how it looks depends on your terminal. In Chapter 4 you will learn a more reliable way: field widths such as <code>%-10s</code>.)</p>
+<p id="ex-1-30"><strong>Ex 1.30</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"************</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"*          *</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"*          *</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"************</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>************
+*          *
+*          *
+************</code></pre></div>
+<p id="ex-1-31"><strong>Ex 1.31</strong> The inner double quotes need <code>\&quot;</code>; the apostrophes can stay as they are inside a double-quoted string (writing <code>\'</code> is also fine).</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Kwame said, </span><span class="se">\"</span><span class="s">Programming isn't hard - it's practice!</span><span class="se">\"\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Kwame said, &quot;Programming isn&#x27;t hard - it&#x27;s practice!&quot;</code></pre></div>
+<p id="ex-1-32"><strong>Ex 1.32</strong> Each backslash must be doubled:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"C:</span><span class="se">\\</span><span class="s">Users</span><span class="se">\\</span><span class="s">Ama</span><span class="se">\\</span><span class="s">Documents</span><span class="se">\\</span><span class="s">COE281</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>C:\Users\Ama\Documents\COE281</code></pre></div>
+<p id="ex-1-33"><strong>Ex 1.33</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"#</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"##</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"###</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"####</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"#####</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>#
+##
+###
+####
+#####</code></pre></div>
+<p id="ex-1-34"><strong>Ex 1.34</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"   *</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"  ***</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">" *****</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"*******</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>   *
+  ***
+ *****
+*******</code></pre></div>
+<p id="ex-1-35"><strong>Ex 1.35</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"===== PROVISION SHOP =====</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Milk</span><span class="se">\t\t</span><span class="s">GHS 15.00</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sugar</span><span class="se">\t\t</span><span class="s">GHS  9.50</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Biscuits</span><span class="se">\t</span><span class="s">GHS  6.00</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"--------------------------</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"TOTAL</span><span class="se">\t\t</span><span class="s">GHS 30.50</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>===== PROVISION SHOP =====
+Milk            GHS 15.00
+Sugar           GHS  9.50
+Biscuits        GHS  6.00
+--------------------------
+TOTAL           GHS 30.50</code></pre></div>
+<p id="ex-1-36"><strong>Ex 1.36</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* (a) one printf */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello World from C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* (b) three printfs on the same line */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"World "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"from C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* (c) one printf per word, each on its own line */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"World</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"from</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Hello World from C
+Hello World from C
+Hello
+World
+from
+C</code></pre></div>
+<p id="ex-1-37"><strong>Ex 1.37</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"#   #  #   #  #   #   ####  #####</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"#  #   ##  #  #   #  #        #</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"###    # # #  #   #   ###     #</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"#  #   #  ##  #   #      #    #</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"#   #  #   #   ###   ####     #</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>#   #  #   #  #   #   ####  #####
+#  #   ##  #  #   #  #        #
+###    # # #  #   #   ###     #
+#  #   #  ##  #   #      #    #
+#   #  #   #   ###   ####     #</code></pre></div>
+<hr>
+<h2 id="part-e-challenges">Part E — Challenges</h2>
+<p id="ex-1-38"><strong>Ex 1.38</strong> One possibility (R = red, Y = gold, G = green, <code>*</code> = the black star):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"RRRRRRRRRRRRRRR</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"RRRRRRRRRRRRRRR</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"RRRRRRRRRRRRRRR</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"YYYYYYYYYYYYYYY</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"YYYYYYY*YYYYYYY</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"YYYYYYYYYYYYYYY</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"GGGGGGGGGGGGGGG</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"GGGGGGGGGGGGGGG</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"GGGGGGGGGGGGGGG</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>RRRRRRRRRRRRRRR
+RRRRRRRRRRRRRRR
+RRRRRRRRRRRRRRR
+YYYYYYYYYYYYYYY
+YYYYYYY*YYYYYYY
+YYYYYYYYYYYYYYY
+GGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGG</code></pre></div>
+<p id="ex-1-39"><strong>Ex 1.39</strong> Five statements are enough here:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"1</span><span class="se">\t</span><span class="s">2</span><span class="se">\t</span><span class="s">3</span><span class="se">\t</span><span class="s">4</span><span class="se">\t</span><span class="s">5</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"2</span><span class="se">\t</span><span class="s">4</span><span class="se">\t</span><span class="s">6</span><span class="se">\t</span><span class="s">8</span><span class="se">\t</span><span class="s">10</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"3</span><span class="se">\t</span><span class="s">6</span><span class="se">\t</span><span class="s">9</span><span class="se">\t</span><span class="s">12</span><span class="se">\t</span><span class="s">15</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"4</span><span class="se">\t</span><span class="s">8</span><span class="se">\t</span><span class="s">12</span><span class="se">\t</span><span class="s">16</span><span class="se">\t</span><span class="s">20</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"5</span><span class="se">\t</span><span class="s">10</span><span class="se">\t</span><span class="s">15</span><span class="se">\t</span><span class="s">20</span><span class="se">\t</span><span class="s">25</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>1       2       3       4       5
+2       4       6       8       10
+3       6       9       12      15
+4       8       12      16      20
+5       10      15      20      25</code></pre></div>
+<p>A 50 × 50 table would need 50 statements, each containing 50 hand-typed numbers (2,500 numbers!) — and a single typo would go unnoticed. A <strong>loop</strong> (Chapter 5) does it in about 4 lines. That is the whole point of loops.</p>
+<p id="ex-1-40"><strong>Ex 1.40</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Hello
+6</code></pre></div>
+<p><code>Hello\n</code> is 6 characters: H, e, l, l, o and the newline. (<code>\n</code> counts as one character!)</p>
+<p id="ex-1-41"><strong>Ex 1.41</strong> The five mistakes:</p>
+<ol>
+<li><code>#include &lt;stdio&gt;</code> — the header file name needs <code>.h</code>: <code>&lt;stdio.h&gt;</code>.</li>
+<li><code>Int</code> — must be lowercase <code>int</code>.</li>
+<li>The comment <code>/* print the course info</code> is never closed — add <code>*/</code>.</li>
+<li>The string <code>&quot;Lecturer:\tDr. Mensah\n)</code> is missing its closing <code>&quot;</code>.</li>
+<li>The same <code>printf</code> line is missing its <code>;</code>.</li>
+</ol>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* print the course info */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Course:</span><span class="se">\t</span><span class="s">COE 281</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Lecturer:</span><span class="se">\t</span><span class="s">Dr. Mensah</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Language:</span><span class="se">\t</span><span class="s">C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Course:         COE 281
+Lecturer:       Dr. Mensah
+Language:       C</code></pre></div>
+<hr>
+<h2 id="part-f-hands-on-tasks-sample-answers">Part F — Hands-on tasks (sample answers)</h2>
+<p id="ex-1-42"><strong>Ex 1.42</strong> <em>Sample:</em> &quot;I used Code::Blocks 20.03 with MinGW GCC 8.1.&quot; Or: &quot;VS Code with the C/C++ extension and GCC 13.2 from MSYS2&quot;. Check your compiler version with <code>gcc --version</code> in a terminal. Typing it by hand (rather than pasting) is deliberate — you train your eyes and fingers to notice details like <code>;</code> and <code>&quot;</code>.</p>
+<p id="ex-1-43"><strong>Ex 1.43</strong> <em>Sample error diary</em> (GCC wording; yours may differ):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What I changed</th>
+<th>Error message</th>
+<th>Line</th>
+<th>What it really meant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Removed <code>;</code> after <code>printf(...)</code></td>
+<td><code>expected ';' before 'return'</code></td>
+<td>the line <strong>after</strong> the missing <code>;</code></td>
+<td>A statement was not ended before the next one started</td>
+</tr>
+<tr>
+<td>Removed the closing <code>&quot;</code></td>
+<td><code>missing terminating &quot; character</code></td>
+<td>the <code>printf</code> line</td>
+<td>The string never ended</td>
+</tr>
+<tr>
+<td>Wrote <code>printF</code></td>
+<td><code>implicit declaration of function 'printF'</code> / <code>undefined reference to 'printF'</code></td>
+<td>the <code>printF</code> line</td>
+<td>The compiler/linker does not know a function with that exact (case-sensitive) name</td>
+</tr>
+<tr>
+<td>Removed <code>#include &lt;stdio.h&gt;</code></td>
+<td><code>implicit declaration of function 'printf'</code></td>
+<td>the <code>printf</code> line</td>
+<td>The declaration of <code>printf</code> was never included</td>
+</tr>
+<tr>
+<td>Removed the last <code>}</code></td>
+<td><code>expected declaration or statement at end of input</code></td>
+<td>the last line</td>
+<td>A block was opened but never closed</td>
+</tr>
+</tbody>
+</table></div>
+<p id="ex-1-44"><strong>Ex 1.44</strong> With GCC: <code>gcc hello.c -o hello</code>. The executable appears in the <strong>same folder</strong> as <code>hello.c</code> (named <code>hello.exe</code> on Windows, <code>hello</code> on Linux/macOS). A tiny Hello World is usually tens of kilobytes (the exact size depends on the compiler and platform). Run it with <code>hello</code> or <code>./hello</code>. With the Microsoft compiler: <code>cl hello.c</code> produces <code>hello.exe</code> and <code>hello.obj</code>.</p>
+<hr>
+<p><em>Next: <a href="02-variables-and-data-types.html">Chapter 2 solutions</a></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../lessons/01-c-basics.html">←  Back to the Chapter 1 lesson</a>
+<div class="pager-row">
+<a class="pager-prev" href="../solutions/00-introduction-to-programming.html"><small>Previous</small>Solutions — Chapter 0: Introduction to Programming</a>
+<a class="pager-next" href="../solutions/02-variables-and-data-types.html"><small>Next</small>Solutions — Chapter 2: Variables and Data Types</a>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#part-a-quick-check">Part A — Quick check</a>
+<a class="toc-2" href="#part-b-predict-the-output">Part B — Predict the output</a>
+<a class="toc-2" href="#part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</a>
+<a class="toc-2" href="#part-d-write-the-program">Part D — Write the program</a>
+<a class="toc-2" href="#part-e-challenges">Part E — Challenges</a>
+<a class="toc-2" href="#part-f-hands-on-tasks-sample-answers">Part F — Hands-on tasks (sample answers)</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

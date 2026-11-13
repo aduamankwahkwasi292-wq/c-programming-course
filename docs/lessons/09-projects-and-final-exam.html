@@ -1,0 +1,1054 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 9 — Projects and Final Exam · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Chapter 9 — Projects and Final Exam · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row on"><a class="nav-ch active" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="chapter-9-projects-and-final-exam">Chapter 9 — Projects and Final Exam</h1>
+<blockquote>
+<p><strong>Course:</strong> COE 281 — Programming and Problem-Solving 1<br>
+<strong>Covers:</strong> everything — Chapters 0 to 8<br>
+<strong>Solutions to the exam:</strong> <a href="../solutions/09-projects-and-final-exam.html">Exam solutions</a></p>
+</blockquote>
+<hr>
+<h2 id="what-you-will-do">What you will do</h2>
+<ol>
+<li>Learn a <strong>method</strong> for building a bigger program without getting lost.</li>
+<li>Study <strong>four complete mini-projects</strong>, each combining decisions, loops, functions, arrays, strings and pointers.</li>
+<li>Pick <strong>project ideas</strong> to build on your own.</li>
+<li>Sit a <strong>mock final exam</strong> (3 hours, 100 marks) with a full marking scheme.</li>
+</ol>
+<hr>
+<h1 id="part-1-from-problem-to-program">PART 1 — From problem to program</h1>
+<h2 id="91-a-method-for-building-programs">9.1 A method for building programs</h2>
+<p>Your slides (Chapter 0) taught you how to <em>think</em>: <strong>define the problem, use examples, divide and conquer, write notes.</strong> Now we apply it to code. Follow these steps every time:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What you do</th>
+<th>Example (Student Manager)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Understand</strong></td>
+<td>Write what the program must do, in plain words. List <strong>inputs</strong> and <strong>outputs</strong>.</td>
+<td>&quot;Store up to 20 students with a mark; list them; show statistics; search; rank.&quot;</td>
+</tr>
+<tr>
+<td><strong>2. Choose the data</strong></td>
+<td>Decide which <strong>variables / arrays</strong> hold the information. (Chapter 0: data structures!)</td>
+<td>Parallel arrays: <code>names[20][30]</code> and <code>marks[20]</code>, plus a counter.</td>
+</tr>
+<tr>
+<td><strong>3. Divide</strong></td>
+<td>Split into <strong>functions</strong>, one job each. Write only the <strong>prototypes</strong> first.</td>
+<td><code>addStudent</code>, <code>listStudents</code>, <code>showStats</code>, <code>searchStudent</code>, <code>showRanking</code>.</td>
+</tr>
+<tr>
+<td><strong>4. Write <code>main</code> first</strong></td>
+<td><code>main</code> is a short menu loop calling the functions.</td>
+<td><code>do { menu; switch (choice) … } while (choice != 6);</code></td>
+</tr>
+<tr>
+<td><strong>5. Build one function at a time</strong></td>
+<td>Write a function, <strong>test it alone</strong>, then add the next.</td>
+<td>Test <code>addStudent</code> + <code>listStudents</code> before anything else.</td>
+</tr>
+<tr>
+<td><strong>6. Test with tricky input</strong></td>
+<td>Empty data, one item, a full array, wrong input, negative numbers…</td>
+<td>&quot;What if the list is empty?&quot;</td>
+</tr>
+<tr>
+<td><strong>7. Clean up</strong></td>
+<td>Meaningful names, comments for <em>why</em>, no repeated code.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout tip">
+<p>💡 <strong>Never write 200 lines and then compile.</strong> Write 10 lines, compile, test. Small steps → small bugs.</p>
+</blockquote>
+<h2 id="92-passing-the-programs-data-around">9.2 Passing the program's data around</h2>
+<p>Good programs avoid global variables, so functions receive what they need as <strong>parameters</strong>:</p>
+<ul>
+<li>An <strong>array</strong> is passed as its address (so the function can change it) — with its <strong>size</strong> (or a counter) as a separate parameter.</li>
+<li>A <strong>counter</strong> that a function must <strong>change</strong> (like &quot;number of students&quot;) is passed <strong>by pointer</strong> (<code>int *count</code>).</li>
+<li>Things the function only <strong>reads</strong> are marked <code>const</code>.</li>
+</ul>
+<p>You will see all three in the projects.</p>
+<hr>
+<h1 id="part-2-four-worked-projects">PART 2 — Four worked projects</h1>
+<h2 id="project-1-student-records-manager">Project 1 — Student Records Manager</h2>
+<p><strong>Goal.</strong> Keep a class list (name + mark) for up to 20 students. A menu lets the teacher add students, list them, see statistics, search by name, and see a <strong>ranking</strong> (highest mark first).</p>
+<p><strong>Design.</strong></p>
+<ul>
+<li>Data: <code>names[MAX][30]</code> (a 2D <code>char</code> array: one string per row), <code>marks[MAX]</code> and <code>count</code> (how many students are stored).</li>
+<li>To rank the students <strong>without moving the names around</strong>, we sort an array of <strong>indices</strong> (<code>order[]</code>): <code>order[0]</code> is the index of the best student, <code>order[1]</code> the second best, and so on. This is a very useful trick.</li>
+</ul>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="cp">#define MAX 20</span>
+<span class="cp">#define NAME_LEN 30</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">addStudent</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">count</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">listStudents</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">showStats</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">searchStudent</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">showRanking</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">MAX</span><span class="p">][</span><span class="n">NAME_LEN</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">choice</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">=== STUDENT MANAGER ===</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Choose: "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">addStudent</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span><span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">listStudents</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">showStats</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="n">searchStudent</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"> </span><span class="n">showRanking</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Goodbye!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w">                  </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Invalid choice.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">addStudent</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MAX</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"The class is full.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Name and mark: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%29s %d"</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="o">*</span><span class="n">count</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">marks</span><span class="p">[</span><span class="o">*</span><span class="n">count</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">count</span><span class="p">)</span><span class="o">++</span><span class="p">;</span><span class="w">                                    </span><span class="cm">/* changes the caller's counter */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Student added.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">listStudents</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">%-4s %-15s %5s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"No."</span><span class="p">,</span><span class="w"> </span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s">"Mark"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-4d %-15s %5d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">showStats</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"No students yet.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">best</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">worst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">best</span><span class="p">])</span><span class="w">  </span><span class="n">best</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">worst</span><span class="p">])</span><span class="w"> </span><span class="n">worst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Average: %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Highest: %s (%d)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">best</span><span class="p">],</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">best</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Lowest : %s (%d)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">worst</span><span class="p">],</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">worst</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">searchStudent</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">key</span><span class="p">[</span><span class="n">NAME_LEN</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Name to search: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%29s"</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s scored %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s was not found.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">showRanking</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">order</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">order</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">                              </span><span class="cm">/* start with 0, 1, 2, ... */</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">pass</span><span class="o">++</span><span class="p">)</span><span class="w">   </span><span class="cm">/* bubble sort the INDICES by mark */</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pass</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]])</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="w">                </span><span class="n">order</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="w">                </span><span class="n">order</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">%-5s %-15s %5s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Rank"</span><span class="p">,</span><span class="w"> </span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s">"Mark"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-5d %-15s %5d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">r</span><span class="p">]],</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">r</span><span class="p">]]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 1
+Name and mark: Kofi 72
+Student added.
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 1
+Name and mark: Ama 85
+Student added.
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 1
+Name and mark: Yaw 60
+Student added.
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 2
+
+No.  Name            Mark
+1    Kofi               72
+2    Ama                85
+3    Yaw                60
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 3
+Average: 72.33
+Highest: Ama (85)
+Lowest : Yaw (60)
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 4
+Name to search: Ama
+Ama scored 85
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 4
+Name to search: Esi
+Esi was not found.
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 5
+
+Rank  Name            Mark
+1     Ama                85
+2     Kofi               72
+3     Yaw                60
+
+=== STUDENT MANAGER ===
+1) Add  2) List  3) Statistics  4) Search  5) Ranking  6) Exit
+Choose: 6
+Goodbye!</code></pre></div>
+<p><strong>What to notice</strong></p>
+<ul>
+<li><code>main</code> is tiny: it only shows the menu and calls functions.</li>
+<li><code>count</code> is passed <strong>by pointer</strong> to <code>addStudent</code> (so the function can add 1), and by value to the others (they only read it).</li>
+<li>The <code>const</code> on <code>marks[]</code> promises that listing/searching won't change the marks.</li>
+<li>Ranking sorts the <em>indices</em>, so <code>names</code> and <code>marks</code> stay in the original order.</li>
+</ul>
+<p><strong>Extend it:</strong> delete a student; edit a mark; grade letters; reject marks outside 0–100; stop adding when <code>MAX</code> is reached (already done!); count passes and failures.</p>
+<hr>
+<h2 id="project-2-tic-tac-toe-two-players">Project 2 — Tic-Tac-Toe (two players)</h2>
+<p><strong>Goal.</strong> Two people take turns at the keyboard. Cells are numbered 1–9. The program must refuse illegal moves, detect a winner and detect a draw.</p>
+<p><strong>Design.</strong> The board is a <strong>2D char array</strong> <code>char board[3][3]</code>. Cell number <code>n</code> (1–9) is at row <code>(n − 1) / 3</code>, column <code>(n − 1) % 3</code>. Functions: <code>initBoard</code>, <code>printBoard</code>, <code>placeMark</code>, <code>winner</code>, <code>isFull</code>.</p>
+<p>In the sample game below X plays 1, O plays 4, X plays 2, O tries 2 (<strong>already taken!</strong>), then plays 5, and X plays 3 to win the top row.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initBoard</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">printBoard</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">placeMark</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cell</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">player</span><span class="p">);</span>
+<span class="kt">char</span><span class="w"> </span><span class="nf">winner</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">isFull</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">board</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'X'</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cell</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">initBoard</span><span class="p">(</span><span class="n">board</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printBoard</span><span class="p">(</span><span class="n">board</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Player %c, choose a cell (1-9): "</span><span class="p">,</span><span class="w"> </span><span class="n">player</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cell</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">placeMark</span><span class="p">(</span><span class="n">board</span><span class="p">,</span><span class="w"> </span><span class="n">cell</span><span class="p">,</span><span class="w"> </span><span class="n">player</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Invalid move, try again.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span><span class="w">                                  </span><span class="cm">/* same player tries again */</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">winner</span><span class="p">(</span><span class="n">board</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">' '</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printBoard</span><span class="p">(</span><span class="n">board</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Player %c wins!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">player</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isFull</span><span class="p">(</span><span class="n">board</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printBoard</span><span class="p">(</span><span class="n">board</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"It's a draw!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'X'</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">'O'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="sc">'X'</span><span class="p">;</span><span class="w">          </span><span class="cm">/* switch turns */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initBoard</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">' '</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printBoard</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">" %c | %c | %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"---+---+---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">placeMark</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cell</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">player</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cell</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cell</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                                      </span><span class="cm">/* outside the board */</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">cell</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">cell</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">' '</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                                      </span><span class="cm">/* already taken */</span>
+
+<span class="w">    </span><span class="n">b</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">player</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="nf">winner</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">' '</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span><span class="w">                            </span><span class="cm">/* a row */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">' '</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">];</span><span class="w">                            </span><span class="cm">/* a column */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">' '</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span><span class="w">                                </span><span class="cm">/* diagonal */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">' '</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span><span class="w">                                </span><span class="cm">/* other diagonal */</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sc">' '</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">isFull</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">' '</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>
+   |   |
+---+---+---
+   |   |
+---+---+---
+   |   |
+
+Player X, choose a cell (1-9): 1
+
+ X |   |
+---+---+---
+   |   |
+---+---+---
+   |   |
+
+Player O, choose a cell (1-9): 4
+
+ X |   |
+---+---+---
+ O |   |
+---+---+---
+   |   |
+
+Player X, choose a cell (1-9): 2
+
+ X | X |
+---+---+---
+ O |   |
+---+---+---
+   |   |
+
+Player O, choose a cell (1-9): 2
+Invalid move, try again.
+
+ X | X |
+---+---+---
+ O |   |
+---+---+---
+   |   |
+
+Player O, choose a cell (1-9): 5
+
+ X | X |
+---+---+---
+ O | O |
+---+---+---
+   |   |
+
+Player X, choose a cell (1-9): 3
+
+ X | X | X
+---+---+---
+ O | O |
+---+---+---
+   |   |
+
+Player X wins!</code></pre></div>
+<p><strong>What to notice</strong></p>
+<ul>
+<li><code>placeMark</code> <strong>returns</strong> 1 or 0 to say whether the move was legal — so <code>main</code> doesn't need to know <em>why</em> it failed.</li>
+<li>The <code>continue</code> statement restarts the loop <em>without</em> switching players.</li>
+<li>The turn switch uses the conditional operator: <code>player = (player == 'X') ? 'O' : 'X';</code>.</li>
+<li>All the &quot;rules&quot; live in small functions, which makes them easy to test (and to reuse for Ex 7.93).</li>
+</ul>
+<p><strong>Extend it:</strong> play against the computer (it picks the first empty cell, then a smarter move); ask &quot;Play again?&quot;; keep a score table over several games.</p>
+<hr>
+<h2 id="project-3-matrix-calculator">Project 3 — Matrix Calculator</h2>
+<p><strong>Goal.</strong> Read two 3 × 3 matrices <strong>A</strong> and <strong>B</strong>, then let the user add them, multiply them, transpose <strong>A</strong>, or compute the determinant of <strong>A</strong>.</p>
+<p><strong>Design.</strong> Matrices are <code>int m[3][3]</code>. Each operation is a function. Functions that <em>produce</em> a matrix take an extra <strong>output</strong> matrix parameter to fill (arrays can't be returned).</p>
+<p>Input: <strong>A</strong> = <code>2 1 0 / 5 3 1 / 0 1 4</code>, <strong>B</strong> = <code>1 0 2 / 0 1 0 / 3 0 1</code>, then menu choices 1 (add), 2 (multiply), 3 (transpose A), 4 (determinant of A), 5 (exit).</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="cp">#define N 3</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">readMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">printMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">addMatrices</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">]);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">multiplyMatrices</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">]);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">transpose</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">]);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">determinant</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">]);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">choice</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">readMatrix</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="s">"A"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">readMatrix</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="s">"B"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">1) A + B  2) A x B  3) Transpose of A  4) Determinant of A  5) Exit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Choose: "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">                </span><span class="n">addMatrices</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printMatrix</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="s">"A + B"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">                </span><span class="n">multiplyMatrices</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printMatrix</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="s">"A x B"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">                </span><span class="n">transpose</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printMatrix</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="s">"Transpose of A"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"det(A) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">determinant</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Goodbye!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Invalid choice.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">readMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter the %d elements of %s, row by row: "</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">title</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%5d"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">addMatrices</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">multiplyMatrices</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+<span class="w">                </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">transpose</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">result</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">determinant</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="w">         </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="w">         </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter the 9 elements of A, row by row: 2 1 0 5 3 1 0 1 4
+Enter the 9 elements of B, row by row: 1 0 2 0 1 0 3 0 1
+
+1) A + B  2) A x B  3) Transpose of A  4) Determinant of A  5) Exit
+Choose: 1
+A + B:
+    3    1    2
+    5    4    1
+    3    1    5
+
+1) A + B  2) A x B  3) Transpose of A  4) Determinant of A  5) Exit
+Choose: 2
+A x B:
+    2    1    4
+    8    3   11
+   12    1    4
+
+1) A + B  2) A x B  3) Transpose of A  4) Determinant of A  5) Exit
+Choose: 3
+Transpose of A:
+    2    5    0
+    1    3    1
+    0    1    4
+
+1) A + B  2) A x B  3) Transpose of A  4) Determinant of A  5) Exit
+Choose: 4
+det(A) = 2
+
+1) A + B  2) A x B  3) Transpose of A  4) Determinant of A  5) Exit
+Choose: 5
+Goodbye!</code></pre></div>
+<p><strong>Check one entry by hand:</strong> <code>(A×B)[1][2]</code> = row 1 of A × column 2 of B = <code>5·2 + 3·0 + 1·1 = 11</code> ✔.</p>
+<p><strong>Extend it:</strong> let the user choose the matrix size (use a maximum size and pass the real size as a parameter); subtraction; scalar multiplication; inverse of a 2 × 2 matrix; detect when multiplication is impossible.</p>
+<hr>
+<h2 id="project-4-mini-bank-atm-with-a-mini-statement">Project 4 — Mini Bank (ATM) with a mini-statement</h2>
+<p><strong>Goal.</strong> A customer logs in with a PIN (3 attempts), then can check the balance, deposit, withdraw and view a <strong>mini-statement</strong> of the last 5 transactions.</p>
+<p><strong>Design.</strong></p>
+<ul>
+<li>The transaction history is a 2D char array: <code>history[5][40]</code>, one text line per transaction, built with <code>snprintf</code>.</li>
+<li>When the history is full, the oldest line is dropped (everything shifts up one row) — the same <em>shifting</em> idea you used to delete an element from an array.</li>
+<li>Input: PIN <code>1111</code> (wrong), <code>1234</code> (right); then deposit 500, withdraw 200, try to withdraw 1500 (refused — the balance is only 1300), see balance, see statement, exit.</li>
+</ul>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="cp">#define HISTORY 5</span>
+<span class="cp">#define ENTRY 40</span>
+<span class="cp">#define CORRECT_PIN 1234</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">record</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">history</span><span class="p">[][</span><span class="n">ENTRY</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">entries</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">HISTORY</span><span class="p">)</span><span class="w">                       </span><span class="cm">/* full: drop the oldest line */</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HISTORY</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">strcpy</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">history</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">(</span><span class="o">*</span><span class="n">entries</span><span class="p">)</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="o">*</span><span class="n">entries</span><span class="p">],</span><span class="w"> </span><span class="n">ENTRY</span><span class="p">,</span><span class="w"> </span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">entries</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pin</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">attempt</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter PIN: "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pin</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pin</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CORRECT_PIN</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Wrong PIN (%d attempt(s) left)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">attempt</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">showStatement</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">history</span><span class="p">[][</span><span class="n">ENTRY</span><span class="p">],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">entries</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"--- Mini statement ---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entries</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"(no transactions)</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entries</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w">         </span><span class="cm">/* newest first */</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">history</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000.00</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">history</span><span class="p">[</span><span class="n">HISTORY</span><span class="p">][</span><span class="n">ENTRY</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">choice</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="n">ENTRY</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">login</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Card blocked.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Choose: "</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Balance: GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">                </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Amount must be positive.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">balance</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="s">"Deposit   GHS %9.2f"</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">record</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Deposited GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Insufficient funds.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="s">"Withdrawal GHS %9.2f"</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">record</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Please take your cash: GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
+<span class="w">                </span><span class="n">showStatement</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="w"> </span><span class="n">entries</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Thank you. Goodbye!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">"Invalid choice.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter PIN: 1111
+Wrong PIN (2 attempt(s) left)
+Enter PIN: 1234
+
+1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit
+Choose: 2 500
+Deposited GHS 500.00
+
+1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit
+Choose: 3 200
+Please take your cash: GHS 200.00
+
+1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit
+Choose: 3 1500
+Insufficient funds.
+
+1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit
+Choose: 1
+Balance: GHS 1300.00
+
+1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit
+Choose: 4
+--- Mini statement ---
+Withdrawal GHS    200.00
+Deposit   GHS    500.00
+
+1) Balance  2) Deposit  3) Withdraw  4) Statement  5) Exit
+Choose: 5
+Thank you. Goodbye!</code></pre></div>
+<p><strong>What to notice</strong></p>
+<ul>
+<li><code>login()</code> returns <code>1</code> or <code>0</code> — a function that answers a yes/no question.</li>
+<li><code>record</code> takes the entry counter <strong>by pointer</strong> because it changes it.</li>
+<li>The <code>case 2:</code> / <code>case 3:</code> fall-through shares the &quot;read and validate the amount&quot; code.</li>
+<li>Real banking software never stores money in <code>double</code> (rounding errors!) — it uses whole pesewas. Why is that safer? (Think of Ex 2.44.)</li>
+</ul>
+<p><strong>Extend it:</strong> several accounts (arrays) with a <strong>transfer</strong> function using pointers; PIN change; daily withdrawal limit; a <code>static</code> transaction counter.</p>
+<hr>
+<h1 id="part-3-project-ideas-for-you">PART 3 — Project ideas for you</h1>
+<p>Pick <strong>two</strong> and build them using the method of section 9.1. Use arrays, functions and (where it fits) pointers and strings.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Project</th>
+<th>Skills it practises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Inventory system</strong> for a shop — add/sell items, warn when stock is low, total stock value</td>
+<td>parallel arrays, menus, validation</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Payroll calculator</strong> — read employees' hours and rates, compute overtime and tax bands, print payslips</td>
+<td>decisions, loops, formatted output</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Library manager</strong> — add books, borrow/return (a book can't be borrowed twice), list available books</td>
+<td>arrays of strings, flags, search</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Parking-fee system</strong> — enter/leave times as <code>hh:mm</code>, compute the fee with a daily maximum</td>
+<td>time arithmetic, functions</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Temperature logger</strong> — store 7 days × 4 readings, find the hottest day, averages, a text &quot;graph&quot;</td>
+<td>2D arrays, statistics, patterns</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Vigenère cipher</strong> — encrypt/decrypt text with a keyword (a stronger Caesar cipher)</td>
+<td>strings, <code>%</code> arithmetic</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Connect Four</strong> — 6 × 7 board, gravity, win detection (4 in a row)</td>
+<td>2D arrays, nested loops</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Sudoku validator</strong> — decide whether a filled 9 × 9 grid is a valid solution</td>
+<td>2D arrays, counting arrays</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Voting system</strong> — candidates, votes stored in arrays, count, winner, tie detection, percentage bars</td>
+<td>arrays, strings, sorting</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Bank with several accounts</strong> — transfer between accounts using pointers, a log of the last transactions</td>
+<td>pointers, functions, static</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h1 id="part-4-mock-final-exam">PART 4 — Mock final exam</h1>
+<blockquote>
+<p><strong>Time:</strong> 3 hours · <strong>Total:</strong> 100 marks · <strong>Calculator:</strong> not needed
+<strong>Instructions:</strong> Answer <strong>all</strong> questions. Write clear, indented C code. In programming questions, marks are awarded for <strong>correct logic</strong>, <strong>good structure (functions)</strong> and <strong>meaningful names</strong>, not only for the final output. Assume a typical system where <code>int</code> is 4 bytes.</p>
+<p><em>Do the exam under real conditions first (on paper, no compiler!), then compare with the solutions and the marking scheme.</em></p>
+</blockquote>
+<h2 id="section-a-multiple-choice-20-marks-1-mark-each">Section A — Multiple choice (20 marks · 1 mark each)</h2>
+<p>Choose the <strong>one</strong> best answer.</p>
+<p><strong>A1.</strong> Which of these is a <strong>valid</strong> C identifier?
+(a) <code>2fast</code> (b) <code>my-var</code> (c) <code>total_sum</code> (d) <code>float</code></p>
+<p><strong>A2.</strong> C is best described as a…
+(a) interpreted language (b) compiled language (c) markup language (d) query language</p>
+<p><strong>A3.</strong> The value of <code>7 / 2</code> when both operands are <code>int</code> is…
+(a) 3.5 (b) 3 (c) 4 (d) 3.0</p>
+<p><strong>A4.</strong> What is printed by <code>printf(&quot;%d&quot;, 5 &gt; 3 &amp;&amp; 2 &gt; 4);</code>?
+(a) 1 (b) 0 (c) 5 (d) true</p>
+<p><strong>A5.</strong> After <code>int x = 10; x %= 4;</code> the value of <code>x</code> is…
+(a) 0 (b) 1 (c) 2 (d) 4</p>
+<p><strong>A6.</strong> In a <code>switch</code> statement, if <code>break</code> is omitted at the end of a matched case…
+(a) the compiler reports an error (b) the program stops (c) execution continues into the next case (d) the <code>default</code> is skipped</p>
+<p><strong>A7.</strong> Which loop is guaranteed to run its body <strong>at least once</strong>?
+(a) <code>for</code> (b) <code>while</code> (c) <code>do … while</code> (d) none of them</p>
+<p><strong>A8.</strong> How many times does the body of <code>for (i = 1; i &lt; 10; i += 3)</code> run?
+(a) 2 (b) 3 (c) 4 (d) 9</p>
+<p><strong>A9.</strong> Which is a correct function <strong>prototype</strong>?
+(a) <code>int add(int a, int b)</code> (b) <code>int add(int, int);</code> (c) <code>add(int, int) int;</code> (d) <code>function int add(int, int);</code></p>
+<p><strong>A10.</strong> A <code>static</code> local variable…
+(a) is visible in all functions (b) cannot be changed (c) keeps its value between calls (d) is created fresh on every call</p>
+<p><strong>A11.</strong> In a recursive function, the <strong>base case</strong> is…
+(a) the first call (b) the condition that stops the recursion (c) the largest input (d) the return type</p>
+<p><strong>A12.</strong> The valid indices of <code>int a[8]</code> are…
+(a) 1 to 8 (b) 0 to 8 (c) 0 to 7 (d) 1 to 7</p>
+<p><strong>A13.</strong> For <code>int a[10];</code> (4-byte <code>int</code>), <code>sizeof(a) / sizeof(a[0])</code> equals…
+(a) 4 (b) 10 (c) 40 (d) 1</p>
+<p><strong>A14.</strong> In <code>int m[3][4];</code>, the element <code>m[1][2]</code> is in…
+(a) row 2, column 1 (b) row 1, column 2 (c) the 12th element counted from 1 (d) out of bounds</p>
+<p><strong>A15.</strong> A pointer is a variable that stores…
+(a) a value of any type (b) the address of another variable (c) a function (d) a string</p>
+<p><strong>A16.</strong> If <code>int x = 5; int *p = &amp;x;</code> then <code>*p</code> is…
+(a) the address of <code>x</code> (b) the address of <code>p</code> (c) 5 (d) undefined</p>
+<p><strong>A17.</strong> Which function is the <strong>safe</strong> way to read a line of text?
+(a) <code>gets</code> (b) <code>fgets</code> (c) <code>getchar</code> (d) <code>scanf(&quot;%d&quot;)</code></p>
+<p><strong>A18.</strong> <code>strlen(&quot;Accra&quot;)</code> returns…
+(a) 4 (b) 5 (c) 6 (d) 7</p>
+<p><strong>A19.</strong> To check whether two strings are equal you should use…
+(a) <code>a == b</code> (b) <code>a = b</code> (c) <code>strcmp(a, b) == 0</code> (d) <code>strcpy(a, b)</code></p>
+<p><strong>A20.</strong> How many bytes does <code>char s[] = &quot;Hi&quot;;</code> occupy?
+(a) 2 (b) 3 (c) 4 (d) 8</p>
+<h2 id="section-b-short-answers-24-marks-3-marks-each">Section B — Short answers (24 marks · 3 marks each)</h2>
+<p><strong>B1.</strong> What is printed?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>B2.</strong> What is printed?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/* in main: */</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="mi">2026</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>B3.</strong> What is printed? Explain in one sentence what <code>f</code> does.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/* in main: */</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>B4.</strong> What is printed?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">];</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>B5.</strong> What is printed?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"KNUST"</span><span class="p">;</span>
+<span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%s %zu %zu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>B6.</strong> Explain, with a short example, the difference between <strong>passing by value</strong> and <strong>passing by reference</strong> in C.</p>
+<p><strong>B7.</strong> A student writes <code>char *s = &quot;hi&quot;; s[0] = 'H';</code>. What is the problem? How should the declaration be changed?</p>
+<p><strong>B8.</strong> What is printed?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"-"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="section-c-debugging-10-marks-5-marks-each">Section C — Debugging (10 marks · 5 marks each)</h2>
+<p><strong>C1.</strong> The program below is supposed to print <code>Average = 80.00</code> for the five marks. It contains <strong>five</strong> mistakes. Find and correct them all.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">};</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Average = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">(</span><span class="n">marks</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>C2.</strong> The program below contains <strong>five</strong> mistakes involving strings and pointers. Find them and say how to fix each.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">city</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Accra"</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">copy</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="w">    </span><span class="n">copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">city</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">city</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Accra"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"same</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">city</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">copy</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="section-d-programming-46-marks">Section D — Programming (46 marks)</h2>
+<p><strong>D1. (8 marks)</strong> Write a function <code>int countVowels(const char *s)</code> that returns the number of vowels (upper or lower case) in the string <code>s</code>. Then write a <code>main</code> that reads a line of text with a <strong>safe</strong> function and prints the number of vowels and the number of other characters (excluding the final newline).</p>
+<p><strong>D2. (10 marks)</strong> Write a program that:</p>
+<ol>
+<li>reads <code>n</code> (at most 50) and then <code>n</code> integers into an array;</li>
+<li>has a function <code>double mean(const int a[], int n)</code>;</li>
+<li>has a function <code>int countAbove(const int a[], int n, double limit)</code> returning how many elements are greater than <code>limit</code>;</li>
+<li>has a function <code>void sortDescending(int a[], int n)</code>;</li>
+<li>prints the mean, how many numbers are above the mean, and the numbers sorted from largest to smallest.</li>
+</ol>
+<p><strong>D3. (12 marks)</strong> A small shop program keeps up to 10 items. Each item has a <strong>name</strong> (one word) and a <strong>price</strong>. Write a <strong>menu-driven</strong> program (loop until Exit) with the options <strong>1) Add item</strong>, <strong>2) List items</strong>, <strong>3) Show total price of all items</strong>, <strong>4) Exit</strong>. Use arrays, and put each option in its own function. Refuse to add an item when the shop list is full or the price is not positive.</p>
+<p><strong>D4. (16 marks)</strong> Write a <strong>matrix toolkit</strong> for 3 × 3 integer matrices:</p>
+<ul>
+<li>(a) <code>void transpose(int m[3][3])</code> — transposes the matrix <strong>in place</strong> (4 marks);</li>
+<li>(b) <code>int isSymmetric(int m[3][3])</code> — returns 1 if <code>m[i][j] == m[j][i]</code> for all <code>i</code>, <code>j</code> (3 marks);</li>
+<li>(c) <code>void traceAndMax(int m[3][3], int *trace, int *max)</code> — returns the <strong>trace</strong> (sum of the main diagonal) and the <strong>largest element</strong>, <strong>using pointers</strong> (4 marks);</li>
+<li>(d) a <strong>recursive</strong> function <code>int gcd(int a, int b)</code> (3 marks);</li>
+<li>(e) a <code>main</code> that tests all four functions with sample data and prints the results (2 marks).</li>
+</ul>
+<hr>
+<p><em>End of the exam. Compare your answers with <a href="../solutions/09-projects-and-final-exam.html">the solutions and marking scheme</a>.</em></p>
+<p><em>Congratulations on reaching the end of the course! Keep the habit: <strong>think first, code in small steps, test, and read the error messages.</strong></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../solutions/09-projects-and-final-exam.html">Solutions to Chapter 9  →</a>
+<div class="pager-row">
+<a class="pager-prev" href="../lessons/08-pointers-and-strings.html"><small>Previous</small>Chapter 8 — Pointers and Strings</a>
+<span></span>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#what-you-will-do">What you will do</a>
+<a class="toc-2" href="#91-a-method-for-building-programs">9.1 A method for building programs</a>
+<a class="toc-2" href="#92-passing-the-programs-data-around">9.2 Passing the program&#x27;s data around</a>
+<a class="toc-2" href="#project-1-student-records-manager">Project 1 — Student Records Manager</a>
+<a class="toc-2" href="#project-2-tic-tac-toe-two-players">Project 2 — Tic-Tac-Toe (two players)</a>
+<a class="toc-2" href="#project-3-matrix-calculator">Project 3 — Matrix Calculator</a>
+<a class="toc-2" href="#project-4-mini-bank-atm-with-a-mini-statement">Project 4 — Mini Bank (ATM) with a mini-statement</a>
+<a class="toc-2" href="#section-a-multiple-choice-20-marks-1-mark-each">Section A — Multiple choice (20 marks · 1 mark each)</a>
+<a class="toc-2" href="#section-b-short-answers-24-marks-3-marks-each">Section B — Short answers (24 marks · 3 marks each)</a>
+<a class="toc-2" href="#section-c-debugging-10-marks-5-marks-each">Section C — Debugging (10 marks · 5 marks each)</a>
+<a class="toc-2" href="#section-d-programming-46-marks">Section D — Programming (46 marks)</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 — C Basics · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Chapter 1 — C Basics · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row on"><a class="nav-ch active" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="chapter-1-c-basics">Chapter 1 — C Basics</h1>
+<blockquote>
+<p><strong>Course:</strong> COE 281 — Programming and Problem-Solving 1<br>
+<strong>Based on slides:</strong> <code>01 C Basics.pdf</code><br>
+<strong>Solutions:</strong> <a href="../solutions/01-c-basics.html">Solutions to Chapter 1</a></p>
+</blockquote>
+<hr>
+<h2 id="what-you-will-learn">What you will learn</h2>
+<ol>
+<li>Where C came from and why it is still worth learning today.</li>
+<li>The building blocks of C: the character set, <strong>keywords</strong>, <strong>identifiers</strong> and <strong>comments</strong>.</li>
+<li>How to read, write, build and run your first C program — <strong>Hello, World!</strong></li>
+<li>What <code>#include</code>, <code>main()</code>, <code>printf()</code> and <code>return</code> actually do.</li>
+<li>How to use <strong>escape sequences</strong> such as <code>\n</code> and <code>\t</code>.</li>
+<li>How to read compiler error messages without panicking.</li>
+</ol>
+<hr>
+<h2 id="11-what-is-c">1.1 What is C?</h2>
+<p>C is a programming language that is closely tied to the <strong>Unix</strong> operating system.</p>
+<p><strong>The short history</strong></p>
+<ul>
+<li>In the late 1960s, the developers of Unix at Bell Labs used a small language called <strong>B</strong>.</li>
+<li>B could not provide some features needed by the Unix version for the <strong>PDP-11</strong> computer. So <strong>Dennis Ritchie</strong> created a new language, which was called <strong>C</strong>.</li>
+<li><strong>1972</strong> – development of C started on the PDP-11 Unix system. A large part of Unix was then rewritten in C.</li>
+<li><strong>1973</strong> – C was powerful enough to write the Unix <strong>kernel</strong> (the core of the operating system).</li>
+<li>Dennis Ritchie and <strong>Stephen C. Johnson</strong> kept improving the language so that it became <strong>portable</strong> — meaning the same C program could be moved to different kinds of computers.</li>
+<li><strong>1978</strong> – the book <em>The C Programming Language</em> by Kernighan and Ritchie (&quot;K&amp;R&quot;) made C famous.</li>
+<li><strong>1989/1990</strong> – the language was standardised (<strong>ANSI C / C89 / C90</strong>). Later versions: <strong>C99, C11, C17, C23</strong>.</li>
+</ul>
+<blockquote class="callout tip">
+<p>💡 <strong>Why standards matter.</strong> A standard is an official rulebook that says exactly how the language must behave. It is why a C program you write on Windows can (mostly) compile on Linux or macOS.</p>
+</blockquote>
+<hr>
+<h2 id="12-why-learn-c">1.2 Why learn C?</h2>
+<p>You may ask, &quot;C is so old. Why not just learn Python?&quot; Here are the reasons your lecturer gives — and they are good ones.</p>
+<ol>
+<li><strong>A clear mental model of the computer.</strong> C makes the inner workings of a computer understandable. You see memory, addresses and bytes. After C, nothing about computers feels like magic.</li>
+<li><strong>The lingua franca of programming.</strong> Almost all high-level languages — Java, Python, JavaScript — can <strong>interface with C</strong>.</li>
+<li><strong>Join open-source projects.</strong> Many popular languages (e.g. Python) are <em>themselves written in C</em>. To improve how they work, you must know C.</li>
+<li><strong>A head start in other languages.</strong> C++, C#, Java, JavaScript and PHP all borrow C's syntax. Learn C well and the others feel familiar.</li>
+<li><strong>Embedded systems, robotics and AI hardware.</strong> Most microprocessor-based systems — from a washing-machine controller to a drone — run efficient C code.</li>
+</ol>
+<blockquote>
+<p><strong>Further reading (from the slides):</strong> search for &quot;real-world applications of C&quot;. You will find operating systems, databases, game engines, network equipment, microcontrollers, compilers…</p>
+</blockquote>
+<hr>
+<h2 id="13-the-building-blocks-of-c">1.3 The building blocks of C</h2>
+<p>Before sentences you need letters and words. In C the equivalents are the <strong>character set</strong>, <strong>keywords</strong> and <strong>identifiers</strong>.</p>
+<h3 id="131-the-character-set">1.3.1 The character set</h3>
+<p>The <strong>character set</strong> is the collection of letters, digits and symbols that are valid in C. C uses:</p>
+<ul>
+<li>uppercase letters <code>A</code>–<code>Z</code></li>
+<li>lowercase letters <code>a</code>–<code>z</code></li>
+<li>digits <code>0</code>–<code>9</code></li>
+<li>the blank space</li>
+<li>special characters:</li>
+</ul>
+<pre class="plain"><code>,  &lt;  &gt;  .  -
+(  )  ;  $  :
+%  [  ]  #  ?
+&#x27;  &amp;  {  }  &quot;
+^  !  *  /  |
+_  \  ~  +  =</code></pre>
+<p>These are the &quot;bricks&quot; used to build every part of a program.</p>
+<h3 id="132-keywords">1.3.2 Keywords</h3>
+<p><strong>Keywords</strong> are <em>reserved words</em> with a fixed meaning to the compiler. You cannot use them as names for your own things. There are <strong>32</strong> keywords in standard (ANSI) C, and <strong>all are written in lowercase</strong> (C is <em>case sensitive</em>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auto</code></td>
+<td><code>break</code></td>
+<td><code>case</code></td>
+<td><code>char</code></td>
+<td><code>const</code></td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td><code>default</code></td>
+<td><code>do</code></td>
+<td><code>double</code></td>
+<td><code>else</code></td>
+</tr>
+<tr>
+<td><code>enum</code></td>
+<td><code>extern</code></td>
+<td><code>float</code></td>
+<td><code>for</code></td>
+<td><code>goto</code></td>
+</tr>
+<tr>
+<td><code>if</code></td>
+<td><code>int</code></td>
+<td><code>long</code></td>
+<td><code>register</code></td>
+<td><code>return</code></td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td><code>signed</code></td>
+<td><code>sizeof</code></td>
+<td><code>static</code></td>
+<td><code>struct</code></td>
+</tr>
+<tr>
+<td><code>switch</code></td>
+<td><code>typedef</code></td>
+<td><code>union</code></td>
+<td><code>unsigned</code></td>
+<td><code>void</code></td>
+</tr>
+<tr>
+<td><code>volatile</code></td>
+<td><code>while</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Do not memorise the list today.</strong> You will meet the important ones one at a time. By the end of this course you will use about 20 of them without thinking:
+<code>int char float double short long signed unsigned</code> (data types), <code>if else switch case default break continue</code> (decisions), <code>for while do</code> (loops), <code>return void static sizeof</code> (functions and more).</p>
+<blockquote class="callout note">
+<p>📝 Newer standards added a few more (e.g. <code>inline</code>, <code>restrict</code>, <code>_Bool</code>). Your course focuses on the classic 32.</p>
+</blockquote>
+<h3 id="133-identifiers">1.3.3 Identifiers</h3>
+<p>An <strong>identifier</strong> is a <strong>name</strong> you give to something in your program — a variable, a function, a structure, and so on. Example:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+</code></pre></div>
+<p>Here <code>money</code> and <code>age</code> are identifiers. Each identifier must be <strong>unique</strong> — it identifies <em>one</em> thing.</p>
+<p><strong>The rules</strong></p>
+<ol>
+<li>It may contain <strong>letters</strong> (uppercase and lowercase), <strong>digits</strong> and <strong>underscores</strong> <code>_</code> — nothing else (no spaces, no <code>-</code>, no <code>@</code>).</li>
+<li>It <strong>cannot start with a digit</strong>.</li>
+<li>It <strong>cannot be a keyword</strong>.</li>
+<li>It is <strong>case sensitive</strong>: <code>age</code>, <code>Age</code> and <code>AGE</code> are three <em>different</em> names.</li>
+<li>It is <em>discouraged</em> to start with an underscore (such names are often used by the compiler itself).</li>
+<li>Choose <strong>meaningful</strong> names: <code>age</code> is better than <code>a</code>, and <code>totalScore</code> is better than <code>ts</code>.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Valid?</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>age</code></td>
+<td>✅</td>
+<td>letters only</td>
+</tr>
+<tr>
+<td><code>student_name</code></td>
+<td>✅</td>
+<td>underscore is allowed</td>
+</tr>
+<tr>
+<td><code>studentName</code></td>
+<td>✅</td>
+<td>&quot;camelCase&quot; style</td>
+</tr>
+<tr>
+<td><code>score2</code></td>
+<td>✅</td>
+<td>digit allowed <em>after</em> the first character</td>
+</tr>
+<tr>
+<td><code>2score</code></td>
+<td>❌</td>
+<td>starts with a digit</td>
+</tr>
+<tr>
+<td><code>my-name</code></td>
+<td>❌</td>
+<td><code>-</code> is not allowed (the compiler reads it as subtraction)</td>
+</tr>
+<tr>
+<td><code>first name</code></td>
+<td>❌</td>
+<td>spaces are not allowed</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>❌</td>
+<td>it is a keyword</td>
+</tr>
+<tr>
+<td><code>Int</code></td>
+<td>✅</td>
+<td>different from <code>int</code> because C is case sensitive (but confusing — avoid)</td>
+</tr>
+<tr>
+<td><code>_total</code></td>
+<td>✅ but discouraged</td>
+<td>starts with underscore</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout tip">
+<p>💡 <strong>Naming styles.</strong> Two popular styles are <code>snake_case</code> (<code>total_price</code>) and <code>camelCase</code> (<code>totalPrice</code>). <strong>Pick one and stay consistent.</strong> In these notes you will see both, just like in your slides.</p>
+</blockquote>
+<hr>
+<h2 id="14-comments">1.4 Comments</h2>
+<p>A <strong>comment</strong> is a note you leave in the code for yourself or for other people. The compiler <strong>ignores</strong> it completely. Comments exist for <strong>humans</strong>.</p>
+<p>Use comments to explain <strong>what</strong> a piece of code is for and <strong>why</strong> you did it that way, so that you can understand it again six months later.</p>
+<p>C has two kinds of comments:</p>
+<p><strong>1. Multi-line comment</strong> — starts with <code>/*</code> and ends with <code>*/</code>. It may cover many lines.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cm">/* This is a comment. */</span>
+
+<span class="cm">/*</span>
+<span class="cm">   This comment</span>
+<span class="cm">   covers several lines.</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<p><strong>2. Single-line comment</strong> — starts with <code>//</code> and lasts until the end of that line.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="c1">// This is a single-line comment</span>
+</code></pre></div>
+<p>Comments can also sit <strong>after</strong> code on the same line:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span><span class="w">   </span><span class="c1">// age in years</span>
+</code></pre></div>
+<blockquote class="callout warn">
+<p>⚠️ <strong>Common mistakes with comments</strong></p>
+<ul>
+<li>Forgetting to close <code>/* ... */</code>. Everything after it becomes a comment — including your real code!</li>
+<li>You <strong>cannot nest</strong> <code>/* ... /* ... */ ... */</code>. The first <code>*/</code> ends the comment.</li>
+<li>Over-commenting: <code>x = x + 1; // add one to x</code> tells the reader nothing new. Comment the <strong>reason</strong>, not the obvious.</li>
+</ul>
+</blockquote>
+<p><strong>Handy trick:</strong> to <em>temporarily switch off</em> a line of code, put <code>//</code> in front of it. This is called &quot;commenting out&quot;.</p>
+<p>Comments are not mandatory — but good programmers use them.</p>
+<hr>
+<h2 id="15-your-first-program-hello-world">1.5 Your first program — Hello, World!</h2>
+<p>Tradition says every programmer starts here. Read it once, then we will take it apart line by line.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cm">/*</span>
+<span class="cm">Finally my very</span>
+<span class="cm">first C program</span>
+<span class="cm">*/</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w">   </span><span class="c1">// displays Hello, World! on the screen</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Hello, World!</code></pre></div>
+<blockquote>
+<p><strong>Question from the slides:</strong> <em>Can you spot the multi-line and single-line comments?</em>
+Multi-line: the first four lines (<code>/* ... */</code>). Single-line: <code>// displays Hello, World! on the screen</code>.</p>
+</blockquote>
+<h3 id="anatomy-of-the-program">Anatomy of the program</h3>
+<pre class="plain"><code> /* comment */                      ← ignored by the compiler
+ #include &lt;stdio.h&gt;                 ← &quot;bring in&quot; the input/output library
+ int main()                         ← the function where execution starts
+ {                                  ← start of main&#x27;s body
+     printf(&quot;Hello, World!\n&quot;);     ← a statement: show text on the screen
+     return 0;                      ← a statement: finish, report &quot;success&quot;
+ }                                  ← end of main&#x27;s body</code></pre>
+<h4 id="include-stdioh"><code>#include &lt;stdio.h&gt;</code></h4>
+<p>Your program wants to put text on the screen. That means talking to the screen hardware — a long, complicated job. Luckily somebody already did that heavy lifting and packaged it in a <strong>header file</strong> called <strong><code>stdio.h</code></strong> (&quot;<strong>st</strong>an<strong>d</strong>ard <strong>i</strong>nput/<strong>o</strong>utput&quot;).</p>
+<ul>
+<li><code>.h</code> simply means <em>header file</em>.</li>
+<li>It contains a <strong>library of functions</strong> for input and output — for example <code>printf</code>.</li>
+<li>To use those functions you must first <strong>include</strong> the file with the <code>#include</code> <strong>preprocessor command</strong>.</li>
+</ul>
+<p>The line starts with <code>#</code>: it is not a normal C statement. It is an instruction to the <strong>preprocessor</strong>, a helper that runs <em>before</em> the real compilation. It does <strong>not</strong> end with a semicolon.</p>
+<blockquote class="callout tip">
+<p>💡 <strong>Analogy:</strong> <code>#include &lt;stdio.h&gt;</code> is like borrowing a toolbox before starting work. Without it, the compiler says, &quot;I don't know what <code>printf</code> is.&quot;</p>
+</blockquote>
+<h4 id="int-main"><code>int main()</code></h4>
+<ul>
+<li><strong>Execution of every C program begins at <code>main()</code>.</strong> It does not matter where in the file it is written.</li>
+<li><code>main()</code> is <strong>mandatory</strong> — no <code>main</code>, no program.</li>
+<li>The code between the curly braces <code>{ }</code> is the <strong>body</strong> of <code>main</code>.</li>
+<li>The word <code>int</code> before <code>main</code> says &quot;this function gives back an <strong>int</strong>eger when it finishes&quot;. That is the <code>0</code> in <code>return 0;</code>. (There is much more about functions in Chapter 6.)</li>
+</ul>
+<blockquote class="callout note">
+<p>📝 Many modern programmers write <code>int main(void)</code> — the word <code>void</code> says clearly, &quot;main takes no input&quot;. Both forms work in this course; we will mostly use <code>int main(void)</code>.</p>
+</blockquote>
+<h4 id="printfhello-worldn"><code>printf(&quot;Hello, World!\n&quot;);</code></h4>
+<ul>
+<li><code>printf</code> is a <strong>library function</strong> that sends <strong>formatted output</strong> to the screen.</li>
+<li>Whatever is inside the double quotes <code>&quot; &quot;</code> is a <strong>string</strong> — it is printed.</li>
+<li>The <code>;</code> (semicolon) ends the statement. <strong>Every statement in C ends with a semicolon.</strong></li>
+<li><code>\n</code> is an <strong>escape sequence</strong> meaning &quot;go to a new line&quot; (more in a moment).</li>
+</ul>
+<h4 id="return-0"><code>return 0;</code></h4>
+<ul>
+<li>It ends <code>main</code>, and therefore the program.</li>
+<li>The <code>0</code> is reported to the operating system and means &quot;<strong>everything went fine</strong>&quot;. A non-zero number would mean &quot;something went wrong&quot;.</li>
+<li>It is not strictly mandatory (modern C assumes <code>return 0</code> at the end of <code>main</code>), but it is <strong>good practice</strong> to write it.</li>
+</ul>
+<h3 id="what-happens-when-this-program-runs">What happens when this program runs?</h3>
+<ol>
+<li>The OS starts the program and jumps into <code>main</code>.</li>
+<li><code>printf</code> prints <code>Hello, World!</code> and moves the cursor to the next line.</li>
+<li><code>return 0;</code> ends the program with &quot;success&quot;.</li>
+</ol>
+<hr>
+<h2 id="16-escape-sequences">1.6 Escape sequences</h2>
+<p>Look again at <code>\n</code> in the <code>printf</code>. It is <strong>two characters</strong> in your code (<code>\</code> and <code>n</code>), but it produces <strong>one special effect</strong>: a new line. Such a pair is called an <strong>escape sequence</strong>: the backslash &quot;escapes&quot; from normal text.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Escape sequence</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td><strong>Newline</strong> — moves to the start of the next line (like the Enter key)</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td><strong>Horizontal tab</strong> — jumps to the next tab stop (like the Tab key)</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>prints one <strong>backslash</strong> <code>\</code></td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td>prints a <strong>double quote</strong> <code>&quot;</code></td>
+</tr>
+<tr>
+<td><code>\'</code></td>
+<td>prints a <strong>single quote</strong> <code>'</code></td>
+</tr>
+<tr>
+<td><code>\?</code></td>
+<td>prints a question mark <code>?</code></td>
+</tr>
+<tr>
+<td><code>\0</code></td>
+<td>the <strong>null character</strong> (marks the end of a string — important in Chapter 8)</td>
+</tr>
+<tr>
+<td><code>\a</code></td>
+<td><strong>alert</strong> — makes a beep (not in your slides, but part of C)</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td><strong>backspace</strong> — moves the cursor back one position</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td><strong>form feed</strong> — new page (rarely used)</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td><strong>carriage return</strong> — moves the cursor to the start of the <em>same</em> line</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td><strong>vertical tab</strong> (rarely used)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Here is a program that uses the most important ones:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Name:</span><span class="se">\t</span><span class="s">Kofi</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Age:</span><span class="se">\t</span><span class="s">21</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"She said, </span><span class="se">\"</span><span class="s">Welcome!</span><span class="se">\"\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Folder: C:</span><span class="se">\\</span><span class="s">Users</span><span class="se">\\</span><span class="s">Kofi</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"It</span><span class="se">\'</span><span class="s">s fine</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Name:	Kofi
+Age:	21
+She said, &quot;Welcome!&quot;
+Folder: C:\Users\Kofi
+It&#x27;s fine</code></pre></div>
+<p>Why do we need <code>\&quot;</code>? Because a plain <code>&quot;</code> would end the string! And why <code>\\</code>? Because a single <code>\</code> means &quot;an escape sequence starts here&quot;. To print a real backslash, you write two.</p>
+<h3 id="n-decides-where-lines-end"><code>\n</code> decides where lines end</h3>
+<p><code>printf</code> does <strong>not</strong> add a new line automatically. Compare:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"World!"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Line 1</span><span class="se">\n</span><span class="s">Line 2</span><span class="se">\n</span><span class="s">Line 3</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Hello, World!
+Line 1
+Line 2
+Line 3</code></pre></div>
+<p>The first two <code>printf</code>s stay on the same line because there is no <code>\n</code> between them. The last <code>printf</code> produces three lines from <strong>one</strong> statement.</p>
+<blockquote class="callout warn">
+<p>⚠️ <strong>Common mistake:</strong> forgetting the final <code>\n</code>. Your output works, but the next thing on your screen (such as the command prompt) appears glued to the end of your text.</p>
+</blockquote>
+<hr>
+<h2 id="17-statements-whitespace-and-layout">1.7 Statements, whitespace and layout</h2>
+<ul>
+<li>A <strong>statement</strong> is one complete instruction. It ends with <code>;</code>.</li>
+<li>C ignores <strong>extra spaces, tabs and blank lines</strong> between tokens. The following two programs are <em>identical</em> to the compiler:</li>
+</ul>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="n">printf</span><span class="p">(</span><span class="s">"Hi</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;}</span>
+</code></pre></div>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hi</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Obviously the second is far nicer for <strong>humans</strong>. Good habits:</p>
+<ol>
+<li><strong>Indent</strong> the code inside <code>{ }</code> by 4 spaces (or one tab).</li>
+<li>Write <strong>one statement per line</strong>.</li>
+<li>Put a <strong>blank line</strong> between logical sections.</li>
+<li>Use meaningful names and helpful comments.</li>
+</ol>
+<blockquote class="callout key">
+<p>🔑 <strong>C is case sensitive.</strong> <code>printf</code> works. <code>Printf</code>, <code>PRINTF</code> and <code>printF</code> do not. <code>main</code> works; <code>Main</code> does not.</p>
+</blockquote>
+<hr>
+<h2 id="18-running-the-code-from-c-file-to-output">1.8 Running the code: from <code>.c</code> file to output</h2>
+<h3 id="the-four-steps">The four steps</h3>
+<ol>
+<li><strong>Write</strong> the code in a text editor or an <strong>IDE</strong> (Integrated Development Environment).</li>
+<li><strong>Save</strong> the file with the extension <strong><code>.c</code></strong> — for example <code>hello.c</code>.</li>
+<li><strong>Build</strong> (compile and link) the file. The compiler checks your code for mistakes and translates it into machine code.</li>
+<li><strong>Run</strong> the resulting program. Its output appears on the screen.</li>
+</ol>
+<h3 id="which-tools-can-i-use">Which tools can I use?</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code::Blocks</strong> (with MinGW)</td>
+<td>The IDE mentioned in your lecture. Create a <em>Console application → C</em> project, paste the code, press <strong>Build and Run</strong> (F9).</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong> + a compiler (MinGW-w64 / GCC)</td>
+<td>Install the <em>C/C++</em> extension and a compiler, then compile in the terminal.</td>
+</tr>
+<tr>
+<td><strong>Command line</strong> with GCC</td>
+<td><code>gcc hello.c -o hello</code> then run <code>hello</code> (Windows) or <code>./hello</code> (Linux/Mac).</td>
+</tr>
+<tr>
+<td><strong>Microsoft C compiler</strong></td>
+<td>In a <em>Developer Command Prompt</em>: <code>cl hello.c</code>, then run <code>hello.exe</code>.</td>
+</tr>
+<tr>
+<td><strong>Online compilers</strong></td>
+<td>Websites such as OnlineGDB or Programiz let you run C in the browser, no installation needed.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="what-the-compiler-really-does-a-peek-behind-the-curtain">What the compiler really does (a peek behind the curtain)</h3>
+<pre class="plain"><code> hello.c ──▶ Preprocessor ──▶ Compiler ──▶ Assembler ──▶ Linker ──▶ hello.exe
+ (source)    (#include is    (checks      (makes        (joins your  (program you
+              replaced by     syntax,      machine       code with     can run)
+              the header)     makes        code in an    library code
+                              assembly)    object file)  such as printf)</code></pre>
+<p>You press one button, and all of this happens. Remember it, though: if you ever see an error from the <strong>linker</strong> (&quot;undefined reference to …&quot;) it means the stages up to there succeeded but a function could not be found.</p>
+<hr>
+<h2 id="19-reading-compiler-messages-errors-and-warnings">1.9 Reading compiler messages: errors and warnings</h2>
+<p>Every beginner makes mistakes. The difference between a beginner and a professional is that the professional <strong>reads the error message</strong>.</p>
+<ul>
+<li>An <strong>error</strong> means the compiler could not build the program. Fix it.</li>
+<li>A <strong>warning</strong> means &quot;this <em>might</em> be a mistake&quot;. The program still builds. <strong>Treat warnings seriously</strong> — they often point at real bugs.</li>
+</ul>
+<h3 id="how-to-read-an-error">How to read an error</h3>
+<pre class="plain"><code>hello.c: In function &#x27;main&#x27;:
+hello.c:5:30: error: expected &#x27;;&#x27; before &#x27;return&#x27;</code></pre>
+<ol>
+<li><code>hello.c</code> — the file.</li>
+<li><code>5:30</code> — <strong>line 5</strong>, column 30. (The real mistake is often on the line <em>before</em> the one reported, because the compiler only notices when it reaches the next line.)</li>
+<li><code>error: expected ';' before 'return'</code> — what it expected. It tells you what is missing.</li>
+</ol>
+<blockquote class="callout tip">
+<p>💡 <strong>Golden rules for fixing errors</strong></p>
+<ol>
+<li>Fix the <strong>first</strong> error first. Later errors are often &quot;echoes&quot; of the first one.</li>
+<li>Look at the reported line <strong>and the line above it</strong>.</li>
+<li>Recompile after <strong>each</strong> fix.</li>
+<li>Read the message slowly, word by word.</li>
+</ol>
+</blockquote>
+<h3 id="the-most-common-beginner-mistakes">The most common beginner mistakes</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Example</th>
+<th>Typical message (wording differs by compiler)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing semicolon</td>
+<td><code>printf(&quot;Hi\n&quot;)</code></td>
+<td><code>expected ';' before ...</code></td>
+</tr>
+<tr>
+<td>Missing closing quote</td>
+<td><code>printf(&quot;Hi\n);</code></td>
+<td><code>missing terminating &quot; character</code></td>
+</tr>
+<tr>
+<td>Wrong case</td>
+<td><code>Printf(&quot;Hi\n&quot;);</code></td>
+<td><code>implicit declaration of function 'Printf'</code> or linker <code>undefined reference</code></td>
+</tr>
+<tr>
+<td>Forgot <code>#include &lt;stdio.h&gt;</code></td>
+<td>(line missing)</td>
+<td><code>implicit declaration of function 'printf'</code></td>
+</tr>
+<tr>
+<td>Missing closing brace <code>}</code></td>
+<td></td>
+<td><code>expected declaration or statement at end of input</code></td>
+</tr>
+<tr>
+<td>Single quotes for a string</td>
+<td><code>printf('Hi');</code></td>
+<td>warnings about passing an <code>int</code> where a pointer is expected</td>
+</tr>
+<tr>
+<td>Unclosed comment <code>/*</code></td>
+<td></td>
+<td>everything after it disappears, then <code>unterminated comment</code></td>
+</tr>
+<tr>
+<td>Using an undeclared name</td>
+<td><code>x = 5;</code> without declaring <code>x</code></td>
+<td><code>'x' undeclared (first use in this function)</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>C was created by <strong>Dennis Ritchie</strong> at Bell Labs in the early 1970s to write <strong>Unix</strong>.</li>
+<li>C gives you a clear picture of how computers work and is the base of many other languages.</li>
+<li>C has <strong>32 keywords</strong> (lowercase); identifiers follow the rules: letters, digits, underscore; not starting with a digit; not a keyword; case sensitive.</li>
+<li><strong>Comments:</strong> <code>/* ... */</code> for many lines, <code>//</code> for one line. The compiler ignores them.</li>
+<li>Every program needs <strong><code>main()</code></strong>. Execution starts there.</li>
+<li><code>#include &lt;stdio.h&gt;</code> gives you <code>printf</code>. <code>printf(&quot;...&quot;)</code> prints text. <strong>Every statement ends with <code>;</code>.</strong></li>
+<li><strong>Escape sequences:</strong> <code>\n</code> newline, <code>\t</code> tab, <code>\\</code> backslash, <code>\&quot;</code> quote.</li>
+<li><strong>Write → Save as <code>.c</code> → Build → Run.</strong> Read error messages from the top.</li>
+</ul>
+<hr>
+<h1 id="exercises-chapter-1">Exercises — Chapter 1</h1>
+<h2 id="part-a-quick-check">Part A — Quick check</h2>
+<p id="ex-1-1"><strong>Ex 1.1</strong> Who created C, and in which decade? What was C first used to build?</p>
+<p id="ex-1-2"><strong>Ex 1.2</strong> Give <strong>three</strong> reasons why it is useful to learn C.</p>
+<p id="ex-1-3"><strong>Ex 1.3</strong> Which of these are valid C identifiers? Give a reason for each invalid one.</p>
+<p><code>total</code> · <code>2ndPlace</code> · <code>_count</code> · <code>my-name</code> · <code>float</code> · <code>Student_Name</code> · <code>x1</code> · <code>price$</code> · <code>while</code> · <code>first name</code> · <code>Int</code> · <code>GPA_2024</code></p>
+<p id="ex-1-4"><strong>Ex 1.4</strong> True or false?</p>
+<ol>
+<li><code>Main</code> and <code>main</code> are the same in C.</li>
+<li><code>Int</code> is a keyword.</li>
+<li>The compiler runs the code inside comments.</li>
+<li>Every statement in C must end with a semicolon (except those like <code>#include</code> lines and blocks).</li>
+<li>A C program can have two <code>main()</code> functions.</li>
+<li><code>/* a /* b */ c */</code> is a valid nested comment.</li>
+</ol>
+<p id="ex-1-5"><strong>Ex 1.5</strong> What does <code>#include &lt;stdio.h&gt;</code> do? What would happen if you left it out of Hello World?</p>
+<p id="ex-1-6"><strong>Ex 1.6</strong> Which function must every C program contain? What is special about it?</p>
+<p id="ex-1-7"><strong>Ex 1.7</strong> What does <code>return 0;</code> at the end of <code>main</code> tell the operating system?</p>
+<p id="ex-1-8"><strong>Ex 1.8</strong> Write one single-line comment and one multi-line comment. Are they executed?</p>
+<p id="ex-1-9"><strong>Ex 1.9</strong> State the meaning of: <code>\n</code>, <code>\t</code>, <code>\\</code>, <code>\&quot;</code>, <code>\'</code>.</p>
+<p id="ex-1-10"><strong>Ex 1.10</strong> Name the <strong>four steps</strong> to turn an idea into running C code.</p>
+<h2 id="part-b-predict-the-output">Part B — Predict the output</h2>
+<p><em>Write the exact output. Use <code>⏎</code> to mark line ends if it helps you.</em></p>
+<p id="ex-1-11"><strong>Ex 1.11</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"A</span><span class="se">\n</span><span class="s">B</span><span class="se">\n</span><span class="s">C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-12"><strong>Ex 1.12</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"A"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"B"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-13"><strong>Ex 1.13</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Name:</span><span class="se">\t</span><span class="s">Ama</span><span class="se">\n</span><span class="s">Age:</span><span class="se">\t</span><span class="s">19</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-14"><strong>Ex 1.14</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"She said </span><span class="se">\"</span><span class="s">Hi</span><span class="se">\"\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-15"><strong>Ex 1.15</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"C:</span><span class="se">\\</span><span class="s">temp</span><span class="se">\\</span><span class="s">new</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-16"><strong>Ex 1.16</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"One</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="c1">// printf("Two\n");</span>
+<span class="cm">/* printf("Three\n");</span>
+<span class="cm">   printf("Four\n"); */</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Five</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-17"><strong>Ex 1.17</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"World</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"World"</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-1-18"><strong>Ex 1.18</strong> How many <strong>lines</strong> (including empty ones) does this print?</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n\n</span><span class="s">Hi</span><span class="se">\n\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</h2>
+<p><em>For each program, list <strong>every</strong> mistake and write the corrected version.</em></p>
+<p id="ex-1-19"><strong>Ex 1.19</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-1-20"><strong>Ex 1.20</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-1-21"><strong>Ex 1.21</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-1-22"><strong>Ex 1.22</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome to KNUST!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-1-23"><strong>Ex 1.23</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cm">/* This program prints a greeting</span>
+<span class="cm">int main(void)</span>
+<span class="cm">{</span>
+<span class="cm">    printf("Akwaaba!\n");</span>
+<span class="cm">    return 0;</span>
+<span class="cm">}</span>
+</code></pre></div>
+<p id="ex-1-24"><strong>Ex 1.24</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Akwaaba!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p id="ex-1-25"><strong>Ex 1.25</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Akwaaba!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p id="ex-1-26"><strong>Ex 1.26</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">'</span><span class="n">Akwaaba</span><span class="o">!</span><span class="err">\</span><span class="n">n</span><span class="err">'</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="part-d-write-the-program">Part D — Write the program</h2>
+<p id="ex-1-27"><strong>Ex 1.27</strong> Print your <strong>name</strong>, <strong>programme of study</strong> and <strong>level</strong> on three separate lines.</p>
+<p id="ex-1-28"><strong>Ex 1.28</strong> Print this address (use your own details if you like), one <code>printf</code> per line:</p>
+<pre class="plain"><code>Department of Computer Engineering
+KNUST
+Kumasi, Ghana</code></pre>
+<p id="ex-1-29"><strong>Ex 1.29</strong> Print a price list using <code>\t</code> to line up the columns:</p>
+<pre class="plain"><code>Item        Price (GHS)
+Rice          12.50
+Gari           8.00
+Kenkey         5.00</code></pre>
+<p id="ex-1-30"><strong>Ex 1.30</strong> Print a rectangle of stars, 4 rows by 12 columns:</p>
+<pre class="plain"><code>************
+*          *
+*          *
+************</code></pre>
+<p id="ex-1-31"><strong>Ex 1.31</strong> Print this quotation, with the quotation marks and the apostrophe exactly as shown:</p>
+<pre class="plain"><code>Kwame said, &quot;Programming isn&#x27;t hard - it&#x27;s practice!&quot;</code></pre>
+<p id="ex-1-32"><strong>Ex 1.32</strong> Print this Windows file path:</p>
+<pre class="plain"><code>C:\Users\Ama\Documents\COE281</code></pre>
+<p id="ex-1-33"><strong>Ex 1.33</strong> Print a staircase with 5 steps:</p>
+<pre class="plain"><code>#
+##
+###
+####
+#####</code></pre>
+<p id="ex-1-34"><strong>Ex 1.34</strong> Print a centred triangle (pyramid) with 4 rows:</p>
+<pre class="plain"><code>   *
+  ***
+ *****
+*******</code></pre>
+<p id="ex-1-35"><strong>Ex 1.35</strong> Print a small <strong>receipt</strong>. Use <code>\t</code> for alignment:</p>
+<pre class="plain"><code>===== PROVISION SHOP =====
+Milk          GHS 15.00
+Sugar         GHS  9.50
+Biscuits      GHS  6.00
+--------------------------
+TOTAL         GHS 30.50</code></pre>
+<p id="ex-1-36"><strong>Ex 1.36</strong> Produce the output <code>Hello World from C</code> in <strong>three</strong> different ways: (a) one <code>printf</code>; (b) three <code>printf</code>s on the same line; (c) one <code>printf</code> per word, each on its own line.</p>
+<p id="ex-1-37"><strong>Ex 1.37</strong> Print the word <strong>KNUST</strong> in big block letters (5 rows high) using the <code>#</code> character.</p>
+<h2 id="part-e-challenges">Part E — Challenges</h2>
+<p id="ex-1-38"><strong>Ex 1.38</strong> Print the Ghana flag in text: three horizontal bands labelled <code>RED</code>, <code>GOLD</code> (with a <code>*</code> star in the middle) and <code>GREEN</code>, each band 3 lines tall and 15 characters wide. Use any layout you like.</p>
+<p id="ex-1-39"><strong>Ex 1.39 (why we need loops)</strong> Print the 5 × 5 multiplication table below using <strong>only</strong> <code>printf</code> statements. Count how many statements you used. How would it feel to print a 50 × 50 table this way? (You will fix this pain in Chapter 5.)</p>
+<pre class="plain"><code>1	2	3	4	5
+2	4	6	8	10
+3	6	9	12	15
+4	8	12	16	20
+5	10	15	20	25</code></pre>
+<p id="ex-1-40"><strong>Ex 1.40 (preview of a surprise)</strong> <code>printf</code> itself <em>returns</em> a value: the number of characters it printed. Write a program that prints <code>Hello</code> followed by a newline, and then prints how many characters the first <code>printf</code> printed. (Hint: <code>int n = printf(&quot;...&quot;); printf(&quot;%d\n&quot;, n);</code> — you will learn <code>%d</code> in Chapter 4.)</p>
+<p id="ex-1-41"><strong>Ex 1.41 (code archaeology)</strong> The program below has <strong>five</strong> mistakes. Find all five and write the corrected program so it prints exactly the three lines shown.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio&gt;</span>
+<span class="n">Int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* print the course info</span>
+<span class="cm">    printf("Course:\tCOE 281\n");</span>
+<span class="cm">    printf("Lecturer:\tDr. Mensah\n)</span>
+<span class="cm">    printf("Language:\tC\n");</span>
+<span class="cm">    return 0;</span>
+<span class="cm">}</span>
+</code></pre></div>
+<p>Expected output:</p>
+<pre class="plain"><code>Course:     COE 281
+Lecturer:   Dr. Mensah
+Language:   C</code></pre>
+<h2 id="part-f-hands-on-tasks">Part F — Hands-on tasks</h2>
+<p id="ex-1-42"><strong>Ex 1.42</strong> Install a C compiler/IDE (Code::Blocks, or VS Code + GCC, or use an online compiler). Type <strong>Hello, World!</strong> by hand (don't copy-paste!) and run it. Write down the tool you used and its version.</p>
+<p id="ex-1-43"><strong>Ex 1.43 (error diary)</strong> Take your working Hello World and <strong>break it on purpose</strong> in five different ways (remove the <code>;</code>, remove a quote, misspell <code>printf</code>, remove <code>#include</code>, remove a <code>}</code>). For each one, write in a notebook: (1) what you changed, (2) the exact error message, (3) which line the compiler reported, (4) what the message <em>really</em> meant.</p>
+<p id="ex-1-44"><strong>Ex 1.44</strong> Compile <code>hello.c</code> from the command line (not from the IDE). Write down the command you used. Where did the executable appear? How big is it?</p>
+<hr>
+<p><em>End of Chapter 1. Next: <a href="02-variables-and-data-types.html">Chapter 2 — Variables and Data Types</a></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../solutions/01-c-basics.html">Solutions to Chapter 1  →</a>
+<div class="pager-row">
+<a class="pager-prev" href="../lessons/00-introduction-to-programming.html"><small>Previous</small>Chapter 0 — Introduction to Programming</a>
+<a class="pager-next" href="../lessons/02-variables-and-data-types.html"><small>Next</small>Chapter 2 — Variables and Data Types</a>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#what-you-will-learn">What you will learn</a>
+<a class="toc-2" href="#11-what-is-c">1.1 What is C?</a>
+<a class="toc-2" href="#12-why-learn-c">1.2 Why learn C?</a>
+<a class="toc-2" href="#13-the-building-blocks-of-c">1.3 The building blocks of C</a>
+<a class="toc-3" href="#131-the-character-set">1.3.1 The character set</a>
+<a class="toc-3" href="#132-keywords">1.3.2 Keywords</a>
+<a class="toc-3" href="#133-identifiers">1.3.3 Identifiers</a>
+<a class="toc-2" href="#14-comments">1.4 Comments</a>
+<a class="toc-2" href="#15-your-first-program-hello-world">1.5 Your first program — Hello, World!</a>
+<a class="toc-3" href="#anatomy-of-the-program">Anatomy of the program</a>
+<a class="toc-3" href="#what-happens-when-this-program-runs">What happens when this program runs?</a>
+<a class="toc-2" href="#16-escape-sequences">1.6 Escape sequences</a>
+<a class="toc-3" href="#n-decides-where-lines-end">\n decides where lines end</a>
+<a class="toc-2" href="#17-statements-whitespace-and-layout">1.7 Statements, whitespace and layout</a>
+<a class="toc-2" href="#18-running-the-code-from-c-file-to-output">1.8 Running the code: from .c file to output</a>
+<a class="toc-3" href="#the-four-steps">The four steps</a>
+<a class="toc-3" href="#which-tools-can-i-use">Which tools can I use?</a>
+<a class="toc-3" href="#what-the-compiler-really-does-a-peek-behind-the-curtain">What the compiler really does (a peek behind the curtain)</a>
+<a class="toc-2" href="#19-reading-compiler-messages-errors-and-warnings">1.9 Reading compiler messages: errors and warnings</a>
+<a class="toc-3" href="#how-to-read-an-error">How to read an error</a>
+<a class="toc-3" href="#the-most-common-beginner-mistakes">The most common beginner mistakes</a>
+<a class="toc-2" href="#key-takeaways">Key takeaways</a>
+<a class="toc-2" href="#part-a-quick-check">Part A — Quick check</a>
+<a class="toc-2" href="#part-b-predict-the-output">Part B — Predict the output</a>
+<a class="toc-2" href="#part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</a>
+<a class="toc-2" href="#part-d-write-the-program">Part D — Write the program</a>
+<a class="toc-2" href="#part-e-challenges">Part E — Challenges</a>
+<a class="toc-2" href="#part-f-hands-on-tasks">Part F — Hands-on tasks</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

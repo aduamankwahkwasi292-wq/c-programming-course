@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solutions — Chapter 4: Data Input and Output · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Solutions — Chapter 4: Data Input and Output · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row on"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol active" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="solutions-chapter-4-data-input-and-output">Solutions — Chapter 4: Data Input and Output</h1>
+<blockquote>
+<p>Back to the lesson: <a href="../lessons/04-data-input-and-output.html">Chapter 4 lesson</a></p>
+<p>In the sample runs, the text the <strong>user types</strong> is shown right after the prompt, exactly as it appears in a terminal.</p>
+</blockquote>
+<hr>
+<h2 id="part-a-quick-check">Part A — Quick check</h2>
+<p id="ex-4-1"><strong>Ex 4.1</strong></p>
+<ul>
+<li><code>printf()</code> — prints formatted output.</li>
+<li><code>scanf()</code> — reads formatted input.</li>
+<li><code>putchar()</code> — prints one character.</li>
+<li><code>getchar()</code> — reads one character.</li>
+<li><code>puts()</code> — prints a string followed by a newline.</li>
+<li><code>gets()</code> — reads a string/line. <strong>Never use it:</strong> it does not check the size of the array, so long input overflows the array (buffer overflow). It was removed from the language in C11. Use <code>fgets()</code>.</li>
+</ul>
+<p id="ex-4-2"><strong>Ex 4.2</strong> A <strong>format specifier</strong> is a <code>%</code>-code in the control string that marks where a value goes and what type it is. <code>int</code> → <code>%d</code>; <code>float</code> → <code>%f</code>; <code>char</code> → <code>%c</code>; string → <code>%s</code>; a literal percent sign → <code>%%</code>.</p>
+<p id="ex-4-3"><strong>Ex 4.3</strong> <code>&amp;</code> is the <strong>address-of</strong> operator. It gives <code>scanf</code> the memory address of <code>age</code>, so <code>scanf</code> knows <em>where</em> to store the number. Without it, <code>scanf</code> is handed the (garbage) value of <code>age</code> and treats it as an address — the program crashes or misbehaves.</p>
+<p id="ex-4-4"><strong>Ex 4.4</strong> <code>puts(&quot;Hi&quot;);</code> prints <code>Hi</code> <strong>and then a newline</strong>. <code>printf(&quot;Hi&quot;);</code> prints just <code>Hi</code> (no newline unless you write <code>\n</code>). <code>puts</code> can't format values; <code>printf</code> can.</p>
+<p id="ex-4-5"><strong>Ex 4.5</strong></p>
+<ul>
+<li><code>%5d</code> — integer in a field at least 5 wide, right-aligned.</li>
+<li><code>%-5d</code> — same, left-aligned.</li>
+<li><code>%05d</code> — width 5, padded with zeros on the left.</li>
+<li><code>%.2f</code> — decimal with 2 digits after the point.</li>
+<li><code>%8.3f</code> — decimal with 3 digits after the point, in a field at least 8 wide.</li>
+<li><code>%10s</code> — string right-aligned in 10 characters.</li>
+<li><code>%-10s</code> — string left-aligned in 10 characters.</li>
+<li><code>%.3s</code> — print at most the first 3 characters of the string.</li>
+</ul>
+<p id="ex-4-6"><strong>Ex 4.6</strong> <code>printf</code>: <code>%f</code> (<code>%lf</code> is also accepted). <code>scanf</code>: <strong><code>%lf</code></strong>.</p>
+<p id="ex-4-7"><strong>Ex 4.7</strong> <code>%c</code> does not skip whitespace, so it reads the <strong>newline</strong> (Enter key) that is still in the input buffer after the number. Fix: put a space before the specifier: <code>scanf(&quot; %c&quot;, &amp;ch);</code>.</p>
+<p id="ex-4-8"><strong>Ex 4.8</strong> <code>scanf</code> returns the <strong>number of items successfully read</strong> (or <code>EOF</code> if the input ended). Use it to check that the user typed valid input, e.g. <code>if (scanf(&quot;%d&quot;, &amp;n) != 1) { /* bad input */ }</code>.</p>
+<p id="ex-4-9"><strong>Ex 4.9</strong> <code>gets</code> has no way to know how big the array is, so it keeps writing whatever the user types, even beyond the end of the array (<strong>buffer overflow</strong>) — causing crashes and security holes. The safe replacement is <strong><code>fgets(buffer, size, stdin)</code></strong>: it needs the <strong>size</strong> of the buffer and will read at most <code>size − 1</code> characters.</p>
+<p id="ex-4-10"><strong>Ex 4.10</strong></p>
+<ol>
+<li><strong>False</strong> — the comma in the format must also be typed: <code>3, 4</code> is OK; <code>3 4</code> is not (the second number is not read).</li>
+<li><strong>False</strong> — <code>printf(&quot;%d&quot;)</code> has a specifier but no value: undefined behaviour (garbage).</li>
+<li><strong>False</strong> — <code>%s</code> stops at the first whitespace. Use <code>fgets</code> for a whole line.</li>
+<li><strong>True.</strong></li>
+<li><strong>True</strong> — width 5 and 1 decimal: two spaces then <code>3.1</code>.</li>
+<li><strong>True.</strong></li>
+</ol>
+<hr>
+<h2 id="part-b-predict-the-output">Part B — Predict the output</h2>
+<p id="ex-4-11"><strong>Ex 4.11</strong> <code>3 + 4 = 7</code></p>
+<p id="ex-4-12"><strong>Ex 4.12</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>KNU
+75</code></pre></div>
+<p id="ex-4-13"><strong>Ex 4.13</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>[   123]
+[123   ]
+[000123]</code></pre></div>
+<p id="ex-4-14"><strong>Ex 4.14</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>[2.7] [2.718] [    2.72]</code></pre></div>
+<p id="ex-4-15"><strong>Ex 4.15</strong> <code>ff FF 10</code>   (255 = FF in hex; 8 in octal is <code>10</code>)</p>
+<p id="ex-4-16"><strong>Ex 4.16</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Kumasi has 6 letters
+[   KNUST] [KNUST   ]</code></pre></div>
+<p id="ex-4-17"><strong>Ex 4.17</strong></p>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>90%
+H
+104</code></pre></div>
+<p id="ex-4-18"><strong>Ex 4.18</strong> <code>a = 12</code>, <code>b = 7</code> → prints <code>5</code>.</p>
+<p id="ex-4-19"><strong>Ex 4.19</strong> <code>12 7</code> (the comma in the input matches the comma in the format).</p>
+<p id="ex-4-20"><strong>Ex 4.20</strong> It prints <code>3</code>. The characters <code>.9</code> and the newline are <strong>left over</strong> in the input buffer (<code>%d</code> stops at the <code>.</code>).</p>
+<p id="ex-4-21"><strong>Ex 4.21</strong> <code>0 99</code> — <code>scanf</code> read 0 items, so <code>n</code> keeps its old value 99. (<code>hello</code> is left in the buffer.)</p>
+<p id="ex-4-22"><strong>Ex 4.22</strong> <code>Hi Ama</code> — <code>%s</code> stops at the space. <code> Serwaa</code> is left in the buffer.</p>
+<p id="ex-4-23"><strong>Ex 4.23</strong> <code>yx</code> — <code>c1</code> = <code>'x'</code>, <code>c2</code> = <code>'y'</code>; they are printed in reverse order (<code>y</code> then <code>x</code>).</p>
+<hr>
+<h2 id="part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</h2>
+<p id="ex-4-24"><strong>Ex 4.24</strong> Missing <code>&amp;</code>: <code>scanf(&quot;%d&quot;, &amp;age);</code></p>
+<p id="ex-4-25"><strong>Ex 4.25</strong> For a <code>double</code>, <code>scanf</code> needs <code>%lf</code>: <code>scanf(&quot;%lf&quot;, &amp;price);</code></p>
+<p id="ex-4-26"><strong>Ex 4.26</strong> Two mistakes: (1) three <code>%d</code> but only two values (<code>a</code>, <code>b</code>); (2) <code>%f</code> is used for an <code>int</code> (<code>a</code>). Correct:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%d and %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</code></pre></div>
+<p id="ex-4-27"><strong>Ex 4.27</strong> The <code>\n</code> in the control string means &quot;skip any whitespace&quot;. <code>scanf</code> can't know the whitespace has ended until it sees a <strong>non-whitespace</strong> character, so it waits for more input. Fix: <code>scanf(&quot;%d&quot;, &amp;n);</code> (no <code>\n</code>).</p>
+<p id="ex-4-28"><strong>Ex 4.28</strong> The leftover newline after the score is read by <code>%c</code>. Fix: <code>scanf(&quot; %c&quot;, &amp;grade);</code> (space before <code>%c</code>).</p>
+<p id="ex-4-29"><strong>Ex 4.29</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="kt">char</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+<span class="n">fputs</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">stdout</span><span class="p">);</span><span class="w">          </span><span class="cm">/* fputs does not add another newline;  fgets kept the one the user typed */</span>
+</code></pre></div>
+<p>(If you use <code>puts(line)</code> you get an extra blank line, because <code>fgets</code> keeps the user's <code>\n</code> and <code>puts</code> adds another.)</p>
+<p id="ex-4-30"><strong>Ex 4.30</strong> Two mistakes: (1) <code>%d</code> is used to read text — it should be <code>%s</code>; (2) <code>&amp;name</code> — for an array the name itself is the address, so use <code>scanf(&quot;%19s&quot;, name);</code> (and <code>%19s</code> guards against overflow).</p>
+<p id="ex-4-31"><strong>Ex 4.31</strong> Use widths instead of tabs:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-10s%5d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Kofi"</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-10s%5d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Akosua"</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-10s%5d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Nana Yaw"</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Kofi         95
+Akosua        8
+Nana Yaw    100</code></pre></div>
+<hr>
+<h2 id="part-d-write-the-program">Part D — Write the program</h2>
+<p id="ex-4-32"><strong>Ex 4.32</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter your first name and age: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%29s %d"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">age</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello %s, you will be %d next year.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter your first name and age: Kofi 21
+Hello Kofi, you will be 22 next year.</code></pre></div>
+<p id="ex-4-33"><strong>Ex 4.33</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter two integers: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sum        = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Difference = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Product    = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter two integers: 12 5
+Sum        = 17
+Difference = 7
+Product    = 60</code></pre></div>
+<p id="ex-4-34"><strong>Ex 4.34</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter length and width: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">width</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Area      = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">width</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Perimeter = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">width</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter length and width: 7.5 4
+Area      = 30.00
+Perimeter = 23.00</code></pre></div>
+<p id="ex-4-35"><strong>Ex 4.35</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter the radius: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">radius</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Circumference = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Area          = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter the radius: 10
+Circumference = 62.83
+Area          = 314.16</code></pre></div>
+<p id="ex-4-36"><strong>Ex 4.36</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="n">s3</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter three scores: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%f %f %f"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s3</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Average = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s3</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter three scores: 64 72.5 81
+Average = 72.50</code></pre></div>
+<p id="ex-4-37"><strong>Ex 4.37</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Temperature in Fahrenheit: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">f</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.1f F = %.1f C</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Temperature in Fahrenheit: 98.6
+98.6 F = 37.0 C</code></pre></div>
+<p id="ex-4-38"><strong>Ex 4.38</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Seconds: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">total</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d:%02d:%02d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3600</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Seconds: 3725
+1:02:05</code></pre></div>
+<p id="ex-4-39"><strong>Ex 4.39</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a three-digit number: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sum of digits = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a three-digit number: 437
+Sum of digits = 14</code></pre></div>
+<p id="ex-4-40"><strong>Ex 4.40</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">ghs</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Amount in GHS and rate (USD per GHS): "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ghs</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rate</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"GHS %.2f = USD %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ghs</span><span class="p">,</span><span class="w"> </span><span class="n">ghs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rate</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Amount in GHS and rate (USD per GHS): 1500 0.065
+GHS 1500.00 = USD 97.50</code></pre></div>
+<p id="ex-4-41"><strong>Ex 4.41</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">years</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Principal, rate (%%) and years: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %lf %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">years</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Interest = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">interest</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Total    = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">interest</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Principal, rate (%) and years: 2500 8.5 3
+Interest = 637.50
+Total    = 3137.50</code></pre></div>
+<p id="ex-4-42"><strong>Ex 4.42</strong> Exact output (checked character by character):</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-12s %8s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Item"</span><span class="p">,</span><span class="w"> </span><span class="s">"Price"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-12s %8.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Bread"</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-12s %8.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Milk"</span><span class="p">,</span><span class="w"> </span><span class="mf">12.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-12s %8.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"Eggs"</span><span class="p">,</span><span class="w"> </span><span class="mf">38.75</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Item            Price
+Bread            5.50
+Milk            12.00
+Eggs            38.75</code></pre></div>
+<p id="ex-4-43"><strong>Ex 4.43</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Item, quantity, unit price: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%29s %d %lf"</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">price</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s  x%d  GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Item, quantity, unit price: Sugar 3 9.5
+Sugar  x3  GHS 28.50</code></pre></div>
+<p id="ex-4-44"><strong>Ex 4.44</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a lowercase letter: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">" %c"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ch</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"ASCII code : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Next letter: %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Uppercase  : %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a lowercase letter: g
+ASCII code : 103
+Next letter: h
+Uppercase  : G</code></pre></div>
+<p id="ex-4-45"><strong>Ex 4.45</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Date (dd/mm/yyyy): "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d/%d/%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%04d-%02d-%02d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Date (dd/mm/yyyy): 12/11/2026
+2026-11-12</code></pre></div>
+<p id="ex-4-46"><strong>Ex 4.46</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hour</span><span class="p">,</span><span class="w"> </span><span class="n">minute</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Time (hh:mm) and minutes to add: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d:%d %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hour</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">minute</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">add</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">hour</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">minute</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span><span class="w">   </span><span class="cm">/* wrap past midnight */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"New time: %02d:%02d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Time (hh:mm) and minutes to add: 23:30 90
+New time: 01:00</code></pre></div>
+<p id="ex-4-47"><strong>Ex 4.47</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">60</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Full name: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+<span class="w">    </span><span class="n">name</span><span class="p">[</span><span class="n">strcspn</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Welcome, %s!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Full name: Kwame Nkrumah
+Welcome, Kwame Nkrumah!
+Kwame Nkrumah</code></pre></div>
+<p id="ex-4-48"><strong>Ex 4.48</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="n">c3</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Type three characters: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">    </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">    </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getchar</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span>
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">putchar</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Type three characters: abc
+cba</code></pre></div>
+<p id="ex-4-49"><strong>Ex 4.49</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter an integer: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"decimal : %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"octal   : %o</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"hex     : %x (lower)  %X (upper)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"char    : %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter an integer: 65
+decimal : 65
+octal   : 101
+hex     : 41 (lower)  41 (upper)
+char    : A</code></pre></div>
+<p>(Try <code>255</code> to see <code>ff</code> vs <code>FF</code>.)</p>
+<p id="ex-4-50"><strong>Ex 4.50</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159265</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.0f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.1f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.3f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%.5f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>3
+3.1
+3.14
+3.142
+3.1416
+3.14159</code></pre></div>
+<p id="ex-4-51"><strong>Ex 4.51</strong> Each line is <code>&quot;| &quot;</code> + an 8-character label + a 12-character field + <code>&quot; |&quot;</code> → 24 characters, the same width as the border.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">gpa</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Name, age, level, GPA: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%11s %d %d %lf"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gpa</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"+----------------------+</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"| Name  : %-12s |</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"| Age   : %-12d |</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"| Level : %-12d |</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"| GPA   : %-12.2f |</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">gpa</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"+----------------------+</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Name, age, level, GPA: Ama 19 200 3.65
++----------------------+
+| Name  : Ama          |
+| Age   : 19           |
+| Level : 200          |
+| GPA   : 3.65         |
++----------------------+</code></pre></div>
+<p id="ex-4-52"><strong>Ex 4.52</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="n">efficiency</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Distance (km), km per litre, price per litre: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %lf %lf"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">efficiency</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">price</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">litres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">efficiency</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Litres needed: %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">litres</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Trip cost    : GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">litres</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Distance (km), km per litre, price per litre: 120 12 14.5
+Litres needed: 10.00
+Trip cost    : GHS 145.00</code></pre></div>
+<p id="ex-4-53"><strong>Ex 4.53</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="n">m2</span><span class="p">,</span><span class="w"> </span><span class="n">m3</span><span class="p">,</span><span class="w"> </span><span class="n">m4</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="n">c3</span><span class="p">,</span><span class="w"> </span><span class="n">c4</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter m1 c1 m2 c2 m3 c3 m4 c4: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %d %lf %d %lf %d %lf %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m3</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c3</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m4</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c4</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">weighted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">m1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Weighted average = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">weighted</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter m1 c1 m2 c2 m3 c3 m4 c4: 70 3 80 2 65 4 90 3
+Weighted average = 75.00</code></pre></div>
+<p>Check: (210 + 160 + 260 + 270) / 12 = 900 / 12 = 75.</p>
+<p id="ex-4-54"><strong>Ex 4.54</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">friends</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Bill total and number of friends: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">friends</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Each person pays GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">friends</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Bill total and number of friends: 245.50 3
+Each person pays GHS 81.83</code></pre></div>
+<p id="ex-4-55"><strong>Ex 4.55</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter an integer: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"[%10d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"[%-10d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"[%010d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter an integer: 42
+[        42]
+[42        ]
+[0000000042]</code></pre></div>
+<p id="ex-4-56"><strong>Ex 4.56</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Minutes: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">minutes</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">minutes</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d days, %d hours, %d minutes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">days</span><span class="p">,</span><span class="w"> </span><span class="n">hours</span><span class="p">,</span><span class="w"> </span><span class="n">mins</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Minutes: 5000
+3 days, 11 hours, 20 minutes</code></pre></div>
+<hr>
+<h2 id="part-e-challenges">Part E — Challenges</h2>
+<p id="ex-4-57"><strong>Ex 4.57</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">,</span><span class="w"> </span><span class="n">withdrawal</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Account name, balance, withdrawal: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%29s %lf %lf"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">balance</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">withdrawal</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">======= ATM RECEIPT =======</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Account         : %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Previous balance: %10.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Withdrawn       : %10.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">withdrawal</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"-------------------------</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"New balance     : %10.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">withdrawal</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Account name, balance, withdrawal: Kwabena 1500.75 200
+
+======= ATM RECEIPT =======
+Account         : Kwabena
+Previous balance:    1500.75
+Withdrawn       :     200.00
+-------------------------
+New balance     :    1300.75</code></pre></div>
+<p id="ex-4-58"><strong>Ex 4.58</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter two integers: "</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"values read: %d (a = %d, b = %d)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter two integers: 7 x
+values read: 1 (a = 7, b = -1)</code></pre></div>
+<ul>
+<li><code>7 x</code> → <strong>1</strong>: <code>7</code> was read into <code>a</code>; <code>x</code> is not a number, so reading stopped and <code>b</code> was untouched.</li>
+<li><code>x 7</code> → <strong>0</strong>: the very first item is not a number, so nothing was read.</li>
+<li><code>7 8</code> → <strong>2</strong>: both read.</li>
+</ul>
+<p id="ex-4-59"><strong>Ex 4.59</strong> The <code>scanf(&quot;%d&quot;)</code> leaves the Enter key (<code>\n</code>) in the buffer; one <code>getchar()</code> throws it away before <code>fgets</code>.</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Age: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">age</span><span class="p">);</span>
+<span class="w">    </span><span class="n">getchar</span><span class="p">();</span><span class="w">                                  </span><span class="cm">/* discard the leftover newline */</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Full name: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+<span class="w">    </span><span class="n">name</span><span class="p">[</span><span class="n">strcspn</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s is %d years old.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Age: 21
+Full name: Kofi Mensah
+Kofi Mensah is 21 years old.</code></pre></div>
+<p>Without the <code>getchar()</code>, <code>fgets</code> would immediately read the leftover empty line and the name would be blank.</p>
+<p id="ex-4-60"><strong>Ex 4.60</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">gpa</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter name, age, GPA: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">sscanf</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="s">"%29s %d %lf"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gpa</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"name=%s age=%d gpa=%.1f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">gpa</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter name, age, GPA: Kofi 21 3.5
+name=Kofi age=21 gpa=3.5</code></pre></div>
+<p>This is a robust pattern: read a <strong>line</strong> safely with <code>fgets</code>, then <strong>parse</strong> it with <code>sscanf</code>. If the parsing fails, the leftover input is not stuck in the keyboard buffer.</p>
+<p id="ex-4-61"><strong>Ex 4.61</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Width and number: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"[%*d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Width and number: 8 42
+[      42]</code></pre></div>
+<hr>
+<h2 id="part-f-research-tasks-sample-answers">Part F — Research tasks (sample answers)</h2>
+<p id="ex-4-62"><strong>Ex 4.62</strong> <code>stdin</code> = standard input (normally the keyboard); <code>stdout</code> = standard output (normally the screen); <code>stderr</code> = standard error (also normally the screen, but a <em>separate</em> stream so error messages can be redirected independently of normal output). Use it with <code>fprintf(stderr, &quot;Error: ...\n&quot;);</code>.</p>
+<p id="ex-4-63"><strong>Ex 4.63</strong> <code>%n</code> does not print anything; it <strong>writes</strong> the number of characters printed so far into the <code>int</code> whose address you give (<code>printf(&quot;Hello%n&quot;, &amp;count);</code> stores 5). It is risky because it makes <code>printf</code> <em>write to memory</em>; if an attacker controls the format string they can use <code>%n</code> to overwrite memory (a &quot;format string vulnerability&quot;). Some libraries (such as Microsoft's) disable it by default.</p>
+<p id="ex-4-64"><strong>Ex 4.64</strong> <em>Model answer.</em> A program that uses <code>gets</code> reserves a fixed-size array (say 50 bytes) on the <em>stack</em>, which also holds the function's return address — the place the CPU jumps to when the function ends. <code>gets</code> doesn't check the length, so an attacker types more than 50 bytes. The extra bytes overwrite the neighbouring memory including the return address. The attacker chooses those bytes so that the return address now points to <strong>their own code</strong>. When the function returns, the CPU runs the attacker's code instead of the program's. This is why modern code uses <code>fgets</code> and bounds-checked functions.</p>
+<p id="ex-4-65"><strong>Ex 4.65</strong></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">text</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">text</span><span class="p">),</span><span class="w"> </span><span class="s">"Item %d: %.2f"</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mf">12.5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Item 7: 12.50</code></pre></div>
+<p><code>sprintf</code> / <code>snprintf</code> work like <code>printf</code> but write into a <strong>string</strong> instead of the screen. <code>snprintf</code> takes the buffer size, so it can't overflow — prefer it.</p>
+<hr>
+<p><em>Next: <a href="05-flow-of-control.html">Chapter 5 solutions</a></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../lessons/04-data-input-and-output.html">←  Back to the Chapter 4 lesson</a>
+<div class="pager-row">
+<a class="pager-prev" href="../solutions/03-operators.html"><small>Previous</small>Solutions — Chapter 3: Operators</a>
+<a class="pager-next" href="../solutions/05-flow-of-control.html"><small>Next</small>Solutions — Chapter 5: Flow of Control</a>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#part-a-quick-check">Part A — Quick check</a>
+<a class="toc-2" href="#part-b-predict-the-output">Part B — Predict the output</a>
+<a class="toc-2" href="#part-c-find-and-fix-the-bugs">Part C — Find and fix the bugs</a>
+<a class="toc-2" href="#part-d-write-the-program">Part D — Write the program</a>
+<a class="toc-2" href="#part-e-challenges">Part E — Challenges</a>
+<a class="toc-2" href="#part-f-research-tasks-sample-answers">Part F — Research tasks (sample answers)</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

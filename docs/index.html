@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link active" href="index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+<div class="cta"><a class="btn primary" href="lessons/00-introduction-to-programming.html">Start with Chapter 0 &rarr;</a><a class="btn" href="appendix/cheat-sheet.html">Cheat sheet</a><a class="btn" href="appendix/errors-and-debugging.html">Debugging guide</a></div>
+    <article>
+<h1 id="the-complete-c-programming-course">The Complete C Programming Course</h1>
+<h3 id="coe-281-programming-and-problem-solving-1">COE 281 — Programming and Problem-Solving 1</h3>
+<p>A full course in C for beginners, built chapter-by-chapter from the COE 281 lecture slides (KNUST). Every idea is explained in simple language with pictures, analogies and small programs, followed by <strong>a large number of diverse exercises with complete solutions.</strong></p>
+<blockquote>
+<p><strong>Written for:</strong> a first-year student with no programming experience.</p>
+</blockquote>
+<p>🌐 <strong>Read it online</strong> (searchable, with dark mode and a jump-to-exercise box): <strong>https://aduamankwahkwasi292-wq.github.io/c-programming-course/</strong></p>
+<hr>
+<h2 id="1-the-course-map">1. The course map</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ch</th>
+<th>Topic (from your slides)</th>
+<th>Lesson + exercises</th>
+<th>Solutions</th>
+<th>Exercises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Introduction to Programming</td>
+<td><a href="lessons/00-introduction-to-programming.html">lesson</a></td>
+<td><a href="solutions/00-introduction-to-programming.html">solutions</a></td>
+<td>37</td>
+</tr>
+<tr>
+<td>1</td>
+<td>C Basics</td>
+<td><a href="lessons/01-c-basics.html">lesson</a></td>
+<td><a href="solutions/01-c-basics.html">solutions</a></td>
+<td>44</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Variables and Data Types</td>
+<td><a href="lessons/02-variables-and-data-types.html">lesson</a></td>
+<td><a href="solutions/02-variables-and-data-types.html">solutions</a></td>
+<td>52</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Operators</td>
+<td><a href="lessons/03-operators.html">lesson</a></td>
+<td><a href="solutions/03-operators.html">solutions</a></td>
+<td>61</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Data Input and Output</td>
+<td><a href="lessons/04-data-input-and-output.html">lesson</a></td>
+<td><a href="solutions/04-data-input-and-output.html">solutions</a></td>
+<td>65</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Flow of Control</td>
+<td><a href="lessons/05-flow-of-control.html">lesson</a></td>
+<td><a href="solutions/05-flow-of-control.html">solutions</a></td>
+<td>116</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Functions</td>
+<td><a href="lessons/06-functions.html">lesson</a></td>
+<td><a href="solutions/06-functions.html">solutions</a></td>
+<td>107</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Arrays</td>
+<td><a href="lessons/07-arrays.html">lesson</a></td>
+<td><a href="solutions/07-arrays.html">solutions</a></td>
+<td>112</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Pointers and Strings</td>
+<td><a href="lessons/08-pointers-and-strings.html">lesson</a></td>
+<td><a href="solutions/08-pointers-and-strings.html">solutions</a></td>
+<td>131</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Projects and Final Exam</td>
+<td><a href="lessons/09-projects-and-final-exam.html">lesson</a></td>
+<td><a href="solutions/09-projects-and-final-exam.html">solutions</a></td>
+<td>4 worked projects, 10 project ideas, 100-mark exam</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>725 exercises + projects + exam</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Appendices:</strong> <a href="appendix/cheat-sheet.html">Cheat sheet</a> · <a href="appendix/reference-tables.html">Reference tables</a> (ASCII, format specifiers, precedence, limits) · <a href="appendix/errors-and-debugging.html">Errors and debugging guide</a> · <a href="appendix/glossary.html">Glossary</a></p>
+<p><strong>Where each slide deck went</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Slide deck</th>
+<th>Chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>00 Intro to Programming.pdf</code></td>
+<td>Chapter 0</td>
+</tr>
+<tr>
+<td><code>01 C Basics.pdf</code></td>
+<td>Chapter 1</td>
+</tr>
+<tr>
+<td><code>02 Variables  Datatypes.pdf</code></td>
+<td>Chapter 2</td>
+</tr>
+<tr>
+<td><code>03 Operators.pdf</code></td>
+<td>Chapter 3</td>
+</tr>
+<tr>
+<td><code>04 Data Input and Output.pdf</code></td>
+<td>Chapter 4</td>
+</tr>
+<tr>
+<td><code>05 Flow of Control.pdf</code></td>
+<td>Chapter 5</td>
+</tr>
+<tr>
+<td><code>06 Functions.pdf</code></td>
+<td>Chapter 6</td>
+</tr>
+<tr>
+<td><code>07 Arrays.pdf</code></td>
+<td>Chapter 7</td>
+</tr>
+<tr>
+<td><code>08 Pointers and Strings.pdf</code></td>
+<td>Chapter 8</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every slide topic is covered, including the items your lecturer set as &quot;further reading&quot; or &quot;assignment&quot;: printf width/precision, the conditional and bitwise operators, <code>sizeof</code>, 3D arrays, function pointers, <code>strrchr</code>, <code>fgets</code>/<code>fputs</code> and <em>why <code>gets</code> is risky</em>.</p>
+<hr>
+<h2 id="2-how-every-chapter-is-organised">2. How every chapter is organised</h2>
+<ol>
+<li><strong>What you will learn</strong> — the goals.</li>
+<li><strong>The lesson</strong> — small steps, with a program for each idea, its output, pictures, and &quot;common mistakes&quot;.</li>
+<li><strong>Key takeaways</strong> — the chapter in ten lines.</li>
+<li><strong>Exercises</strong>, always in the same six parts:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Type</th>
+<th>What it trains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Quick check</td>
+<td>definitions, true/false, concepts</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>Predict the output</td>
+<td>reading and tracing code like a computer</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Find and fix the bugs</td>
+<td>debugging — the skill employers care about</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Write the program</td>
+<td>graded from easy to hard</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>Challenges and mini-projects</td>
+<td>problem-solving</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>Research tasks</td>
+<td>the &quot;further reading&quot; your lecturer asks for</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="5">
+<li><strong>Solutions</strong> in a separate file — numbering matches exactly (<strong>Ex 5.67</strong> is solved under <strong>Ex 5.67</strong>).</li>
+</ol>
+<hr>
+<h2 id="3-how-to-study-the-method-that-works">3. How to study (the method that works)</h2>
+<ol>
+<li><strong>Read</strong> a section, then <strong>type the example programs yourself</strong> (do not copy-paste) and run them.</li>
+<li><strong>Change them</strong> — break them on purpose and see what the compiler says.</li>
+<li>Do the exercises <strong>in order</strong>, <strong>on paper first</strong> for Parts A–C.</li>
+<li>For Part D, <strong>write the algorithm in pseudocode</strong> (Chapter 0!) before the C code.</li>
+<li><strong>Struggle for at least 10 minutes</strong> before opening a solution. Then compare — and try to write it again <em>without looking</em>.</li>
+<li>Keep an <strong>error diary</strong> (Ex 1.43). Review it weekly.</li>
+<li>After each chapter, redo three exercises from memory a few days later.</li>
+</ol>
+<p><strong>Suggested schedule</strong> (about 10 weeks, 6–8 hours a week)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Chapters</th>
+<th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0, 1</td>
+<td>install a compiler; Hello World; think like a programmer</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2, 3</td>
+<td>variables, types, operators</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>input and output; first interactive programs</td>
+</tr>
+<tr>
+<td>4–5</td>
+<td>5</td>
+<td>decisions and loops — <strong>take your time here</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>functions and recursion</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>arrays (1D, then 2D)</td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>8</td>
+<td>pointers, then strings</td>
+</tr>
+<tr>
+<td>10</td>
+<td>9</td>
+<td>projects, then the mock exam under real conditions</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="4-setting-up-your-compiler">4. Setting up your compiler</h2>
+<p>You need a C <strong>compiler</strong> and a place to type code. Any one of these works:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code::Blocks</strong> with MinGW (the IDE in your lecture)</td>
+<td>install <em>codeblocks-…mingw-setup</em>; create a <em>Console application → C</em> project; press <strong>Build and Run</strong> (F9)</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong> + GCC</td>
+<td>install VS Code, the <em>C/C++</em> extension, and a compiler (MSYS2 → <code>pacman -S mingw-w64-ucrt-x86_64-gcc</code>); compile in the terminal</td>
+</tr>
+<tr>
+<td><strong>GCC on the command line</strong></td>
+<td><code>gcc prog.c -o prog</code> then run <code>prog</code> (Windows) or <code>./prog</code> (Linux/macOS). Recommended flags: <code>gcc -Wall -Wextra prog.c -o prog</code></td>
+</tr>
+<tr>
+<td><strong>Microsoft C compiler</strong> (Visual Studio Build Tools)</td>
+<td>open the <em>x64 Native Tools Command Prompt</em> and run <code>cl prog.c</code> then <code>prog.exe</code></td>
+</tr>
+<tr>
+<td><strong>Online</strong> (no installation)</td>
+<td>OnlineGDB, Programiz, or similar online C compilers</td>
+</tr>
+</tbody>
+</table></div>
+<p>Test your setup with the Hello World of Chapter 1. If <code>math.h</code> functions like <code>sqrt</code> fail to link on Linux/macOS, add <code>-lm</code>.</p>
+<hr>
+<h2 id="5-conventions-used-in-the-files">5. Conventions used in the files</h2>
+<ul>
+<li>Code blocks show <strong>complete programs</strong> you can copy into a <code>.c</code> file. Most are followed by an <strong>output block</strong> showing exactly what the program prints.</li>
+<li>For interactive programs, the <strong>text the user types is shown in the output</strong> right after its prompt, as it appears in a terminal.</li>
+<li>Boxed notes: 💡 tips · ⚠️ common mistakes · 📝 <strong>&quot;Note on the slide&quot;</strong> — places where this course gently corrects or extends a slide.</li>
+<li>Tab-separated outputs are shown with spaces; the exact spacing depends on your terminal.</li>
+</ul>
+<hr>
+<h2 id="6-where-this-course-differs-from-the-slides-and-why">6. Where this course differs from the slides (and why)</h2>
+<p>Slides are summaries and a few contain slips. Wherever the course differs, it says so in a 📝 note. For the record:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Slide says</th>
+<th>The course says</th>
+<th>Chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code> has 6 digits of precision, <code>double</code> 14</td>
+<td>about 6–7 and 15–16 (the idea is the same)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>The precedence table lists <code>&lt;&lt;=</code> <code>&gt;&gt;=</code> on their own row and omits <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>the full correct table</td>
+<td>3</td>
+</tr>
+<tr>
+<td>The slide for the comma operator shows <code>int a, c = 5, d;</code></td>
+<td>that is a declaration list; the real comma operator is explained separately</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>Int main()</code> (capital I)</td>
+<td><code>int main(void)</code></td>
+<td>1, 6</td>
+</tr>
+<tr>
+<td><code>while</code> example &quot;output <code>9 8 76</code>&quot;</td>
+<td>really <code>9 8 7 6</code> (the tab spaces were lost)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2D-array &quot;Method 2&quot; has no outer braces</td>
+<td><code>{ {0,1,2,3}, {4,5,6,7}, {8,9,10,11} }</code></td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>myArray[2][1]</code> &quot;refers to the element 8&quot;</td>
+<td>it is <strong>9</strong> (8 is <code>myArray[2][0]</code>)</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>scanf(&quot;%s&quot;, &amp;fullname)</code></td>
+<td><code>scanf(&quot;%s&quot;, fullname)</code> — no <code>&amp;</code> for an array</td>
+<td>4, 8</td>
+</tr>
+<tr>
+<td><code>gets()</code> to read strings</td>
+<td><code>gets</code> is unsafe and was removed in C11 → <code>fgets</code></td>
+<td>4, 8</td>
+</tr>
+<tr>
+<td><code>strcmp</code> prints <code>0 111 -32 32</code></td>
+<td>only the <strong>sign</strong> is guaranteed (other compilers print <code>0 1 -1 1</code>)</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>strdup</code> without <code>free</code></td>
+<td>the copy must be freed</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>strstr(mainString,'ello')</code> with single quotes</td>
+<td>the second argument is a string: <code>&quot;ello&quot;</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td>Stack described as &quot;first-in-last-out&quot;</td>
+<td>the usual name is <strong>LIFO</strong> (last in, first out)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="7-a-note-on-correctness">7. A note on correctness</h2>
+<p>Every complete program in the lessons and the solutions was <strong>compiled and run</strong>, and its output was compared automatically with the output printed in the text (about <strong>580 programs</strong> across the 10 chapters), and the &quot;predict the output&quot; answers were checked the same way. Errors found this way were corrected before publication — for example a miscounted vowel total and an impossible bank-withdrawal scenario.</p>
+<p>Two things to keep in mind:</p>
+<ul>
+<li>The programs were checked with <strong>GCC 14.2 (MinGW-w64, the compiler bundled with Code::Blocks)</strong> <em>and</em> with Microsoft's C compiler, on 64-bit Windows. In this setup <code>int</code> is 4 bytes, <code>long</code> is 4 bytes and <code>double</code> is 8 bytes. On 64-bit Linux and macOS <code>long</code> is 8 bytes; the lessons point this out wherever it matters (Chapter 2). A few lines depend on the machine and are marked as such (memory addresses, <code>strcmp</code> raw values, random numbers).</li>
+<li>The deliberately <strong>broken</strong> programs in the &quot;find and fix the bugs&quot; exercises were also compiled, to confirm that each one really fails (or misbehaves) in the way the exercise says.</li>
+</ul>
+<hr>
+<h2 id="8-after-this-course">8. After this course</h2>
+<p>You now know the whole core of C. Natural next steps: <strong>structures</strong> (<code>struct</code>), <strong>file input/output</strong>, <strong>dynamic data structures</strong> (linked lists, stacks, queues — Chapter 0's list), <strong>bit manipulation for embedded systems</strong>, then <strong>C++</strong> or <strong>Python</strong> with a much easier time. Build the project ideas in Chapter 9 — they are the best preparation.</p>
+<hr>
+<h2 id="9-for-maintainers-rebuilding-the-website">9. For maintainers: rebuilding the website</h2>
+<p>The pages in the <code>docs/</code> folder are generated from the Markdown files in <code>lessons/</code>, <code>solutions/</code> and <code>appendix/</code>. After editing any Markdown file, rebuild and commit:</p>
+<pre class="plain"><code>pip install -r tools/requirements.txt
+python tools/build_site.py</code></pre>
+<p>GitHub Pages serves the <code>docs/</code> folder of the <code>main</code> branch. (The small HTML comments such as <code>&lt;!--in: 5--&gt;</code> in the Markdown are invisible test markers; the site builder removes them.)</p>
+<p><em>Good luck — and remember: think first, code in small steps, test, and read the error messages.</em></p>
+
+    </article>
+
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-3" href="#coe-281-programming-and-problem-solving-1">COE 281 — Programming and Problem-Solving 1</a>
+<a class="toc-2" href="#1-the-course-map">1. The course map</a>
+<a class="toc-2" href="#2-how-every-chapter-is-organised">2. How every chapter is organised</a>
+<a class="toc-2" href="#3-how-to-study-the-method-that-works">3. How to study (the method that works)</a>
+<a class="toc-2" href="#4-setting-up-your-compiler">4. Setting up your compiler</a>
+<a class="toc-2" href="#5-conventions-used-in-the-files">5. Conventions used in the files</a>
+<a class="toc-2" href="#6-where-this-course-differs-from-the-slides-and-why">6. Where this course differs from the slides (and why)</a>
+<a class="toc-2" href="#7-a-note-on-correctness">7. A note on correctness</a>
+<a class="toc-2" href="#8-after-this-course">8. After this course</a>
+<a class="toc-2" href="#9-for-maintainers-rebuilding-the-website">9. For maintainers: rebuilding the website</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "";</script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

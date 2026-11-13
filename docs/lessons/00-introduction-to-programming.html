@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 0 — Introduction to Programming · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Chapter 0 — Introduction to Programming · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row on"><a class="nav-ch active" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="chapter-0-introduction-to-programming">Chapter 0 — Introduction to Programming</h1>
+<blockquote>
+<p><strong>Course:</strong> COE 281 — Programming and Problem-Solving 1<br>
+<strong>Based on slides:</strong> <code>00 Intro to Programming.pdf</code><br>
+<strong>Solutions:</strong> <a href="../solutions/00-introduction-to-programming.html">Solutions to Chapter 0</a></p>
+</blockquote>
+<hr>
+<h2 id="what-you-will-learn">What you will learn</h2>
+<p>By the end of this chapter you will be able to:</p>
+<ol>
+<li>Explain what programming (coding) is, in your own words.</li>
+<li>Tell the difference between low-level and high-level languages, and between a compiler and an interpreter.</li>
+<li>Name the main programming paradigms and say where C belongs.</li>
+<li>Explain why choosing the right <strong>data structure</strong> matters.</li>
+<li>Use simple <strong>problem-solving strategies</strong> (examples, similarities, working backwards, divide and conquer) to attack a problem <em>before</em> writing any code.</li>
+<li>Write a simple <strong>algorithm</strong> in pseudocode and trace it by hand.</li>
+</ol>
+<p>You will not write much C in this chapter. That is on purpose. A good programmer thinks first and types second.</p>
+<hr>
+<h2 id="01-what-is-computer-programming">0.1 What is computer programming?</h2>
+<p>A computer is an incredibly fast machine that has <strong>no common sense</strong>. It does <em>exactly</em> what it is told — nothing more, nothing less.</p>
+<p><strong>Computer programming</strong> is the art of telling a computer what to do through a set of instructions. Those written instructions are called <strong>computer code</strong>, or just <strong>code</strong>. That is why programming is also called <strong>coding</strong>.</p>
+<p>Think of a recipe for jollof rice:</p>
+<pre class="plain"><code>1. Heat the oil.
+2. Fry the onions for 3 minutes.
+3. Add tomato paste and stir.
+4. Add rice and water.
+5. Cover and cook for 25 minutes.</code></pre>
+<p>A cook can follow this recipe. A computer program is the same idea: <strong>a list of clear steps</strong>. The difference is that the computer needs the steps to be <em>far</em> more precise. If you tell a human &quot;add some salt&quot;, they understand. If you tell a computer &quot;add some salt&quot;, it freezes — <em>how much is &quot;some&quot;?</em></p>
+<blockquote class="callout tip">
+<p>💡 <strong>Remember:</strong> The computer is not clever. <strong>You</strong> are the clever one. Your job is to break a problem into steps so simple that even a machine with no common sense can follow them.</p>
+</blockquote>
+<p>To write code you need a <strong>programming language</strong> — a language the computer can be made to understand. In this course the language is <strong>C</strong>.</p>
+<hr>
+<h2 id="02-programming-languages">0.2 Programming languages</h2>
+<p>A <strong>programming language</strong> is a language that lets us write detailed instructions for a computer. With it we create programs that carry out <strong>algorithms</strong>.</p>
+<blockquote>
+<p><strong>Algorithm</strong> = a <em>finite</em> sequence of steps that, when followed, solves a particular problem.</p>
+</blockquote>
+<p>&quot;Finite&quot; means it must <em>end</em>. A recipe that says &quot;keep stirring forever&quot; is not an algorithm.</p>
+<p>Programming languages fall into two big families.</p>
+<h3 id="1-low-level-languages">1. Low-level languages</h3>
+<p>These are close to what the hardware understands.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it is</th>
+<th>Example of how it looks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Machine language</strong></td>
+<td>Strings of binary codes (0s and 1s) that the CPU understands <em>directly</em>. Not meant for humans to read.</td>
+<td><code>10110000 01100001</code></td>
+</tr>
+<tr>
+<td><strong>Assembly language</strong></td>
+<td>A short list of basic instructions using abbreviations (called <em>mnemonics</em>). Easier than machine code, but still hard to read.</td>
+<td><code>MOV AL, 61h</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-high-level-languages">2. High-level languages</h3>
+<p>These are designed for <strong>humans</strong>. You write with words and symbols that look a bit like English and mathematics. Example, in C:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
+</code></pre></div>
+<p>Even a beginner can guess what that line does.</p>
+<p>The slides ask you to research examples of high-level languages. Here is a starter list: <strong>C, C++, Java, Python, JavaScript, C#, PHP, Go, Rust, Swift, Kotlin</strong>.</p>
+<h3 id="the-translation-problem">The translation problem</h3>
+<p>The CPU only understands machine language. So code written in a high-level language <strong>must be translated</strong> into machine language before it can run. There are two ways to translate:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Compiler</strong></th>
+<th><strong>Interpreter</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How it works</td>
+<td>Translates the <strong>whole program</strong> at once, then you run the result.</td>
+<td>Translates and runs the program <strong>one line at a time</strong>.</td>
+</tr>
+<tr>
+<td>Real-life comparison</td>
+<td>Translating an entire book, then handing the finished book to readers.</td>
+<td>A translator standing next to two people, translating each sentence as it is spoken.</td>
+</tr>
+<tr>
+<td>Speed of the finished program</td>
+<td>Usually <strong>faster</strong></td>
+<td>Usually slower</td>
+</tr>
+<tr>
+<td>Error messages</td>
+<td>You see errors from the whole program <em>before</em> it runs.</td>
+<td>You see an error only when the interpreter reaches that line.</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td><strong>C</strong>, C++, Rust, Go</td>
+<td>Python, JavaScript, PHP (and many others)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>C is a compiled language.</strong> The flow looks like this:</p>
+<pre class="plain"><code> your code           compiler            executable file            output
+┌───────────┐     ┌───────────┐       ┌────────────────┐        ┌──────────────┐
+│ hello.c   │ ──▶ │ gcc / cl  │ ──▶   │ hello.exe      │  ──▶   │ Hello, World!│
+│ (source)  │     │ (translator)│     │ (machine code) │        │              │
+└───────────┘     └───────────┘       └────────────────┘        └──────────────┘</code></pre>
+<p>Generally, compiled languages are used to build software applications (operating systems, games, device software), while interpreted languages are often used for scripts, such as those that generate the content of dynamic websites. Real life has many exceptions — some languages do a bit of both — so treat this as a rule of thumb, not a law.</p>
+<hr>
+<h2 id="03-programming-paradigms">0.3 Programming paradigms</h2>
+<p>A <strong>programming paradigm</strong> is a <em>style</em> of solving problems — a family of tools and techniques that follow a similar approach. The paradigm decides how your code is structured, how it runs, and how it handles data.</p>
+<p>There are two main paradigms.</p>
+<p><strong>Imperative</strong> — you tell the computer <strong>how</strong> to do it, step by step, by changing the state (the values) of variables. Focus: <em>how the program operates.</em></p>
+<p><strong>Declarative</strong> — you tell the computer <strong>what</strong> you want, and let the language figure out how. Focus: <em>what must be done</em>.</p>
+<pre class="plain"><code>                        Programming Paradigms
+                 ┌──────────────┴──────────────┐
+            Imperative                     Declarative
+         ┌───────┴───────┐              ┌───────┴───────┐
+    Procedural     Object-Oriented    Functional        Logic
+    (routines)     (objects/classes)  (math functions)  (logical problems)
+    e.g. C, Pascal  e.g. Java, Python  e.g. Lisp         e.g. Prolog</code></pre>
+<p><strong>C is a procedural language</strong> (part of the imperative family). You organise your program into <strong>procedures</strong> — in C we call them <strong>functions</strong> — and run them one after another. You will meet functions in Chapter 6.</p>
+<blockquote class="callout tip">
+<p>💡 <strong>Analogy.</strong> <em>Imperative:</em> &quot;Go straight, turn left at the junction, walk 200 metres, enter the blue gate.&quot; <em>Declarative:</em> &quot;Take me to Kumasi Central Market.&quot; In the first you give every step; in the second you only say where you want to end up.</p>
+</blockquote>
+<hr>
+<h2 id="04-data-structures">0.4 Data structures</h2>
+<p>Every program works with <strong>data</strong>: names, prices, scores, temperatures. How you <em>arrange</em> that data has a huge effect on how simple and fast your solution is.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Inappropriate choice leads to…</th>
+<th>Appropriate choice leads to…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clumsiness</td>
+<td>Simplicity</td>
+</tr>
+<tr>
+<td>Inefficiency</td>
+<td>Transparency (code that is easy to understand)</td>
+</tr>
+<tr>
+<td>Difficulty</td>
+<td>Efficiency</td>
+</tr>
+</tbody>
+</table></div>
+<p>When choosing a data structure, ask yourself:</p>
+<ul>
+<li>Can intermediate results be arranged so I can reach them quickly and avoid repeating calculations?</li>
+<li>Can I <strong>search</strong> and <strong>update</strong> the data easily?</li>
+<li>How much <strong>memory</strong> does it need?</li>
+<li>Does the problem look like a <em>common</em> data structure I already know?</li>
+<li>Can I recover data from earlier steps if I need it?</li>
+</ul>
+<h3 id="common-data-structures">Common data structures</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Idea</th>
+<th>Everyday picture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Array</strong></td>
+<td>Many items of the <strong>same type</strong>, side by side, each with a position number</td>
+<td>A row of numbered lockers</td>
+</tr>
+<tr>
+<td><strong>Linked list</strong></td>
+<td>Items linked to each other by <strong>pointers</strong> (each item knows where the next one is)</td>
+<td>A treasure hunt: each clue tells you where the next clue is</td>
+</tr>
+<tr>
+<td><strong>Stack</strong></td>
+<td><strong>Last in, first out (LIFO).</strong> The last item added is the first removed</td>
+<td>A pile of plates — you take the top plate first</td>
+</tr>
+<tr>
+<td><strong>Queue</strong></td>
+<td><strong>First in, first out (FIFO).</strong> The first item added is the first removed</td>
+<td>People lining up at a bank: first to arrive is first served</td>
+</tr>
+<tr>
+<td><strong>Tree</strong></td>
+<td><strong>Hierarchical</strong> structure — a parent with children</td>
+<td>A family tree, or folders inside folders</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout note">
+<p>📝 <strong>Note on the slides.</strong> The slides write the stack rule as &quot;first-in-last-out&quot;. It is the same rule viewed from the other side: the <em>first</em> plate you put down ends up at the bottom and is the <em>last</em> to leave. The usual name is <strong>LIFO — last in, first out</strong>.</p>
+</blockquote>
+<p>In this course you will actually build with <strong>arrays</strong> (Chapter 7). The others come in later courses.</p>
+<hr>
+<h2 id="05-problem-solving">0.5 Problem-solving</h2>
+<p>Here is an uncomfortable truth: <strong>problem-solving cannot be turned into a machine-like recipe.</strong> There is no single universal method. Different strategies work for different people in different situations.</p>
+<p>But there <em>are</em> strategies that help. And the most important ingredient of all is <strong>practice</strong>.</p>
+<h3 id="step-1-define-the-problem">Step 1 — Define the problem</h3>
+<p>Before anything else, make sure you understand what you are being asked. The <strong>problem definition</strong> phase focuses on <em>what must be done</em>, <strong>not how</strong>.</p>
+<pre class="plain"><code>              Problem Statement
+              /       |       \
+          Task 1    Task 2    Task 3</code></pre>
+<p>A big problem statement is usually a bundle of small tasks.</p>
+<p><strong>Example from the slides:</strong> <em>&quot;Write an algorithm to determine if an integer has 3 digits.&quot;</em></p>
+<p>Ask clarifying questions:</p>
+<ul>
+<li>What is the <strong>input</strong>? An integer.</li>
+<li>What is the <strong>output</strong>? A yes/no answer.</li>
+<li>Are negative numbers allowed? Is <code>-456</code> a 3-digit number? (Let us say yes: the digits are 4, 5, 6.)</li>
+<li>What about <code>0</code>, <code>99</code>, <code>1000</code>? (They do <strong>not</strong> have exactly 3 digits.)</li>
+</ul>
+<p>Only now are we ready to think about <em>how</em>.</p>
+<h3 id="strategy-a-use-specific-examples">Strategy A — Use specific examples</h3>
+<p>Pick real numbers and solve the problem by hand. To find the maximum of a set, take <code>{12, 7, 25, 9}</code> and just find it. You will notice what <em>you</em> do: you keep the biggest so far and compare it with each new number. That is the mechanism of your algorithm.</p>
+<h3 id="strategy-b-find-similarities-with-problems-you-have-solved">Strategy B — Find similarities with problems you have solved</h3>
+<p>&quot;Have I seen something like this before?&quot; Summing the numbers 1 to 10 is very close to multiplying the numbers 1 to 10 (factorial). Change <code>+</code> to <code>×</code> and you are almost done.</p>
+<blockquote class="callout warn">
+<p>⚠️ <strong>Caution:</strong> Do not let past experience make you lazy. Sometimes a problem <em>looks</em> like an old one but has a twist. Look at a problem from several angles.</p>
+</blockquote>
+<h3 id="strategy-c-work-backwards-from-the-solution">Strategy C — Work backwards from the solution</h3>
+<p>Start from the answer and undo the steps. Or guess an answer and test whether it fits.</p>
+<p><em>Example:</em> &quot;I think of a number, multiply it by 3, subtract 4, and get 20.&quot; Work backwards: <code>20 + 4 = 24</code>, then <code>24 ÷ 3 = 8</code>. The number was <strong>8</strong>.</p>
+<h3 id="strategy-d-divide-and-conquer">Strategy D — Divide and conquer</h3>
+<p>Break the original problem into <strong>smaller sub-problems</strong> that are easier to solve, then combine the answers. Big programs are built this way — each small piece becomes a <em>function</em> (Chapter 6). The idea is used heavily in sorting, searching and selection algorithms.</p>
+<blockquote>
+<p><em>Example:</em> Building a student-results program. Sub-problems: (1) read the scores, (2) calculate the average, (3) assign a grade, (4) print the report. Each is simple on its own.</p>
+</blockquote>
+<h3 id="always-write-things-down">Always write things down</h3>
+<p>Whatever strategy you try, <strong>take notes</strong> so you do not go around in circles. Document the path you took to solve the problem; it will be of enormous benefit later. Keep a &quot;programming notebook&quot;.</p>
+<hr>
+<h2 id="06-writing-an-algorithm">0.6 Writing an algorithm</h2>
+<p>We usually write an algorithm <em>before</em> the code, in one of two forms.</p>
+<h3 id="pseudocode">Pseudocode</h3>
+<p>Informal, English-like steps. There is no strict grammar — it just has to be clear. We use words like <code>START</code>, <code>INPUT</code>, <code>SET</code>, <code>IF … THEN … ELSE</code>, <code>WHILE</code>, <code>PRINT</code>, <code>END</code>.</p>
+<p><strong>Algorithm: does an integer have 3 digits?</strong></p>
+<pre class="plain"><code>START
+  INPUT n
+  IF n &lt; 0 THEN
+      SET n = -n              (make it positive)
+  END IF
+  IF n &gt;= 100 AND n &lt;= 999 THEN
+      PRINT &quot;Yes, 3 digits&quot;
+  ELSE
+      PRINT &quot;No&quot;
+  END IF
+END</code></pre>
+<p><strong>Algorithm: find the maximum of a list of numbers</strong></p>
+<pre class="plain"><code>START
+  INPUT the first number
+  SET max = that number
+  WHILE there are more numbers:
+      INPUT next number
+      IF next number &gt; max THEN
+          SET max = next number
+      END IF
+  END WHILE
+  PRINT max
+END</code></pre>
+<h3 id="flowcharts">Flowcharts</h3>
+<p>A flowchart draws the same logic with shapes and arrows.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rounded box (oval)</td>
+<td><strong>Start / End</strong></td>
+</tr>
+<tr>
+<td>Parallelogram</td>
+<td><strong>Input / Output</strong></td>
+</tr>
+<tr>
+<td>Rectangle</td>
+<td><strong>Process</strong> (a calculation or assignment)</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td><strong>Decision</strong> (yes/no question)</td>
+</tr>
+<tr>
+<td>Arrows</td>
+<td>The <strong>flow</strong> (order of steps)</td>
+</tr>
+</tbody>
+</table></div>
+<pre class="plain"><code>        ( START )
+            │
+      /  INPUT n  /
+            │
+        ◇ n &lt; 0 ? ◇───Yes──▶ [ n = -n ]
+            │ No                   │
+            ◀──────────────────────┘
+            │
+   ◇ n &gt;= 100 AND n &lt;= 999 ?◇
+      │Yes              │No
+ /PRINT &quot;Yes&quot;/      /PRINT &quot;No&quot;/
+      │                 │
+      └───────┬─────────┘
+          ( END )</code></pre>
+<h3 id="tracing-an-algorithm-by-hand">Tracing an algorithm by hand</h3>
+<p>A <strong>trace table</strong> is how you <em>test</em> an algorithm with real numbers before coding it. Each row is one step; each column is a variable.</p>
+<p>Algorithm: <em>sum the numbers 1 to 4</em></p>
+<pre class="plain"><code>1. SET total = 0
+2. SET count = 1
+3. WHILE count &lt;= 4
+       total = total + count
+       count = count + 1
+4. PRINT total</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>step</th>
+<th>count</th>
+<th>count &lt;= 4 ?</th>
+<th>total after the step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td>1</td>
+<td>yes</td>
+<td>0</td>
+</tr>
+<tr>
+<td>loop 1</td>
+<td>1 → 2</td>
+<td>yes</td>
+<td>0 + 1 = <strong>1</strong></td>
+</tr>
+<tr>
+<td>loop 2</td>
+<td>2 → 3</td>
+<td>yes</td>
+<td>1 + 2 = <strong>3</strong></td>
+</tr>
+<tr>
+<td>loop 3</td>
+<td>3 → 4</td>
+<td>yes</td>
+<td>3 + 3 = <strong>6</strong></td>
+</tr>
+<tr>
+<td>loop 4</td>
+<td>4 → 5</td>
+<td>yes</td>
+<td>6 + 4 = <strong>10</strong></td>
+</tr>
+<tr>
+<td>check</td>
+<td>5</td>
+<td><strong>no</strong> — stop</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<p>Output: <code>10</code>. ✔</p>
+<h3 id="a-sneak-peek-from-pseudocode-to-c">A sneak peek: from pseudocode to C</h3>
+<p>Do not worry about the C syntax yet — you will learn every piece in the coming chapters. But look how closely the C version follows the pseudocode. This is how the &quot;3 digits&quot; algorithm looks as a real program:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter an integer: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="p">;</span><span class="w">                    </span><span class="cm">/* make it positive first */</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">999</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Yes, 3 digits</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"No</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter an integer: 456
+Yes, 3 digits</code></pre></div>
+<p>Run it again with <code>-99</code>, <code>1000</code>, <code>-100</code> and <code>0</code> and compare with what <em>you</em> predicted from the pseudocode. (Results: <code>No</code>, <code>No</code>, <code>Yes</code>, <code>No</code>.)</p>
+<hr>
+<h2 id="07-the-programming-process">0.7 The programming process</h2>
+<p>Real programmers follow a loop like this:</p>
+<pre class="plain"><code> 1. Understand the problem  ──▶ 2. Plan (algorithm)  ──▶ 3. Write the code
+          ▲                                                       │
+          │                                                       ▼
+ 6. Fix (debug) ◀── 5. Test with many inputs ◀── 4. Compile &amp; run</code></pre>
+<p>You will meet three kinds of mistakes (&quot;bugs&quot;):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Error type</th>
+<th>When you meet it</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Syntax error</strong></td>
+<td>At compile time. The compiler refuses to build your program.</td>
+<td>Missing semicolon</td>
+</tr>
+<tr>
+<td><strong>Runtime error</strong></td>
+<td>While the program is running. It crashes.</td>
+<td>Dividing by zero</td>
+</tr>
+<tr>
+<td><strong>Logic error</strong></td>
+<td>The program runs but gives the <strong>wrong answer</strong>. The hardest to find.</td>
+<td>Using <code>+</code> where you needed <code>-</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout tip">
+<p>💡 The best defence against logic errors is what you just learned: <strong>trace your algorithm by hand with real numbers before and after you code it.</strong></p>
+</blockquote>
+<hr>
+<h2 id="08-why-programming-matters-in-engineering">0.8 Why programming matters in engineering</h2>
+<p>Programming lets computers solve problems and perform tasks efficiently. In engineering it is used to:</p>
+<ul>
+<li><strong>Automate tasks</strong> — e.g. a script that processes 10,000 sensor readings.</li>
+<li><strong>Model systems</strong> — e.g. simulate a bridge under load before building it.</li>
+<li><strong>Build applications</strong> — e.g. mobile apps, control software.</li>
+</ul>
+<p>Typical application areas: <strong>software engineering, artificial intelligence, embedded systems, simulations, databases</strong>, and more.</p>
+<hr>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Programming = giving a computer a precise list of instructions (code) in a programming language.</li>
+<li>An <strong>algorithm</strong> is a finite, ordered list of steps that solves a problem.</li>
+<li><strong>Low-level</strong> = machine and assembly. <strong>High-level</strong> = human-friendly (C, Python, Java…).</li>
+<li><strong>Compiler</strong> translates the whole program first (C is compiled). <strong>Interpreter</strong> translates line by line.</li>
+<li>C is <strong>procedural</strong>, which is part of the <strong>imperative</strong> paradigm.</li>
+<li>A good <strong>data structure</strong> makes a solution simple and efficient: arrays, linked lists, stacks (LIFO), queues (FIFO), trees.</li>
+<li>Problem-solving: <strong>define → use examples → look for similarities → work backwards → divide and conquer.</strong> Write notes. Practise.</li>
+<li>Pseudocode and flowcharts let you design and test on paper <em>before</em> coding.</li>
+<li>Three kinds of bugs: syntax, runtime, logic.</li>
+</ul>
+<hr>
+<h1 id="exercises-chapter-0">Exercises — Chapter 0</h1>
+<p><em>Try each one on paper before looking at the solutions. No computer is needed in this chapter.</em></p>
+<h2 id="part-a-quick-check">Part A — Quick check</h2>
+<p id="ex-0-1"><strong>Ex 0.1</strong> In one sentence, what is computer programming?</p>
+<p id="ex-0-2"><strong>Ex 0.2</strong> What is an algorithm? Why does it have to be <em>finite</em>?</p>
+<p id="ex-0-3"><strong>Ex 0.3</strong> Match each term (1–5) with its description (a–e).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Term</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Machine language</td>
+<td>a</td>
+<td>Translates a whole program at once</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Assembly language</td>
+<td>b</td>
+<td>Closest to human language; written with words and symbols</td>
+</tr>
+<tr>
+<td>3</td>
+<td>High-level language</td>
+<td>c</td>
+<td>Binary codes the CPU understands directly</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Compiler</td>
+<td>d</td>
+<td>Translates and runs a program one line at a time</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Interpreter</td>
+<td>e</td>
+<td>Short abbreviations (like <code>MOV</code>, <code>ADD</code>) for basic instructions</td>
+</tr>
+</tbody>
+</table></div>
+<p id="ex-0-4"><strong>Ex 0.4</strong> True or false? Give a reason for each <em>false</em> answer.</p>
+<ol>
+<li>Machine language is designed to be easy for humans to read.</li>
+<li>A program written in a high-level language can run directly on the CPU without any translation.</li>
+<li>C is an interpreted language.</li>
+<li>An interpreter translates the whole program before running it.</li>
+<li>Programs written in compiled languages usually run faster than interpreted ones.</li>
+<li>C is a procedural language.</li>
+<li>In a declarative language you focus on <em>how</em> each step is done.</li>
+<li>A stack removes the item that was added <strong>first</strong>.</li>
+</ol>
+<p id="ex-0-5"><strong>Ex 0.5</strong> Name two other compiled languages and two interpreted languages (besides C).</p>
+<p id="ex-0-6"><strong>Ex 0.6</strong> Put each language in a paradigm box (procedural / object-oriented / functional / logic): <strong>C, Java, Lisp, Prolog, Pascal, Python.</strong></p>
+<p id="ex-0-7"><strong>Ex 0.7</strong> Which data structure fits best?</p>
+<ol>
+<li>The &quot;undo&quot; button in a text editor.</li>
+<li>Customers waiting to be served at a pharmacy.</li>
+<li>The marks of 60 students in one test.</li>
+<li>The folders and sub-folders on your laptop.</li>
+<li>A music playlist where every song stores <em>which song plays next</em>.</li>
+</ol>
+<p id="ex-0-8"><strong>Ex 0.8</strong> List three questions you should ask when choosing a data structure.</p>
+<p id="ex-0-9"><strong>Ex 0.9</strong> The slides say the <em>problem-definition</em> phase focuses on <em>what</em> must be done and not <em>how</em>. Why is it a bad idea to jump straight to &quot;how&quot;?</p>
+<p id="ex-0-10"><strong>Ex 0.10</strong> Name the four problem-solving strategies from this chapter, and give a one-line meaning for each.</p>
+<h2 id="part-b-trace-the-algorithm">Part B — Trace the algorithm</h2>
+<p id="ex-0-11"><strong>Ex 0.11</strong> Trace this algorithm and give the output.</p>
+<pre class="plain"><code>1. SET a = 2
+2. SET b = 5
+3. SET a = a + b
+4. SET b = a - b
+5. SET a = a - b
+6. PRINT a, b</code></pre>
+<p id="ex-0-12"><strong>Ex 0.12</strong> Trace this algorithm with the input list <code>7, 12, 5, 20, 9</code>. Fill in a trace table and say what the algorithm finds.</p>
+<pre class="plain"><code>1. INPUT first number; SET m = first number
+2. FOR each remaining number x:
+       IF x &gt; m THEN SET m = x
+3. PRINT m</code></pre>
+<p id="ex-0-13"><strong>Ex 0.13</strong> Trace with <code>n = 4096</code> and state what the algorithm computes.</p>
+<pre class="plain"><code>1. SET count = 0
+2. WHILE n &gt; 0:
+       SET n = n DIV 10        (DIV = whole-number division, e.g. 4096 DIV 10 = 409)
+       SET count = count + 1
+3. PRINT count</code></pre>
+<p id="ex-0-14"><strong>Ex 0.14</strong> Trace with <code>x = 17</code>. What does this algorithm compute? (Hint: think of what is left over.)</p>
+<pre class="plain"><code>1. WHILE x &gt;= 5:
+       SET x = x - 5
+2. PRINT x</code></pre>
+<p id="ex-0-15"><strong>Ex 0.15</strong> Trace with <code>n = 6</code>. What famous list of numbers does it print?</p>
+<pre class="plain"><code>1. SET a = 0
+2. SET b = 1
+3. REPEAT n times:
+       PRINT a
+       SET temp = a + b
+       SET a = b
+       SET b = temp</code></pre>
+<h2 id="part-c-find-the-bug-in-algorithms">Part C — Find the bug (in algorithms)</h2>
+<p id="ex-0-16"><strong>Ex 0.16</strong> The algorithm should output the <strong>average</strong> of three numbers but gives wrong answers. Find the mistake and correct it.</p>
+<pre class="plain"><code>INPUT a, b, c
+SET average = a + b + c / 3
+PRINT average</code></pre>
+<p id="ex-0-17"><strong>Ex 0.17</strong> This algorithm should find the <strong>largest</strong> number in a list. It fails for the list <code>-8, -3, -15</code>. Why? Fix it.</p>
+<pre class="plain"><code>SET max = 0
+FOR each number x in the list:
+    IF x &gt; max THEN SET max = x
+PRINT max</code></pre>
+<p id="ex-0-18"><strong>Ex 0.18</strong> This algorithm should sum 1 to N but it never ends. Why? Fix it.</p>
+<pre class="plain"><code>INPUT N
+SET total = 0
+SET i = 1
+WHILE i &lt;= N:
+    SET total = total + i
+PRINT total</code></pre>
+<p id="ex-0-19"><strong>Ex 0.19</strong> This algorithm should say whether <code>n</code> is even. It is wrong. Find the problem.</p>
+<pre class="plain"><code>INPUT n
+IF n / 2 = 0 THEN
+    PRINT &quot;even&quot;
+ELSE
+    PRINT &quot;odd&quot;</code></pre>
+<h2 id="part-d-write-the-algorithm-pseudocode">Part D — Write the algorithm (pseudocode)</h2>
+<p id="ex-0-20"><strong>Ex 0.20</strong> Read a temperature in °C and print it in °F. (<code>F = C × 9 / 5 + 32</code>)</p>
+<p id="ex-0-21"><strong>Ex 0.21</strong> Read three numbers and print the <strong>largest</strong>.</p>
+<p id="ex-0-22"><strong>Ex 0.22</strong> Read a year and say whether it is a <strong>leap year</strong>. (Leap if divisible by 4, except century years, which must be divisible by 400. So 2024 and 2000 are leap; 1900 and 2023 are not.)</p>
+<p id="ex-0-23"><strong>Ex 0.23</strong> Read <code>N</code> and print the sum <code>1 + 2 + … + N</code>.</p>
+<p id="ex-0-24"><strong>Ex 0.24</strong> Read <code>N</code> and print <code>N!</code> (N factorial = 1 × 2 × … × N).</p>
+<p id="ex-0-25"><strong>Ex 0.25</strong> Read an integer <code>n &gt; 1</code> and say whether it is <strong>prime</strong>.</p>
+<p id="ex-0-26"><strong>Ex 0.26</strong> Read a positive integer and print its digits <strong>reversed</strong> (<code>1234</code> → <code>4321</code>).</p>
+<p id="ex-0-27"><strong>Ex 0.27</strong> A shop gives a <strong>10% discount</strong> when the total bill is more than GH₵200. Read the total and print the amount to pay.</p>
+<p id="ex-0-28"><strong>Ex 0.28</strong> Read an exam score (0–100) and print the grade: A (80–100), B (70–79), C (60–69), D (50–59), F (below 50).</p>
+<p id="ex-0-29"><strong>Ex 0.29</strong> Write the steps (with decisions) for a person withdrawing cash from an ATM.</p>
+<p id="ex-0-30"><strong>Ex 0.30</strong> Draw a flowchart for Ex 0.21 (largest of three numbers).</p>
+<h2 id="part-e-challenges">Part E — Challenges</h2>
+<p id="ex-0-31"><strong>Ex 0.31 (Divide and conquer)</strong> You have 8 coins that look identical. One is <strong>lighter</strong> than the rest. You have a balance scale (no weights). What is the <em>smallest</em> number of weighings that always finds the light coin? Describe your method.</p>
+<p id="ex-0-32"><strong>Ex 0.32 (Divide and conquer)</strong> I am thinking of a whole number between 1 and 100. After each guess I tell you &quot;higher&quot;, &quot;lower&quot; or &quot;correct&quot;. Describe a strategy that <strong>always</strong> wins in at most 7 guesses.</p>
+<p id="ex-0-33"><strong>Ex 0.33 (Work backwards)</strong> I think of a number, add 9, multiply by 4, subtract 6, and the result is 58. What was my number?</p>
+<p id="ex-0-34"><strong>Ex 0.34 (Similarities)</strong> You already have an algorithm that adds the numbers 1 to N. Explain how you would change it (in as few words as possible) to (a) multiply the numbers 1 to N, and (b) add only the <strong>even</strong> numbers from 1 to N.</p>
+<h2 id="part-f-research-tasks-from-the-slides-further-reading">Part F — Research tasks (from the slides' &quot;further reading&quot;)</h2>
+<p id="ex-0-35"><strong>Ex 0.35</strong> Research and list <strong>five</strong> examples of high-level languages and say for each whether it is usually compiled or interpreted.</p>
+<p id="ex-0-36"><strong>Ex 0.36</strong> Write half a page on the differences between a compiler and an interpreter. Include one advantage and one disadvantage of each.</p>
+<p id="ex-0-37"><strong>Ex 0.37</strong> Find <strong>two</strong> real-world products or systems (a phone OS, a game console, a car, a hospital machine…) that rely on C code. Say what part of the system C is used for.</p>
+<hr>
+<p><em>End of Chapter 0. Next: <a href="01-c-basics.html">Chapter 1 — C Basics</a></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../solutions/00-introduction-to-programming.html">Solutions to Chapter 0  →</a>
+<div class="pager-row">
+<span></span>
+<a class="pager-next" href="../lessons/01-c-basics.html"><small>Next</small>Chapter 1 — C Basics</a>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#what-you-will-learn">What you will learn</a>
+<a class="toc-2" href="#01-what-is-computer-programming">0.1 What is computer programming?</a>
+<a class="toc-2" href="#02-programming-languages">0.2 Programming languages</a>
+<a class="toc-3" href="#1-low-level-languages">1. Low-level languages</a>
+<a class="toc-3" href="#2-high-level-languages">2. High-level languages</a>
+<a class="toc-3" href="#the-translation-problem">The translation problem</a>
+<a class="toc-2" href="#03-programming-paradigms">0.3 Programming paradigms</a>
+<a class="toc-2" href="#04-data-structures">0.4 Data structures</a>
+<a class="toc-3" href="#common-data-structures">Common data structures</a>
+<a class="toc-2" href="#05-problem-solving">0.5 Problem-solving</a>
+<a class="toc-3" href="#step-1-define-the-problem">Step 1 — Define the problem</a>
+<a class="toc-3" href="#strategy-a-use-specific-examples">Strategy A — Use specific examples</a>
+<a class="toc-3" href="#strategy-b-find-similarities-with-problems-you-have-solved">Strategy B — Find similarities with problems you have solved</a>
+<a class="toc-3" href="#strategy-c-work-backwards-from-the-solution">Strategy C — Work backwards from the solution</a>
+<a class="toc-3" href="#strategy-d-divide-and-conquer">Strategy D — Divide and conquer</a>
+<a class="toc-3" href="#always-write-things-down">Always write things down</a>
+<a class="toc-2" href="#06-writing-an-algorithm">0.6 Writing an algorithm</a>
+<a class="toc-3" href="#pseudocode">Pseudocode</a>
+<a class="toc-3" href="#flowcharts">Flowcharts</a>
+<a class="toc-3" href="#tracing-an-algorithm-by-hand">Tracing an algorithm by hand</a>
+<a class="toc-3" href="#a-sneak-peek-from-pseudocode-to-c">A sneak peek: from pseudocode to C</a>
+<a class="toc-2" href="#07-the-programming-process">0.7 The programming process</a>
+<a class="toc-2" href="#08-why-programming-matters-in-engineering">0.8 Why programming matters in engineering</a>
+<a class="toc-2" href="#key-takeaways">Key takeaways</a>
+<a class="toc-2" href="#part-a-quick-check">Part A — Quick check</a>
+<a class="toc-2" href="#part-b-trace-the-algorithm">Part B — Trace the algorithm</a>
+<a class="toc-2" href="#part-c-find-the-bug-in-algorithms">Part C — Find the bug (in algorithms)</a>
+<a class="toc-2" href="#part-d-write-the-algorithm-pseudocode">Part D — Write the algorithm (pseudocode)</a>
+<a class="toc-2" href="#part-e-challenges">Part E — Challenges</a>
+<a class="toc-2" href="#part-f-research-tasks-from-the-slides-further-reading">Part F — Research tasks (from the slides&#x27; &quot;further reading&quot;)</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

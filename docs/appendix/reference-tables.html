@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference Tables · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Reference Tables · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link active" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="reference-tables">Reference Tables</h1>
+<blockquote>
+<p>Quick-look tables for the whole course. For explanations, see the chapters.</p>
+</blockquote>
+<hr>
+<h2 id="1-the-32-keywords-of-standard-c">1. The 32 keywords of standard C</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auto</code></td>
+<td><code>break</code></td>
+<td><code>case</code></td>
+<td><code>char</code></td>
+<td><code>const</code></td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td><code>default</code></td>
+<td><code>do</code></td>
+<td><code>double</code></td>
+<td><code>else</code></td>
+</tr>
+<tr>
+<td><code>enum</code></td>
+<td><code>extern</code></td>
+<td><code>float</code></td>
+<td><code>for</code></td>
+<td><code>goto</code></td>
+</tr>
+<tr>
+<td><code>if</code></td>
+<td><code>int</code></td>
+<td><code>long</code></td>
+<td><code>register</code></td>
+<td><code>return</code></td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td><code>signed</code></td>
+<td><code>sizeof</code></td>
+<td><code>static</code></td>
+<td><code>struct</code></td>
+</tr>
+<tr>
+<td><code>switch</code></td>
+<td><code>typedef</code></td>
+<td><code>union</code></td>
+<td><code>unsigned</code></td>
+<td><code>void</code></td>
+</tr>
+<tr>
+<td><code>volatile</code></td>
+<td><code>while</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>(Newer standards add <code>inline</code>, <code>restrict</code>, <code>_Bool</code> and a few others.)</p>
+<hr>
+<h2 id="2-escape-sequences">2. Escape sequences</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sequence</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td>newline</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>horizontal tab</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>backslash</td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td>double quote</td>
+</tr>
+<tr>
+<td><code>\'</code></td>
+<td>single quote</td>
+</tr>
+<tr>
+<td><code>\?</code></td>
+<td>question mark</td>
+</tr>
+<tr>
+<td><code>\0</code></td>
+<td>null character (ends a string)</td>
+</tr>
+<tr>
+<td><code>\a</code></td>
+<td>alert (beep)</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>backspace</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>form feed</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>carriage return (back to the start of the line)</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>vertical tab</td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>(in a <code>printf</code> format) a percent sign</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="3-printf-format-specifiers">3. <code>printf</code> format specifiers</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Prints</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%d</code> / <code>%i</code></td>
+<td>signed decimal integer</td>
+<td><code>392</code></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>unsigned decimal integer</td>
+<td><code>7235</code></td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td>unsigned octal</td>
+<td><code>610</code></td>
+</tr>
+<tr>
+<td><code>%x</code> / <code>%X</code></td>
+<td>unsigned hexadecimal (lower / upper case)</td>
+<td><code>7fa</code> / <code>7FA</code></td>
+</tr>
+<tr>
+<td><code>%f</code></td>
+<td>decimal floating point</td>
+<td><code>392.650000</code></td>
+</tr>
+<tr>
+<td><code>%e</code> / <code>%E</code></td>
+<td>scientific notation</td>
+<td><code>3.926500e+02</code></td>
+</tr>
+<tr>
+<td><code>%g</code> / <code>%G</code></td>
+<td>the shorter of <code>%f</code> and <code>%e</code></td>
+<td><code>392.65</code></td>
+</tr>
+<tr>
+<td><code>%a</code> / <code>%A</code></td>
+<td>hexadecimal floating point</td>
+<td><code>-0xc.90fep-2</code></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>a character</td>
+<td><code>a</code></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>a string</td>
+<td><code>sample</code></td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td>a pointer (address)</td>
+<td><code>0061FE1C</code></td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>prints nothing; stores the count of characters printed so far</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>a literal <code>%</code></td>
+<td><code>%</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shape of a specifier:</strong> <code>%[flags][width][.precision][length]type</code></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Options</th>
+<th>Example → result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flags</td>
+<td><code>-</code> left-align · <code>0</code> zero-pad · <code>+</code> show sign · (space)</td>
+<td><code>%-5d</code> → <code>42···</code> · <code>%05d</code> → <code>00042</code> · <code>%+d</code> → <code>+42</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td>minimum field width</td>
+<td><code>%5d</code> → <code>···42</code></td>
+</tr>
+<tr>
+<td>precision</td>
+<td>digits after <code>.</code> (floats) or max characters (strings)</td>
+<td><code>%.2f</code> → <code>3.14</code> · <code>%.3s</code> → <code>Kum</code></td>
+</tr>
+<tr>
+<td>length</td>
+<td><code>h</code> short · <code>l</code> long (and <code>double</code> in <code>scanf</code>) · <code>ll</code> long long · <code>z</code> size_t</td>
+<td><code>%ld</code> · <code>%lld</code> · <code>%lf</code> · <code>%zu</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>width/precision taken from an argument</td>
+<td><code>%*d</code> with <code>(8, 42)</code> → <code>······42</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="4-scanf-format-specifiers-differences-to-remember">4. <code>scanf</code> format specifiers (differences to remember)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th><code>scanf</code></th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>%d</code></td>
+<td>needs <code>&amp;x</code></td>
+</tr>
+<tr>
+<td><code>unsigned</code></td>
+<td><code>%u</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>long</code> / <code>long long</code></td>
+<td><code>%ld</code> / <code>%lld</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>%f</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>double</code></strong></td>
+<td><strong><code>%lf</code></strong></td>
+<td>not <code>%f</code>!</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><code>&quot; %c&quot;</code></td>
+<td>the space skips leftover whitespace</td>
+</tr>
+<tr>
+<td>word</td>
+<td><code>%s</code> / <code>%49s</code></td>
+<td>no <code>&amp;</code>; stops at whitespace</td>
+</tr>
+<tr>
+<td>line</td>
+<td><code>%[^\n]</code></td>
+<td>everything up to the newline (prefer <code>fgets</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>scanf</code> returns the number of items successfully read.</p>
+<hr>
+<h2 id="5-operator-precedence-and-associativity">5. Operator precedence and associativity</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Operators</th>
+<th>Associativity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (highest)</td>
+<td><code>()</code> <code>[]</code> <code>.</code> <code>-&gt;</code> postfix <code>++</code> <code>--</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>2</td>
+<td>prefix <code>++</code> <code>--</code>, unary <code>+</code> <code>-</code>, <code>!</code>, <code>~</code>, <code>(type)</code>, <code>*</code> (dereference), <code>&amp;</code> (address-of), <code>sizeof</code></td>
+<td>right → left</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>*</code> <code>/</code> <code>%</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>+</code> <code>-</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>==</code> <code>!=</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>&amp;</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>^</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>|</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>&amp;&amp;</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>||</code></td>
+<td>left → right</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>?:</code></td>
+<td>right → left</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>&lt;&lt;=</code> <code>&gt;&gt;=</code> <code>&amp;=</code> <code>^=</code> <code>|=</code></td>
+<td>right → left</td>
+</tr>
+<tr>
+<td>15 (lowest)</td>
+<td><code>,</code></td>
+<td>left → right</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="6-typical-limits-limitsh-4-byte-int">6. Typical limits (<code>&lt;limits.h&gt;</code>, 4-byte <code>int</code>)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CHAR_BIT</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>SCHAR_MIN</code> / <code>SCHAR_MAX</code></td>
+<td>−128 / 127</td>
+</tr>
+<tr>
+<td><code>UCHAR_MAX</code></td>
+<td>255</td>
+</tr>
+<tr>
+<td><code>SHRT_MIN</code> / <code>SHRT_MAX</code></td>
+<td>−32 768 / 32 767</td>
+</tr>
+<tr>
+<td><code>USHRT_MAX</code></td>
+<td>65 535</td>
+</tr>
+<tr>
+<td><code>INT_MIN</code> / <code>INT_MAX</code></td>
+<td>−2 147 483 648 / 2 147 483 647</td>
+</tr>
+<tr>
+<td><code>UINT_MAX</code></td>
+<td>4 294 967 295</td>
+</tr>
+<tr>
+<td><code>LLONG_MIN</code> / <code>LLONG_MAX</code></td>
+<td>−9 223 372 036 854 775 808 / 9 223 372 036 854 775 807</td>
+</tr>
+</tbody>
+</table></div>
+<p>(<code>LONG_MAX</code> is the same as <code>INT_MAX</code> on Windows, but 9 223 372 036 854 775 807 on 64-bit Linux/macOS — <strong>never assume</strong>, use the constants.)</p>
+<hr>
+<h2 id="7-ascii-table-printable-characters">7. ASCII table (printable characters)</h2>
+<p>Every character is stored as a number. A few facts worth remembering: <code>'0'</code> = 48 · <code>'A'</code> = 65 · <code>'a'</code> = 97 · a lowercase letter is its uppercase partner <strong>+ 32</strong> · <code>'\0'</code> = 0 · <code>'\n'</code> = 10 · <code>' '</code> = 32.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dec</th>
+<th>Char</th>
+<th>Hex</th>
+<th></th>
+<th>Dec</th>
+<th>Char</th>
+<th>Hex</th>
+<th></th>
+<th>Dec</th>
+<th>Char</th>
+<th>Hex</th>
+<th></th>
+<th>Dec</th>
+<th>Char</th>
+<th>Hex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32</td>
+<td>(space)</td>
+<td>20</td>
+<td></td>
+<td>56</td>
+<td><code>8</code></td>
+<td>38</td>
+<td></td>
+<td>80</td>
+<td><code>P</code></td>
+<td>50</td>
+<td></td>
+<td>104</td>
+<td><code>h</code></td>
+<td>68</td>
+</tr>
+<tr>
+<td>33</td>
+<td><code>!</code></td>
+<td>21</td>
+<td></td>
+<td>57</td>
+<td><code>9</code></td>
+<td>39</td>
+<td></td>
+<td>81</td>
+<td><code>Q</code></td>
+<td>51</td>
+<td></td>
+<td>105</td>
+<td><code>i</code></td>
+<td>69</td>
+</tr>
+<tr>
+<td>34</td>
+<td><code>&quot;</code></td>
+<td>22</td>
+<td></td>
+<td>58</td>
+<td><code>:</code></td>
+<td>3A</td>
+<td></td>
+<td>82</td>
+<td><code>R</code></td>
+<td>52</td>
+<td></td>
+<td>106</td>
+<td><code>j</code></td>
+<td>6A</td>
+</tr>
+<tr>
+<td>35</td>
+<td><code>#</code></td>
+<td>23</td>
+<td></td>
+<td>59</td>
+<td><code>;</code></td>
+<td>3B</td>
+<td></td>
+<td>83</td>
+<td><code>S</code></td>
+<td>53</td>
+<td></td>
+<td>107</td>
+<td><code>k</code></td>
+<td>6B</td>
+</tr>
+<tr>
+<td>36</td>
+<td><code>$</code></td>
+<td>24</td>
+<td></td>
+<td>60</td>
+<td><code>&lt;</code></td>
+<td>3C</td>
+<td></td>
+<td>84</td>
+<td><code>T</code></td>
+<td>54</td>
+<td></td>
+<td>108</td>
+<td><code>l</code></td>
+<td>6C</td>
+</tr>
+<tr>
+<td>37</td>
+<td><code>%</code></td>
+<td>25</td>
+<td></td>
+<td>61</td>
+<td><code>=</code></td>
+<td>3D</td>
+<td></td>
+<td>85</td>
+<td><code>U</code></td>
+<td>55</td>
+<td></td>
+<td>109</td>
+<td><code>m</code></td>
+<td>6D</td>
+</tr>
+<tr>
+<td>38</td>
+<td><code>&amp;</code></td>
+<td>26</td>
+<td></td>
+<td>62</td>
+<td><code>&gt;</code></td>
+<td>3E</td>
+<td></td>
+<td>86</td>
+<td><code>V</code></td>
+<td>56</td>
+<td></td>
+<td>110</td>
+<td><code>n</code></td>
+<td>6E</td>
+</tr>
+<tr>
+<td>39</td>
+<td><code>'</code></td>
+<td>27</td>
+<td></td>
+<td>63</td>
+<td><code>?</code></td>
+<td>3F</td>
+<td></td>
+<td>87</td>
+<td><code>W</code></td>
+<td>57</td>
+<td></td>
+<td>111</td>
+<td><code>o</code></td>
+<td>6F</td>
+</tr>
+<tr>
+<td>40</td>
+<td><code>(</code></td>
+<td>28</td>
+<td></td>
+<td>64</td>
+<td><code>@</code></td>
+<td>40</td>
+<td></td>
+<td>88</td>
+<td><code>X</code></td>
+<td>58</td>
+<td></td>
+<td>112</td>
+<td><code>p</code></td>
+<td>70</td>
+</tr>
+<tr>
+<td>41</td>
+<td><code>)</code></td>
+<td>29</td>
+<td></td>
+<td>65</td>
+<td><code>A</code></td>
+<td>41</td>
+<td></td>
+<td>89</td>
+<td><code>Y</code></td>
+<td>59</td>
+<td></td>
+<td>113</td>
+<td><code>q</code></td>
+<td>71</td>
+</tr>
+<tr>
+<td>42</td>
+<td><code>*</code></td>
+<td>2A</td>
+<td></td>
+<td>66</td>
+<td><code>B</code></td>
+<td>42</td>
+<td></td>
+<td>90</td>
+<td><code>Z</code></td>
+<td>5A</td>
+<td></td>
+<td>114</td>
+<td><code>r</code></td>
+<td>72</td>
+</tr>
+<tr>
+<td>43</td>
+<td><code>+</code></td>
+<td>2B</td>
+<td></td>
+<td>67</td>
+<td><code>C</code></td>
+<td>43</td>
+<td></td>
+<td>91</td>
+<td><code>[</code></td>
+<td>5B</td>
+<td></td>
+<td>115</td>
+<td><code>s</code></td>
+<td>73</td>
+</tr>
+<tr>
+<td>44</td>
+<td><code>,</code></td>
+<td>2C</td>
+<td></td>
+<td>68</td>
+<td><code>D</code></td>
+<td>44</td>
+<td></td>
+<td>92</td>
+<td><code>\</code></td>
+<td>5C</td>
+<td></td>
+<td>116</td>
+<td><code>t</code></td>
+<td>74</td>
+</tr>
+<tr>
+<td>45</td>
+<td><code>-</code></td>
+<td>2D</td>
+<td></td>
+<td>69</td>
+<td><code>E</code></td>
+<td>45</td>
+<td></td>
+<td>93</td>
+<td><code>]</code></td>
+<td>5D</td>
+<td></td>
+<td>117</td>
+<td><code>u</code></td>
+<td>75</td>
+</tr>
+<tr>
+<td>46</td>
+<td><code>.</code></td>
+<td>2E</td>
+<td></td>
+<td>70</td>
+<td><code>F</code></td>
+<td>46</td>
+<td></td>
+<td>94</td>
+<td><code>^</code></td>
+<td>5E</td>
+<td></td>
+<td>118</td>
+<td><code>v</code></td>
+<td>76</td>
+</tr>
+<tr>
+<td>47</td>
+<td><code>/</code></td>
+<td>2F</td>
+<td></td>
+<td>71</td>
+<td><code>G</code></td>
+<td>47</td>
+<td></td>
+<td>95</td>
+<td><code>_</code></td>
+<td>5F</td>
+<td></td>
+<td>119</td>
+<td><code>w</code></td>
+<td>77</td>
+</tr>
+<tr>
+<td>48</td>
+<td><code>0</code></td>
+<td>30</td>
+<td></td>
+<td>72</td>
+<td><code>H</code></td>
+<td>48</td>
+<td></td>
+<td>96</td>
+<td><code>`</code></td>
+<td>60</td>
+<td></td>
+<td>120</td>
+<td><code>x</code></td>
+<td>78</td>
+</tr>
+<tr>
+<td>49</td>
+<td><code>1</code></td>
+<td>31</td>
+<td></td>
+<td>73</td>
+<td><code>I</code></td>
+<td>49</td>
+<td></td>
+<td>97</td>
+<td><code>a</code></td>
+<td>61</td>
+<td></td>
+<td>121</td>
+<td><code>y</code></td>
+<td>79</td>
+</tr>
+<tr>
+<td>50</td>
+<td><code>2</code></td>
+<td>32</td>
+<td></td>
+<td>74</td>
+<td><code>J</code></td>
+<td>4A</td>
+<td></td>
+<td>98</td>
+<td><code>b</code></td>
+<td>62</td>
+<td></td>
+<td>122</td>
+<td><code>z</code></td>
+<td>7A</td>
+</tr>
+<tr>
+<td>51</td>
+<td><code>3</code></td>
+<td>33</td>
+<td></td>
+<td>75</td>
+<td><code>K</code></td>
+<td>4B</td>
+<td></td>
+<td>99</td>
+<td><code>c</code></td>
+<td>63</td>
+<td></td>
+<td>123</td>
+<td><code>{</code></td>
+<td>7B</td>
+</tr>
+<tr>
+<td>52</td>
+<td><code>4</code></td>
+<td>34</td>
+<td></td>
+<td>76</td>
+<td><code>L</code></td>
+<td>4C</td>
+<td></td>
+<td>100</td>
+<td><code>d</code></td>
+<td>64</td>
+<td></td>
+<td>124</td>
+<td><code>|</code></td>
+<td>7C</td>
+</tr>
+<tr>
+<td>53</td>
+<td><code>5</code></td>
+<td>35</td>
+<td></td>
+<td>77</td>
+<td><code>M</code></td>
+<td>4D</td>
+<td></td>
+<td>101</td>
+<td><code>e</code></td>
+<td>65</td>
+<td></td>
+<td>125</td>
+<td><code>}</code></td>
+<td>7D</td>
+</tr>
+<tr>
+<td>54</td>
+<td><code>6</code></td>
+<td>36</td>
+<td></td>
+<td>78</td>
+<td><code>N</code></td>
+<td>4E</td>
+<td></td>
+<td>102</td>
+<td><code>f</code></td>
+<td>66</td>
+<td></td>
+<td>126</td>
+<td><code>~</code></td>
+<td>7E</td>
+</tr>
+<tr>
+<td>55</td>
+<td><code>7</code></td>
+<td>37</td>
+<td></td>
+<td>79</td>
+<td><code>O</code></td>
+<td>4F</td>
+<td></td>
+<td>103</td>
+<td><code>g</code></td>
+<td>67</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Control characters: 0 <code>\0</code> (null) · 7 <code>\a</code> (bell) · 8 <code>\b</code> (backspace) · 9 <code>\t</code> (tab) · 10 <code>\n</code> (newline) · 13 <code>\r</code> (carriage return) · 27 ESC · 127 DEL.</p>
+<hr>
+<h2 id="8-number-systems">8. Number systems</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decimal</th>
+<th>Binary</th>
+<th>Octal</th>
+<th>Hex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0010</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0011</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0100</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0101</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0110</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0111</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1001</td>
+<td>11</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1010</td>
+<td>12</td>
+<td>A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+<td>13</td>
+<td>B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1100</td>
+<td>14</td>
+<td>C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1101</td>
+<td>15</td>
+<td>D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1110</td>
+<td>16</td>
+<td>E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1111</td>
+<td>17</td>
+<td>F</td>
+</tr>
+</tbody>
+</table></div>
+<p>Powers of two: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 (= 2¹⁰), 65 536 (= 2¹⁶).</p>
+<hr>
+<h2 id="9-library-functions-used-in-this-course">9. Library functions used in this course</h2>
+<p><strong><code>&lt;string.h&gt;</code></strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strlen(s)</code></td>
+<td>length of a string</td>
+</tr>
+<tr>
+<td><code>strcpy(d, s)</code> / <code>strncpy(d, s, n)</code></td>
+<td>copy</td>
+</tr>
+<tr>
+<td><code>strcat(d, s)</code> / <code>strncat(d, s, n)</code></td>
+<td>append</td>
+</tr>
+<tr>
+<td><code>strcmp(a, b)</code> / <code>strncmp(a, b, n)</code></td>
+<td>compare (0 = equal)</td>
+</tr>
+<tr>
+<td><code>strchr(s, c)</code> / <code>strrchr(s, c)</code></td>
+<td>first / last occurrence of a character</td>
+</tr>
+<tr>
+<td><code>strstr(s, sub)</code></td>
+<td>first occurrence of a substring</td>
+</tr>
+<tr>
+<td><code>strdup(s)</code></td>
+<td>allocated copy (free it!)</td>
+</tr>
+<tr>
+<td><code>strcspn(s, set)</code></td>
+<td>length of the initial part with no character from <code>set</code></td>
+</tr>
+<tr>
+<td><code>memcpy(d, s, n)</code> / <code>memset(p, v, n)</code></td>
+<td>copy / fill raw bytes</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong><code>&lt;math.h&gt;</code>:</strong> <code>sqrt(x)</code>, <code>pow(x, y)</code>, <code>fabs(x)</code>, <code>ceil(x)</code>, <code>floor(x)</code>, <code>round(x)</code>, <code>fmod(x, y)</code>, <code>sin(x)</code>, <code>cos(x)</code>, <code>tan(x)</code>, <code>log(x)</code>, <code>log10(x)</code>, <code>exp(x)</code> (angles in radians).</p>
+<p><strong><code>&lt;ctype.h&gt;</code>:</strong> <code>isalpha</code>, <code>isdigit</code>, <code>isalnum</code>, <code>isspace</code>, <code>isupper</code>, <code>islower</code>, <code>toupper</code>, <code>tolower</code>.</p>
+<p><strong><code>&lt;stdlib.h&gt;</code>:</strong> <code>malloc</code>, <code>calloc</code>, <code>realloc</code>, <code>free</code>, <code>abs</code>, <code>rand</code>, <code>srand</code>, <code>exit</code>, <code>atoi</code>, <code>atof</code>, <code>qsort</code>.</p>
+<p><strong><code>&lt;stdio.h&gt;</code>:</strong> <code>printf</code>, <code>scanf</code>, <code>sprintf</code>, <code>snprintf</code>, <code>sscanf</code>, <code>getchar</code>, <code>putchar</code>, <code>puts</code>, <code>fgets</code>, <code>fputs</code>.</p>
+
+    </article>
+
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#1-the-32-keywords-of-standard-c">1. The 32 keywords of standard C</a>
+<a class="toc-2" href="#2-escape-sequences">2. Escape sequences</a>
+<a class="toc-2" href="#3-printf-format-specifiers">3. printf format specifiers</a>
+<a class="toc-2" href="#4-scanf-format-specifiers-differences-to-remember">4. scanf format specifiers (differences to remember)</a>
+<a class="toc-2" href="#5-operator-precedence-and-associativity">5. Operator precedence and associativity</a>
+<a class="toc-2" href="#6-typical-limits-limitsh-4-byte-int">6. Typical limits (&lt;limits.h&gt;, 4-byte int)</a>
+<a class="toc-2" href="#7-ascii-table-printable-characters">7. ASCII table (printable characters)</a>
+<a class="toc-2" href="#8-number-systems">8. Number systems</a>
+<a class="toc-2" href="#9-library-functions-used-in-this-course">9. Library functions used in this course</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

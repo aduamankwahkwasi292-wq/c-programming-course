@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solutions — Chapter 0: Introduction to Programming · The Complete C Programming Course</title>
+<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta property="og:title" content="Solutions — Chapter 0: Introduction to Programming · The Complete C Programming Course">
+<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Course chapters">
+<div class="nav-section">Start here</div>
+<a class="nav-link" href="../index.html">Course home</a>
+<div class="nav-section">Chapters</div>
+<div class="nav-row on"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol active" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
+<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
+<div class="nav-section">Appendix</div>
+<a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
+<a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
+<a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
+<a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" class="content">
+
+    <article>
+<h1 id="solutions-chapter-0-introduction-to-programming">Solutions — Chapter 0: Introduction to Programming</h1>
+<blockquote>
+<p>Back to the lesson: <a href="../lessons/00-introduction-to-programming.html">Chapter 0 lesson</a></p>
+<p><strong>Did you try first?</strong> Learning happens in the struggle. Cover the answer, try for at least 10 minutes, <em>then</em> compare.</p>
+</blockquote>
+<hr>
+<h2 id="part-a-quick-check">Part A — Quick check</h2>
+<p id="ex-0-1"><strong>Ex 0.1</strong> Programming is writing a precise set of instructions (called code) that tells a computer what to do, using a programming language.</p>
+<p id="ex-0-2"><strong>Ex 0.2</strong> An algorithm is a <strong>finite sequence of steps</strong> that solves a particular problem. It must be finite because a procedure that never ends never produces an answer — it is useless as a solution.</p>
+<p id="ex-0-3"><strong>Ex 0.3</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Machine language</td>
+<td><strong>c</strong> — binary codes the CPU understands directly</td>
+</tr>
+<tr>
+<td>2. Assembly language</td>
+<td><strong>e</strong> — short abbreviations for basic instructions</td>
+</tr>
+<tr>
+<td>3. High-level language</td>
+<td><strong>b</strong> — closest to human language</td>
+</tr>
+<tr>
+<td>4. Compiler</td>
+<td><strong>a</strong> — translates the whole program at once</td>
+</tr>
+<tr>
+<td>5. Interpreter</td>
+<td><strong>d</strong> — translates and runs one line at a time</td>
+</tr>
+</tbody>
+</table></div>
+<p id="ex-0-4"><strong>Ex 0.4</strong></p>
+<ol>
+<li><strong>False.</strong> Machine language is binary and is <em>not</em> designed to be human readable.</li>
+<li><strong>False.</strong> The CPU only understands machine language, so high-level code must first be compiled or interpreted.</li>
+<li><strong>False.</strong> C is a <em>compiled</em> language.</li>
+<li><strong>False.</strong> That describes a <em>compiler</em>. An interpreter translates one line at a time.</li>
+<li><strong>True.</strong> (Because the whole program is already translated into machine code before it runs.)</li>
+<li><strong>True.</strong></li>
+<li><strong>False.</strong> In a <em>declarative</em> language you focus on <strong>what</strong> is needed. Focusing on <em>how</em> is the imperative style.</li>
+<li><strong>False.</strong> A stack removes the item added <strong>last</strong> (LIFO). A <em>queue</em> removes the one added first (FIFO).</li>
+</ol>
+<p id="ex-0-5"><strong>Ex 0.5</strong> Compiled: C++, Rust, Go, Pascal, Fortran. Interpreted: Python, JavaScript, PHP, Ruby. (Java is a <em>hybrid</em>: it is compiled to &quot;bytecode&quot;, which a virtual machine then runs.)</p>
+<p id="ex-0-6"><strong>Ex 0.6</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Paradigm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Procedural (imperative)</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>Object-oriented (imperative)</td>
+</tr>
+<tr>
+<td>Lisp</td>
+<td>Functional (declarative)</td>
+</tr>
+<tr>
+<td>Prolog</td>
+<td>Logic (declarative)</td>
+</tr>
+<tr>
+<td>Pascal</td>
+<td>Procedural (imperative)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Object-oriented (it also allows procedural and functional styles)</td>
+</tr>
+</tbody>
+</table></div>
+<p id="ex-0-7"><strong>Ex 0.7</strong></p>
+<ol>
+<li><strong>Stack</strong> — the last action is the first to be undone.</li>
+<li><strong>Queue</strong> — first come, first served.</li>
+<li><strong>Array</strong> — many values of the same type, accessed by position.</li>
+<li><strong>Tree</strong> — folders inside folders form a hierarchy.</li>
+<li><strong>Linked list</strong> — every item links to the next.</li>
+</ol>
+<p id="ex-0-8"><strong>Ex 0.8</strong> Any three of:</p>
+<ul>
+<li>Can the data be searched and updated easily?</li>
+<li>How much memory does it use?</li>
+<li>Can intermediate results be arranged for fast access (to reduce later computation)?</li>
+<li>Does the problem match a common data structure?</li>
+<li>Can data from earlier computations be recovered?</li>
+</ul>
+<p id="ex-0-9"><strong>Ex 0.9</strong> If you rush to &quot;how&quot; before you are sure <em>what</em> is required, you may solve the wrong problem, or lock yourself into the first idea you had (which may be clumsy). Time spent understanding the problem is saved many times over later.</p>
+<p id="ex-0-10"><strong>Ex 0.10</strong></p>
+<ol>
+<li><strong>Use specific examples</strong> — solve the problem by hand with real numbers to discover the mechanism.</li>
+<li><strong>Find similarities</strong> — relate the problem to ones you have already solved.</li>
+<li><strong>Work backwards</strong> — start from the answer and undo the steps (or guess and test).</li>
+<li><strong>Divide and conquer</strong> — split the problem into smaller sub-problems, solve each, combine.</li>
+</ol>
+<hr>
+<h2 id="part-b-trace-the-algorithm">Part B — Trace the algorithm</h2>
+<p id="ex-0-11"><strong>Ex 0.11</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>step</th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after 1–2</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>step 3 (<code>a = a + b</code>)</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr>
+<td>step 4 (<code>b = a - b</code>)</td>
+<td>7</td>
+<td>2</td>
+</tr>
+<tr>
+<td>step 5 (<code>a = a - b</code>)</td>
+<td>5</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<p>Output: <code>5 2</code>. The algorithm <strong>swaps</strong> the two values <em>without</em> a third variable. (It is a famous trick; in Chapter 8 you will swap using a temp variable and pointers.)</p>
+<p id="ex-0-12"><strong>Ex 0.12</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>x</th>
+<th>x &gt; m ?</th>
+<th>m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(first = 7)</td>
+<td>—</td>
+<td>7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>yes</td>
+<td>12</td>
+</tr>
+<tr>
+<td>5</td>
+<td>no</td>
+<td>12</td>
+</tr>
+<tr>
+<td>20</td>
+<td>yes</td>
+<td>20</td>
+</tr>
+<tr>
+<td>9</td>
+<td>no</td>
+<td>20</td>
+</tr>
+</tbody>
+</table></div>
+<p>Output: <code>20</code>. It finds the <strong>maximum</strong> of the list.</p>
+<p id="ex-0-13"><strong>Ex 0.13</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>n (before)</th>
+<th>n after <code>DIV 10</code></th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4096</td>
+<td>409</td>
+<td>1</td>
+</tr>
+<tr>
+<td>409</td>
+<td>40</td>
+<td>2</td>
+</tr>
+<tr>
+<td>40</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>0</td>
+<td>loop stops</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Output: <code>4</code>. It <strong>counts the digits</strong> of the number.</p>
+<p id="ex-0-14"><strong>Ex 0.14</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>x</th>
+<th>x &gt;= 5 ?</th>
+<th>x after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>17</td>
+<td>yes</td>
+<td>12</td>
+</tr>
+<tr>
+<td>12</td>
+<td>yes</td>
+<td>7</td>
+</tr>
+<tr>
+<td>7</td>
+<td>yes</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>no — stop</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Output: <code>2</code>. It computes the <strong>remainder</strong> when 17 is divided by 5 (<code>17 mod 5</code>). In C this is the <code>%</code> operator (Chapter 3).</p>
+<p id="ex-0-15"><strong>Ex 0.15</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>iteration</th>
+<th>print a</th>
+<th>a, b after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>a=1, b=1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>a=1, b=2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>a=2, b=3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>a=3, b=5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>a=5, b=8</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>a=8, b=13</td>
+</tr>
+</tbody>
+</table></div>
+<p>Output: <code>0 1 1 2 3 5</code> — the <strong>Fibonacci</strong> sequence.</p>
+<hr>
+<h2 id="part-c-find-the-bug">Part C — Find the bug</h2>
+<p id="ex-0-16"><strong>Ex 0.16</strong> Division is done <strong>before</strong> addition, so <code>a + b + c / 3</code> means <code>a + b + (c/3)</code>. With <code>3, 6, 9</code>: the wrong version gives <code>3 + 6 + 3 = 12</code>, but the true average is <code>6</code>.
+Fix: use brackets — <code>SET average = (a + b + c) / 3</code>.</p>
+<p id="ex-0-17"><strong>Ex 0.17</strong> <code>max</code> starts at 0. For an all-negative list no number is greater than 0, so the algorithm prints <code>0</code> — a value that is not even in the list.
+Fix: start with the <strong>first number of the list</strong> (<code>SET max = first number</code>) and compare the rest with it.</p>
+<p id="ex-0-18"><strong>Ex 0.18</strong> <code>i</code> is never changed inside the loop, so <code>i &lt;= N</code> stays true forever (an <em>infinite loop</em>). Fix: add <code>SET i = i + 1</code> inside the loop (and put <code>PRINT</code> after the loop):</p>
+<pre class="plain"><code>INPUT N
+SET total = 0
+SET i = 1
+WHILE i &lt;= N:
+    SET total = total + i
+    SET i = i + 1
+PRINT total</code></pre>
+<p id="ex-0-19"><strong>Ex 0.19</strong> <code>n / 2 = 0</code> tests whether the <em>quotient</em> is 0 — which is only true for tiny numbers (and 7/2 = 3.5 is never 0). To test &quot;even&quot; you must look at the <strong>remainder</strong>: <code>n MOD 2 = 0</code>.</p>
+<pre class="plain"><code>INPUT n
+IF n MOD 2 = 0 THEN
+    PRINT &quot;even&quot;
+ELSE
+    PRINT &quot;odd&quot;
+END IF</code></pre>
+<hr>
+<h2 id="part-d-write-the-algorithm">Part D — Write the algorithm</h2>
+<p id="ex-0-20"><strong>Ex 0.20</strong></p>
+<pre class="plain"><code>START
+  INPUT c
+  SET f = c * 9 / 5 + 32
+  PRINT f
+END</code></pre>
+<p>Check: <code>c = 100 → f = 212</code>, <code>c = 0 → f = 32</code>, <code>c = 37 → f = 98.6</code>.</p>
+<p id="ex-0-21"><strong>Ex 0.21</strong></p>
+<pre class="plain"><code>START
+  INPUT a, b, c
+  SET max = a
+  IF b &gt; max THEN SET max = b
+  IF c &gt; max THEN SET max = c
+  PRINT max
+END</code></pre>
+<p>Check: <code>(4, 9, 6)</code> → max=4 → b is bigger → 9 → c is not bigger → prints 9.</p>
+<p id="ex-0-22"><strong>Ex 0.22</strong></p>
+<pre class="plain"><code>START
+  INPUT year
+  IF year MOD 400 = 0 THEN
+      PRINT &quot;leap year&quot;
+  ELSE IF year MOD 100 = 0 THEN
+      PRINT &quot;not a leap year&quot;
+  ELSE IF year MOD 4 = 0 THEN
+      PRINT &quot;leap year&quot;
+  ELSE
+      PRINT &quot;not a leap year&quot;
+  END IF
+END</code></pre>
+<p>Order matters: test the <em>most special</em> rule (400) first. Check: 2000 → leap; 1900 → not; 2024 → leap; 2023 → not.</p>
+<p><em>Curious how this looks in C? Here it is — you will understand every symbol by Chapter 5.</em></p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a year: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is a leap year</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is not a leap year</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is a leap year</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d is not a leap year</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a year: 1900
+1900 is not a leap year</code></pre></div>
+<p id="ex-0-23"><strong>Ex 0.23</strong></p>
+<pre class="plain"><code>START
+  INPUT N
+  SET total = 0
+  SET i = 1
+  WHILE i &lt;= N
+      SET total = total + i
+      SET i = i + 1
+  END WHILE
+  PRINT total
+END</code></pre>
+<p>Check <code>N = 4</code> → 10 (see the trace in the lesson). <em>(Bonus: the answer is also <code>N × (N + 1) / 2</code> — Gauss's trick — so no loop is needed!)</em></p>
+<p id="ex-0-24"><strong>Ex 0.24</strong></p>
+<pre class="plain"><code>START
+  INPUT N
+  SET product = 1
+  SET i = 1
+  WHILE i &lt;= N
+      SET product = product * i
+      SET i = i + 1
+  END WHILE
+  PRINT product
+END</code></pre>
+<p>Note we start <code>product</code> at <strong>1</strong>, not 0 (anything × 0 is 0). This also gives <code>0! = 1</code>, which is correct. Check <code>N = 5</code> → 120.</p>
+<p id="ex-0-25"><strong>Ex 0.25</strong></p>
+<pre class="plain"><code>START
+  INPUT n                       (n &gt; 1)
+  SET isPrime = YES
+  SET d = 2
+  WHILE d * d &lt;= n AND isPrime = YES
+      IF n MOD d = 0 THEN
+          SET isPrime = NO
+      END IF
+      SET d = d + 1
+  END WHILE
+  IF isPrime = YES THEN PRINT &quot;prime&quot; ELSE PRINT &quot;not prime&quot;
+END</code></pre>
+<p>Why <code>d * d &lt;= n</code>? If <code>n</code> has a factor bigger than its square root, it must also have a matching factor <em>smaller</em> than the square root, so we only need to test up to √n. Check: <code>17</code> → tests 2, 3, 4 → no divisor → prime. <code>21</code> → 21 MOD 3 = 0 → not prime.</p>
+<p id="ex-0-26"><strong>Ex 0.26</strong></p>
+<pre class="plain"><code>START
+  INPUT n
+  SET rev = 0
+  WHILE n &gt; 0
+      SET digit = n MOD 10          (last digit)
+      SET rev = rev * 10 + digit    (attach it to the right of rev)
+      SET n = n DIV 10              (drop the last digit)
+  END WHILE
+  PRINT rev
+END</code></pre>
+<p>Trace for <code>1234</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>digit</th>
+<th>rev</th>
+<th>n after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>123</td>
+</tr>
+<tr>
+<td>3</td>
+<td>43</td>
+<td>12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>432</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4321</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>In C:</p>
+<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">rev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a positive integer: "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rev</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">digit</span><span class="p">;</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Reversed: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">rev</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a positive integer: 1234
+Reversed: 4321</code></pre></div>
+<p id="ex-0-27"><strong>Ex 0.27</strong></p>
+<pre class="plain"><code>START
+  INPUT total
+  IF total &gt; 200 THEN
+      SET pay = total - (total * 10 / 100)
+  ELSE
+      SET pay = total
+  END IF
+  PRINT pay
+END</code></pre>
+<p>Check: <code>250 → 225</code>. <code>200 → 200</code> (the discount is for <em>more than</em> 200, so exactly 200 gets none).</p>
+<p id="ex-0-28"><strong>Ex 0.28</strong></p>
+<pre class="plain"><code>START
+  INPUT score
+  IF score &gt;= 80 THEN PRINT &quot;A&quot;
+  ELSE IF score &gt;= 70 THEN PRINT &quot;B&quot;
+  ELSE IF score &gt;= 60 THEN PRINT &quot;C&quot;
+  ELSE IF score &gt;= 50 THEN PRINT &quot;D&quot;
+  ELSE PRINT &quot;F&quot;
+  END IF
+END</code></pre>
+<p>Because the tests run top to bottom and stop at the first true one, we only need to check the <em>lower limit</em> of each band.</p>
+<p id="ex-0-29"><strong>Ex 0.29</strong> One possible answer:</p>
+<pre class="plain"><code>1.  Insert the card.
+2.  Enter the PIN.
+3.  IF the PIN is wrong THEN
+        IF this was the 3rd wrong try THEN keep the card, STOP
+        ELSE show &quot;wrong PIN&quot; and go back to step 2
+4.  Choose &quot;Withdraw&quot;.
+5.  Enter the amount.
+6.  IF amount &gt; account balance THEN show &quot;insufficient funds&quot;, go to step 5 (or cancel)
+7.  IF amount &gt; cash in the machine THEN show &quot;cannot dispense&quot;, go to step 5 (or cancel)
+8.  Dispense the cash.
+9.  Print the receipt (optional).
+10. Return the card.</code></pre>
+<p>Notice how many <em>decisions</em> hide inside an everyday task. This is exactly why we plan before we code.</p>
+<p id="ex-0-30"><strong>Ex 0.30</strong></p>
+<pre class="plain"><code>          ( START )
+              │
+      / INPUT a, b, c /
+              │
+          [ max = a ]
+              │
+        ◇ b &gt; max ? ◇──Yes──▶ [ max = b ]
+              │ No                  │
+              ◀─────────────────────┘
+              │
+        ◇ c &gt; max ? ◇──Yes──▶ [ max = c ]
+              │ No                  │
+              ◀─────────────────────┘
+              │
+        / PRINT max /
+              │
+           ( END )</code></pre>
+<hr>
+<h2 id="part-e-challenges">Part E — Challenges</h2>
+<p id="ex-0-31"><strong>Ex 0.31</strong> <strong>Two weighings.</strong></p>
+<ul>
+<li>Weigh 3 coins against 3 coins (2 coins stay aside).
+<ul>
+<li><em>If the scale balances</em>, the light coin is one of the 2 aside. Weigh those two against each other: the lighter one is the answer. (2 weighings.)</li>
+<li><em>If one side is lighter</em>, the light coin is among those 3. Weigh 1 against 1: if one is lighter, that's it; if they balance, the third coin is the light one. (2 weighings.)</li>
+</ul>
+</li>
+</ul>
+<p>One weighing is not enough: a single weighing has only 3 outcomes (left lighter / right lighter / equal), so it can tell apart at most 3 coins — not 8.</p>
+<p id="ex-0-32"><strong>Ex 0.32</strong> <strong>Always guess the middle of the remaining range.</strong> Each answer cuts the possibilities in half: 100 → 50 → 25 → 13 → 7 → 4 → 2 → 1. Since 2⁷ = 128 ≥ 100, seven guesses always suffice.
+Example, secret = 73: guess 50 (higher) → 75 (lower) → 62 (higher) → 68 (higher) → 71 (higher) → 73 ✔ (6 guesses). This method is called <strong>binary search</strong>.</p>
+<p id="ex-0-33"><strong>Ex 0.33</strong> Work backwards: <code>58 + 6 = 64</code> → <code>64 ÷ 4 = 16</code> → <code>16 − 9 = 7</code>. The number was <strong>7</strong>. Check forwards: <code>7 + 9 = 16</code>, <code>16 × 4 = 64</code>, <code>64 − 6 = 58</code> ✔.</p>
+<p id="ex-0-34"><strong>Ex 0.34</strong>
+(a) Change the starting value from <code>0</code> to <code>1</code>, and change <code>+</code> to <code>×</code> (i.e. <code>SET product = 1</code> and <code>product = product * i</code>).
+(b) Inside the loop, only add when <code>i</code> is even: <code>IF i MOD 2 = 0 THEN total = total + i</code>. (Or start <code>i</code> at 2 and increase it by 2 each time.)</p>
+<hr>
+<h2 id="part-f-research-tasks-sample-answers">Part F — Research tasks (sample answers)</h2>
+<p id="ex-0-35"><strong>Ex 0.35</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Usually</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Compiled</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>Compiled</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>Compiled to bytecode, then run by the JVM</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Interpreted</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>Interpreted / JIT-compiled in the browser</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>Interpreted</td>
+</tr>
+<tr>
+<td>Rust, Go</td>
+<td>Compiled</td>
+</tr>
+</tbody>
+</table></div>
+<p id="ex-0-36"><strong>Ex 0.36</strong> <em>Model answer.</em> A <strong>compiler</strong> reads the entire source program and translates it into machine code (an executable file) in one go. <em>Advantage:</em> the finished program runs fast and you can ship it without the compiler. <em>Disadvantage:</em> you must recompile after each change, and the compile step may take time. An <strong>interpreter</strong> translates and executes one statement at a time. <em>Advantage:</em> quick to test small changes — no separate compile step. <em>Disadvantage:</em> programs generally run slower, and an error deep in the code may only show up when execution reaches it.</p>
+<p id="ex-0-37"><strong>Ex 0.37</strong> <em>Examples.</em> (i) <strong>Operating systems</strong> such as Linux, Windows and the Android kernel are written mostly in C — C talks to the hardware directly. (ii) <strong>Embedded systems</strong> like the controller in a washing machine, a car's engine management unit or a hospital patient monitor use C because it is small, fast and gives direct control over memory and hardware. (iii) The interpreters of <strong>Python</strong> and many other languages are themselves written in C.</p>
+<hr>
+<p><em>Next: <a href="01-c-basics.html">Chapter 1 solutions</a></em></p>
+
+    </article>
+<nav class="pager" aria-label="Page navigation">
+<a class="pager-main" href="../lessons/00-introduction-to-programming.html">←  Back to the Chapter 0 lesson</a>
+<div class="pager-row">
+<span></span>
+<a class="pager-next" href="../solutions/01-c-basics.html"><small>Next</small>Solutions — Chapter 1: C Basics</a>
+</div></nav>
+    <footer class="foot">
+      <span>The Complete C Programming Course</span>
+      <a href="#top" class="totop">Back to top &uarr;</a>
+    </footer>
+  </main>
+  <aside class="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<a class="toc-2" href="#part-a-quick-check">Part A — Quick check</a>
+<a class="toc-2" href="#part-b-trace-the-algorithm">Part B — Trace the algorithm</a>
+<a class="toc-2" href="#part-c-find-the-bug">Part C — Find the bug</a>
+<a class="toc-2" href="#part-d-write-the-algorithm">Part D — Write the algorithm</a>
+<a class="toc-2" href="#part-e-challenges">Part E — Challenges</a>
+<a class="toc-2" href="#part-f-research-tasks-sample-answers">Part F — Research tasks (sample answers)</a>
+  </aside>
+</div>
+<script>window.SITE_ROOT = "../";</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
