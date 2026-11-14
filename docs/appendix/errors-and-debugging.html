@@ -4,55 +4,70 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Errors and Debugging Guide · The Complete C Programming Course</title>
-<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta name="description" content="A complete beginner&#x27;s course in C programming, in simple language, with 725 exercises and full solutions: variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta name="author" content="Mrwhocancreate, founder and CEO, Behemoth Group">
+<meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Errors and Debugging Guide · The Complete C Programming Course">
-<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="A complete beginner&#x27;s course in C programming, in simple language, with 725 exercises and full solutions: variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' font-family='Consolas,Menlo,monospace' font-weight='700' fill='%23ffffff'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css?v=4cf0cf14be">
 </head>
-<body id="top">
+<body id="top" class="kind-appendix">
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
-  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
-  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
-  <div class="search">
-    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+  <button id="menu" class="icon-btn menu-btn" type="button" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html" aria-label="The Complete C Programming Course — home">
+    <span class="logo" aria-hidden="true">C</span>
+    <span class="brand-text"><span class="brand-name">The Complete C Programming Course</span><span class="brand-sub">COE 281</span></span>
+  </a>
+  <div class="search" role="search">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search, or jump to Ex 5.67" autocomplete="off" spellcheck="false" aria-label="Search the course">
+    <kbd class="search-kbd" aria-hidden="true">/</kbd>
     <div id="results" class="results" hidden></div>
   </div>
-  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+  <button id="theme" class="icon-btn" type="button" aria-label="Switch between light and dark mode" title="Light / dark"><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar" aria-label="Course chapters">
-<div class="nav-section">Start here</div>
+<div class="nav-group">
 <a class="nav-link" href="../index.html">Course home</a>
-<div class="nav-section">Chapters</div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
-<div class="nav-section">Appendix</div>
+</div>
+<div class="nav-title">Chapters</div>
+<ol class="nav-chapters">
+<li class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">00</span><span class="nav-label">Introduction to Programming</span></a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0" aria-label="Solutions to Chapter 0">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">01</span><span class="nav-label">C Basics</span></a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1" aria-label="Solutions to Chapter 1">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">02</span><span class="nav-label">Variables and Data Types</span></a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2" aria-label="Solutions to Chapter 2">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">03</span><span class="nav-label">Operators</span></a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3" aria-label="Solutions to Chapter 3">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">04</span><span class="nav-label">Data Input and Output</span></a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4" aria-label="Solutions to Chapter 4">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">05</span><span class="nav-label">Flow of Control</span></a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5" aria-label="Solutions to Chapter 5">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">06</span><span class="nav-label">Functions</span></a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6" aria-label="Solutions to Chapter 6">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">07</span><span class="nav-label">Arrays</span></a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7" aria-label="Solutions to Chapter 7">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">08</span><span class="nav-label">Pointers and Strings</span></a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8" aria-label="Solutions to Chapter 8">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">09</span><span class="nav-label">Projects and Final Exam</span></a><a class="nav-sol" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9" aria-label="Solutions to Chapter 9">Solutions</a></li>
+</ol>
+<div class="nav-title">Appendix</div><div class="nav-group">
 <a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
 <a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
 <a class="nav-link active" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
 <a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+</div>
   </nav>
   <div class="scrim" id="scrim"></div>
   <main id="main" class="content">
 
-    <article>
+    <p class="eyebrow">Appendix</p>
+    <article class="prose">
 <h1 id="errors-and-debugging-guide">Errors and Debugging Guide</h1>
 <blockquote>
 <p>Every programmer — including your professor — spends a large part of their life fixing mistakes. The skill is not &quot;never making mistakes&quot;. The skill is <strong>finding and fixing them quickly and calmly.</strong></p>
 </blockquote>
 <hr>
-<h2 id="1-the-three-kinds-of-bugs">1. The three kinds of bugs</h2>
+<h2 id="1-the-three-kinds-of-bugs">1. The three kinds of bugs<a class="anchor" href="#1-the-three-kinds-of-bugs" aria-label="Link to this section">#</a></h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -85,7 +100,7 @@
 </table></div>
 <p>Logic errors are the hardest because <strong>nothing complains</strong>. Trust your tests, not your feelings.</p>
 <hr>
-<h2 id="2-reading-compiler-messages">2. Reading compiler messages</h2>
+<h2 id="2-reading-compiler-messages">2. Reading compiler messages<a class="anchor" href="#2-reading-compiler-messages" aria-label="Link to this section">#</a></h2>
 <p>A message has a <strong>file</strong>, a <strong>line number</strong>, a <strong>kind</strong> (<code>error</code> or <code>warning</code>) and a <strong>description</strong>:</p>
 <pre class="plain"><code>prog.c:7:5: error: &#x27;total&#x27; undeclared (first use in this function)</code></pre>
 <p><strong>Golden rules</strong></p>
@@ -95,7 +110,7 @@
 <li><strong>Recompile after every fix.</strong></li>
 <li><strong>Never ignore warnings.</strong> A warning is the compiler saying &quot;this looks like a bug&quot;. Compile with <code>-Wall -Wextra</code> (GCC) or <code>/W3</code> (Microsoft).</li>
 </ol>
-<h3 id="common-compile-time-errors">Common compile-time errors</h3>
+<h3 id="common-compile-time-errors">Common compile-time errors<a class="anchor" href="#common-compile-time-errors" aria-label="Link to this section">#</a></h3>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -110,7 +125,7 @@
 <td><code>expected ';' before ...</code></td>
 <td><code>C2143: syntax error: missing ';'</code></td>
 <td>forgot a semicolon</td>
-<td>add <code>;</code> (on the previous line)</td>
+<td>add the <code>;</code> at the end of the unfinished statement (GCC points right at that spot; Microsoft reports the next line)</td>
 </tr>
 <tr>
 <td><code>'x' undeclared</code></td>
@@ -193,7 +208,7 @@
 </tbody>
 </table></div>
 <hr>
-<h2 id="3-runtime-errors">3. Runtime errors</h2>
+<h2 id="3-runtime-errors">3. Runtime errors<a class="anchor" href="#3-runtime-errors" aria-label="Link to this section">#</a></h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -236,10 +251,10 @@
 </tbody>
 </table></div>
 <hr>
-<h2 id="4-finding-logic-errors-a-toolkit">4. Finding logic errors — a toolkit</h2>
-<h3 id="technique-1-predict-then-check">Technique 1 — Predict, then check</h3>
+<h2 id="4-finding-logic-errors-a-toolkit">4. Finding logic errors — a toolkit<a class="anchor" href="#4-finding-logic-errors-a-toolkit" aria-label="Link to this section">#</a></h2>
+<h3 id="technique-1-predict-then-check">Technique 1 — Predict, then check<a class="anchor" href="#technique-1-predict-then-check" aria-label="Link to this section">#</a></h3>
 <p>Before you run the program, write down what <strong>you</strong> expect it to print for a small input. When the real output differs, you have found the area of the bug.</p>
-<h3 id="technique-2-trace-table">Technique 2 — Trace table</h3>
+<h3 id="technique-2-trace-table">Technique 2 — Trace table<a class="anchor" href="#technique-2-trace-table" aria-label="Link to this section">#</a></h3>
 <p>Work through the program by hand, one statement at a time, recording every variable in a table (as in Chapters 0 and 5). This is the single most effective technique for beginners.</p>
 <div class="table-wrap"><table>
 <thead>
@@ -271,21 +286,21 @@
 </tr>
 </tbody>
 </table></div>
-<h3 id="technique-3-print-debugging">Technique 3 — Print debugging</h3>
+<h3 id="technique-3-print-debugging">Technique 3 — Print debugging<a class="anchor" href="#technique-3-print-debugging" aria-label="Link to this section">#</a></h3>
 <p>Add temporary <code>printf</code>s to <strong>look inside</strong> the program:</p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="n">printf</span><span class="p">(</span><span class="s">"DEBUG: i=%d sum=%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="fn">printf</span><span class="p">(</span><span class="s">"DEBUG: i=<span class="si">%d</span> sum=<span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
 </code></pre></div>
 <p>Print values <strong>before</strong> and <strong>after</strong> the suspicious statement. Remove them when done.</p>
-<h3 id="technique-4-divide-and-conquer">Technique 4 — Divide and conquer</h3>
+<h3 id="technique-4-divide-and-conquer">Technique 4 — Divide and conquer<a class="anchor" href="#technique-4-divide-and-conquer" aria-label="Link to this section">#</a></h3>
 <p>Comment out half of the program (<code>/* … */</code> or <code>//</code>) and see whether the bug is still there. Keep halving. Test each <strong>function</strong> alone from a tiny <code>main</code>.</p>
-<h3 id="technique-5-shrink-the-problem">Technique 5 — Shrink the problem</h3>
+<h3 id="technique-5-shrink-the-problem">Technique 5 — Shrink the problem<a class="anchor" href="#technique-5-shrink-the-problem" aria-label="Link to this section">#</a></h3>
 <p>Reproduce the bug with the <strong>smallest</strong> program and smallest input. Bugs hide in big programs and show themselves in small ones.</p>
-<h3 id="technique-6-explain-it-aloud-rubber-duck-debugging">Technique 6 — Explain it aloud (&quot;rubber-duck debugging&quot;)</h3>
+<h3 id="technique-6-explain-it-aloud-rubber-duck-debugging">Technique 6 — Explain it aloud (&quot;rubber-duck debugging&quot;)<a class="anchor" href="#technique-6-explain-it-aloud-rubber-duck-debugging" aria-label="Link to this section">#</a></h3>
 <p>Explain your code, line by line, to a friend — or a rubber duck. Very often you discover the bug while explaining.</p>
-<h3 id="technique-7-test-the-edges">Technique 7 — Test the edges</h3>
+<h3 id="technique-7-test-the-edges">Technique 7 — Test the edges<a class="anchor" href="#technique-7-test-the-edges" aria-label="Link to this section">#</a></h3>
 <p>Always test: the <strong>smallest</strong> input (0, 1, empty), <strong>negative</strong> numbers, the <strong>largest</strong> value, an array that is <strong>full</strong>, input that is <strong>invalid</strong>, and a case where the answer is <strong>&quot;not found&quot;</strong>.</p>
 <hr>
-<h2 id="5-using-a-debugger">5. Using a debugger</h2>
+<h2 id="5-using-a-debugger">5. Using a debugger<a class="anchor" href="#5-using-a-debugger" aria-label="Link to this section">#</a></h2>
 <p>A <strong>debugger</strong> runs your program under your control: you can pause it, step through line by line, and look at variables.</p>
 <p><strong>In an IDE</strong> (Code::Blocks, VS Code, Visual Studio):</p>
 <ol>
@@ -339,7 +354,7 @@
 </table></div>
 <p><strong>Extra safety nets</strong> (GCC/Clang on Linux/macOS): compile with <code>-fsanitize=address,undefined -g</code>. The program then reports out-of-bounds accesses, use-after-free and other undefined behaviour <strong>as soon as they happen</strong>, with the line number.</p>
 <hr>
-<h2 id="6-how-to-avoid-bugs-in-the-first-place">6. How to avoid bugs in the first place</h2>
+<h2 id="6-how-to-avoid-bugs-in-the-first-place">6. How to avoid bugs in the first place<a class="anchor" href="#6-how-to-avoid-bugs-in-the-first-place" aria-label="Link to this section">#</a></h2>
 <ol>
 <li><strong>Plan before you code</strong> (pseudocode / flowchart). Most logic errors are <em>design</em> errors.</li>
 <li><strong>Write a little, test a little.</strong> Compile after every few lines.</li>
@@ -353,7 +368,7 @@
 <li>Keep a <strong>bug diary</strong> (Ex 1.43): write down each bug and its cause. Patterns will emerge, and you will stop making the same mistakes.</li>
 </ol>
 <hr>
-<h2 id="7-quick-checklist-when-it-doesnt-work">7. Quick checklist when &quot;it doesn't work&quot;</h2>
+<h2 id="7-quick-checklist-when-it-doesnt-work">7. Quick checklist when &quot;it doesn't work&quot;<a class="anchor" href="#7-quick-checklist-when-it-doesnt-work" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>[ ] Did I read the <strong>first</strong> error message, slowly?</li>
 <li>[ ] Are all variables <strong>declared</strong> and <strong>initialised</strong>?</li>
@@ -370,12 +385,16 @@
     </article>
 
     <footer class="foot">
-      <span>The Complete C Programming Course</span>
-      <a href="#top" class="totop">Back to top &uarr;</a>
+      <div class="foot-text">
+        <span class="copyright">&copy; 2026 Mrwhocancreate, founder and CEO, Behemoth Group</span>
+        <span>The Complete C Programming Course · COE 281</span>
+      </div>
+      <a href="#top" class="totop">Back to top</a>
     </footer>
   </main>
   <aside class="toc" aria-label="On this page">
 <div class="toc-title">On this page</div>
+<nav class="toc-links">
 <a class="toc-2" href="#1-the-three-kinds-of-bugs">1. The three kinds of bugs</a>
 <a class="toc-2" href="#2-reading-compiler-messages">2. Reading compiler messages</a>
 <a class="toc-3" href="#common-compile-time-errors">Common compile-time errors</a>
@@ -391,9 +410,10 @@
 <a class="toc-2" href="#5-using-a-debugger">5. Using a debugger</a>
 <a class="toc-2" href="#6-how-to-avoid-bugs-in-the-first-place">6. How to avoid bugs in the first place</a>
 <a class="toc-2" href="#7-quick-checklist-when-it-doesnt-work">7. Quick checklist when &quot;it doesn&#x27;t work&quot;</a>
+</nav>
   </aside>
 </div>
 <script>window.SITE_ROOT = "../";</script>
-<script src="../assets/app.js" defer></script>
+<script src="../assets/app.js?v=4cf0cf14be" defer></script>
 </body>
 </html>

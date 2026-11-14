@@ -4,6 +4,11 @@
   var root = window.SITE_ROOT || "";
   var doc = document;
 
+  /* smooth scrolling for in-page links, switched on only after the first jump to a #fragment */
+  window.addEventListener("load", function () {
+    setTimeout(function () { doc.documentElement.classList.add("smooth"); }, 0);
+  });
+
   /* ---------- theme ---------- */
   var themeBtn = doc.getElementById("theme");
   if (themeBtn) {
@@ -20,10 +25,14 @@
     if (!sidebar) return;
     sidebar.classList.toggle("open", open);
     if (scrim) scrim.classList.toggle("show", open);
-    if (menu) menu.setAttribute("aria-expanded", open ? "true" : "false");
+    if (menu) {
+      menu.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.setAttribute("aria-label", open ? "Close the chapter menu" : "Open the chapter menu");
+    }
   }
   if (menu) menu.addEventListener("click", function () { setMenu(!sidebar.classList.contains("open")); });
   if (scrim) scrim.addEventListener("click", function () { setMenu(false); });
+  if (sidebar) sidebar.addEventListener("click", function (e) { if (e.target.closest && e.target.closest("a")) setMenu(false); });
   doc.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
 
   /* keep the current chapter visible in the sidebar */
@@ -39,10 +48,11 @@
     var code = btn.parentNode.querySelector("code");
     if (!code) return;
     var text = code.innerText.replace(/\n$/, "");
-    function done() { btn.textContent = "Copied!"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, fallback);
-    } else { fallback(); }
+    function done() {
+      btn.textContent = "Copied";
+      btn.classList.add("done");
+      setTimeout(function () { btn.textContent = "Copy"; btn.classList.remove("done"); }, 1600);
+    }
     function fallback() {
       try {
         var ta = doc.createElement("textarea");
@@ -50,14 +60,17 @@
         doc.body.appendChild(ta); ta.select(); doc.execCommand("copy"); doc.body.removeChild(ta); done();
       } catch (err) { btn.textContent = "Press Ctrl+C"; }
     }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
   });
 
   /* ---------- "on this page" highlighting ---------- */
   var tocLinks = [].slice.call(doc.querySelectorAll(".toc a"));
   if (tocLinks.length && "IntersectionObserver" in window) {
     var map = {};
-    tocLinks.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
-    var heads = [].slice.call(doc.querySelectorAll("article h2[id], article h3[id]"));
+    tocLinks.forEach(function (a) { map[decodeURIComponent(a.getAttribute("href").slice(1))] = a; });
+    var heads = [].slice.call(doc.querySelectorAll(".prose h2[id], .prose h3[id]"));
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting && map[en.target.id]) {
@@ -65,21 +78,24 @@
           map[en.target.id].classList.add("on");
         }
       });
-    }, { rootMargin: "-70px 0px -70% 0px" });
+    }, { rootMargin: "-80px 0px -70% 0px" });
     heads.forEach(function (h) { io.observe(h); });
   }
 
   /* ---------- search ---------- */
   var input = doc.getElementById("q"), box = doc.getElementById("results");
   if (!input || !box) return;
-  if (window.matchMedia && matchMedia("(max-width: 600px)").matches) input.placeholder = "Search, or jump to Ex 5.67";
+  if (window.matchMedia && matchMedia("(max-width: 720px)").matches) input.placeholder = "Search or Ex 5.67";
   var index = null, loading = null, hits = [], sel = -1;
   var KIND = { lesson: "Lesson", solution: "Solution", appendix: "Appendix", home: "Home" };
 
   function load() {
     if (index) return Promise.resolve(index);
     if (!loading) {
-      loading = fetch(root + "assets/search.json").then(function (r) { return r.json(); }).then(function (j) { index = j; return j; });
+      loading = fetch(root + "assets/search.json")
+        .then(function (r) { return r.json(); })
+        .then(function (j) { index = j; return j; })
+        .catch(function () { loading = null; return []; });
     }
     return loading;
   }
@@ -87,7 +103,7 @@
 
   function find(term) {
     term = term.trim().toLowerCase();
-    if (!term) return [];
+    if (!term || !index) return [];
     var m = term.match(/^(?:ex(?:ercise)?\.?\s*)?(\d+)\.(\d+)$/);
     var out = [];
     if (m) {
@@ -111,16 +127,19 @@
   }
 
   function render() {
+    var q = input.value.trim();
     if (!hits.length) {
-      box.innerHTML = input.value.trim() ? '<div class="none">No matches. Try another word, or an exercise number like <b>5.67</b>.</div>' : "";
-      box.hidden = !input.value.trim();
+      box.innerHTML = q ? '<div class="none">No matches. Try another word, or an exercise number such as <b>5.67</b>.</div>' : "";
+      box.hidden = !q;
       return;
     }
     box.innerHTML = hits.map(function (e, i) {
-      return '<a href="' + root + e[1] + '" data-i="' + i + '" class="' + (i === sel ? "sel" : "") + '"><span class="kind">' +
+      return '<a href="' + root + e[1] + '" class="' + (i === sel ? "sel" : "") + '"><span class="kind">' +
         (KIND[e[2]] || "") + "</span><span>" + esc(e[0]) + "</span></a>";
     }).join("");
     box.hidden = false;
+    var s = box.querySelector(".sel");
+    if (s && s.scrollIntoView) s.scrollIntoView({ block: "nearest" });
   }
 
   input.addEventListener("input", function () {
@@ -135,6 +154,9 @@
   });
   doc.addEventListener("click", function (e) { if (!e.target.closest || !e.target.closest(".search")) box.hidden = true; });
   doc.addEventListener("keydown", function (e) {
-    if (e.key === "/" && doc.activeElement !== input && !/INPUT|TEXTAREA/.test(doc.activeElement.tagName)) { input.focus(); e.preventDefault(); }
+    var typing = /INPUT|TEXTAREA|SELECT/.test(doc.activeElement.tagName) || doc.activeElement.isContentEditable;
+    if ((e.key === "/" && !typing) || ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K"))) {
+      input.focus(); input.select(); e.preventDefault();
+    }
   });
 })();

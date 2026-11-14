@@ -156,8 +156,9 @@ int main(void)
 1
 ```
 
-> ⚠️ **Never divide (or `%`) by zero.** The program will crash (or behave unpredictably).
-> ⚠️ `5 % 2.0` is a **compile error** — `%` needs integers on both sides.
+> ⚠️ **Two rules for `/` and `%`**
+> - **Never divide (or `%`) by zero.** The program will crash (or behave unpredictably).
+> - `5 % 2.0` is a **compile error**: `%` needs integers on both sides.
 
 ---
 
@@ -314,7 +315,12 @@ Relational operators are used in **decision-making and loops** (Chapter 5).
 
 > ⚠️ **Do not chain comparisons like in mathematics.** `1 < x < 10` is **not** "x is between 1 and 10". C reads it as `(1 < x) < 10`, which is `(0 or 1) < 10` — always true! Use the logical operator: `x > 1 && x < 10`.
 
-> ⚠️ **Comparing decimals with `==` is risky** because of tiny rounding errors (Chapter 2, Ex 2.44). Compare with a tolerance instead.
+> ⚠️ **Comparing decimals with `==` is risky** because of tiny rounding errors (Chapter 2, Ex 2.44): `0.1 + 0.2 == 0.3` is **0** (false). Instead, check that the two numbers are *close enough*, i.e. that their difference is tiny:
+> ```c
+> double diff = (0.1 + 0.2) - 0.3;
+> int same = (diff > -1e-9 && diff < 1e-9);    /* 1: equal within 0.000000001 */
+> ```
+> (With `#include <math.h>` you can write the same test as `fabs(diff) < 1e-9`; `fabs` gives the absolute value of a `double`.)
 
 ---
 
@@ -517,6 +523,7 @@ a >> 2 = 3
 **Shifts are fast multiply/divide by powers of 2.**
 - `a << 1` doubles `a`: `12 << 1 = 24`. In general `a << n` = `a × 2ⁿ`.
 - `a >> 2` divides by 4 (dropping the remainder): `12 >> 2 = 3`. In general `a >> n` = `a ÷ 2ⁿ`.
+- These rules are for **non-negative** numbers that stay in range. Shifting a negative number, shifting by a negative amount, or shifting by as many bits as the type has (32 or more for a 4-byte `int`) is not reliable in C. Use `unsigned` values when you work with bits.
 
 **`~` (complement)** flips all bits. For ordinary signed integers `~a` equals `-a - 1` (so `~12 = -13`). Do not worry about *why* yet — this is the "two's complement" representation you will study in your digital systems course.
 

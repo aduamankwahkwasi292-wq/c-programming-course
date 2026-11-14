@@ -943,14 +943,14 @@ stopped at i = 8
 | no update (`while (i < 5) { ... }` never changes `i`) | infinite loop |
 | `;` right after the header: `for (...);` `while (...);` | the loop's body is empty; the next block runs once |
 | `<=` instead of `<` (or the reverse) | off by one |
-| changing the loop counter inside a `for` body | unpredictable |
+| changing the loop counter inside a `for` body | legal, but values get skipped or repeated and the loop is hard to follow |
 | using `float` counters (`for (x = 0; x != 1.0; x += 0.1)`) | rounding → may never hit exactly 1.0 |
 
 ---
 
 ## 5.5 The rule of the braces `{ }`
 
-If the body of a decision, loop or function contains **only one statement**, the braces are **optional**. The statement can be an ordinary statement (ending with `;`) or even a whole compound statement such as another `if` or `for`.
+If the body of a decision (`if`, `else`) or a loop contains **only one statement**, the braces are **optional**. The statement can be an ordinary statement (ending with `;`) or even a whole compound statement such as another `if` or `for`. (This rule does **not** apply to functions: the body of `main` or of any other function always needs its braces.)
 
 Your slide's example — these two loops are identical:
 
@@ -1648,7 +1648,7 @@ float avg = sum / count;
 printf("%f\n", avg);
 ```
 
-**Ex 5.48** Every score gets grade `D`. Fix the logic.
+**Ex 5.48** Every score of 50 or more gets grade `D` (even 95!). Fix the logic.
 ```c
 if (score >= 50)
     printf("D\n");

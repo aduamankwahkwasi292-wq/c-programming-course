@@ -4,56 +4,71 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solutions — Chapter 9: Final Exam · The Complete C Programming Course</title>
-<meta name="description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta name="description" content="A complete beginner&#x27;s course in C programming, in simple language, with 725 exercises and full solutions: variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<meta name="author" content="Mrwhocancreate, founder and CEO, Behemoth Group">
+<meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Solutions — Chapter 9: Final Exam · The Complete C Programming Course">
-<meta property="og:description" content="A complete beginner&#x27;s C programming course in simple language, with 725 exercises and full solutions, covering variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b4a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='Consolas,monospace' font-weight='700' fill='%23ffd966'%3EC%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="A complete beginner&#x27;s course in C programming, in simple language, with 725 exercises and full solutions: variables, operators, input/output, control flow, functions, arrays, pointers and strings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' font-family='Consolas,Menlo,monospace' font-weight='700' fill='%23ffffff'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css?v=4cf0cf14be">
 </head>
-<body id="top">
+<body id="top" class="kind-solution">
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
-  <button id="menu" class="icon-btn" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
-  <a class="brand" href="../index.html"><span class="logo">C</span><span class="brand-text">The Complete C Programming Course</span></a>
-  <div class="search">
-    <input id="q" type="search" placeholder="Search topics or jump to an exercise (e.g. Ex 5.67)" autocomplete="off" aria-label="Search the course">
+  <button id="menu" class="icon-btn menu-btn" type="button" aria-label="Open the chapter menu" aria-controls="sidebar" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html" aria-label="The Complete C Programming Course — home">
+    <span class="logo" aria-hidden="true">C</span>
+    <span class="brand-text"><span class="brand-name">The Complete C Programming Course</span><span class="brand-sub">COE 281</span></span>
+  </a>
+  <div class="search" role="search">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search, or jump to Ex 5.67" autocomplete="off" spellcheck="false" aria-label="Search the course">
+    <kbd class="search-kbd" aria-hidden="true">/</kbd>
     <div id="results" class="results" hidden></div>
   </div>
-  <button id="theme" class="icon-btn" aria-label="Switch between light and dark mode" title="Light / dark">&#9680;</button>
+  <button id="theme" class="icon-btn" type="button" aria-label="Switch between light and dark mode" title="Light / dark"><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar" aria-label="Course chapters">
-<div class="nav-section">Start here</div>
+<div class="nav-group">
 <a class="nav-link" href="../index.html">Course home</a>
-<div class="nav-section">Chapters</div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">0</span>Introduction to Programming</a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">1</span>C Basics</a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">2</span>Variables and Data Types</a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">3</span>Operators</a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">4</span>Data Input and Output</a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">5</span>Flow of Control</a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">6</span>Functions</a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">7</span>Arrays</a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7">Solutions</a></div>
-<div class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">8</span>Pointers and Strings</a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8">Solutions</a></div>
-<div class="nav-row on"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">9</span>Projects and Final Exam</a><a class="nav-sol active" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9">Solutions</a></div>
-<div class="nav-section">Appendix</div>
+</div>
+<div class="nav-title">Chapters</div>
+<ol class="nav-chapters">
+<li class="nav-row"><a class="nav-ch" href="../lessons/00-introduction-to-programming.html"><span class="num">00</span><span class="nav-label">Introduction to Programming</span></a><a class="nav-sol" href="../solutions/00-introduction-to-programming.html" title="Solutions to Chapter 0" aria-label="Solutions to Chapter 0">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/01-c-basics.html"><span class="num">01</span><span class="nav-label">C Basics</span></a><a class="nav-sol" href="../solutions/01-c-basics.html" title="Solutions to Chapter 1" aria-label="Solutions to Chapter 1">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/02-variables-and-data-types.html"><span class="num">02</span><span class="nav-label">Variables and Data Types</span></a><a class="nav-sol" href="../solutions/02-variables-and-data-types.html" title="Solutions to Chapter 2" aria-label="Solutions to Chapter 2">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/03-operators.html"><span class="num">03</span><span class="nav-label">Operators</span></a><a class="nav-sol" href="../solutions/03-operators.html" title="Solutions to Chapter 3" aria-label="Solutions to Chapter 3">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/04-data-input-and-output.html"><span class="num">04</span><span class="nav-label">Data Input and Output</span></a><a class="nav-sol" href="../solutions/04-data-input-and-output.html" title="Solutions to Chapter 4" aria-label="Solutions to Chapter 4">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/05-flow-of-control.html"><span class="num">05</span><span class="nav-label">Flow of Control</span></a><a class="nav-sol" href="../solutions/05-flow-of-control.html" title="Solutions to Chapter 5" aria-label="Solutions to Chapter 5">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/06-functions.html"><span class="num">06</span><span class="nav-label">Functions</span></a><a class="nav-sol" href="../solutions/06-functions.html" title="Solutions to Chapter 6" aria-label="Solutions to Chapter 6">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/07-arrays.html"><span class="num">07</span><span class="nav-label">Arrays</span></a><a class="nav-sol" href="../solutions/07-arrays.html" title="Solutions to Chapter 7" aria-label="Solutions to Chapter 7">Solutions</a></li>
+<li class="nav-row"><a class="nav-ch" href="../lessons/08-pointers-and-strings.html"><span class="num">08</span><span class="nav-label">Pointers and Strings</span></a><a class="nav-sol" href="../solutions/08-pointers-and-strings.html" title="Solutions to Chapter 8" aria-label="Solutions to Chapter 8">Solutions</a></li>
+<li class="nav-row on"><a class="nav-ch" href="../lessons/09-projects-and-final-exam.html"><span class="num">09</span><span class="nav-label">Projects and Final Exam</span></a><a class="nav-sol active" href="../solutions/09-projects-and-final-exam.html" title="Solutions to Chapter 9" aria-label="Solutions to Chapter 9">Solutions</a></li>
+</ol>
+<div class="nav-title">Appendix</div><div class="nav-group">
 <a class="nav-link" href="../appendix/cheat-sheet.html">C Cheat Sheet</a>
 <a class="nav-link" href="../appendix/reference-tables.html">Reference Tables</a>
 <a class="nav-link" href="../appendix/errors-and-debugging.html">Errors and Debugging Guide</a>
 <a class="nav-link" href="../appendix/glossary.html">Glossary</a>
+</div>
   </nav>
   <div class="scrim" id="scrim"></div>
   <main id="main" class="content">
 
-    <article>
+    <p class="eyebrow">Chapter 9 · Solutions</p>
+    <article class="prose">
 <h1 id="solutions-chapter-9-final-exam">Solutions — Chapter 9: Final Exam</h1>
 <blockquote>
 <p>Back to the exam: <a href="../lessons/09-projects-and-final-exam.html">lessons/09-projects-and-final-exam.md</a></p>
 <p>The four worked projects (Student Manager, Tic-Tac-Toe, Matrix Calculator, Mini Bank) are already fully solved inside the lesson. The <strong>project ideas</strong> are open-ended, so they have no fixed solution.</p>
 </blockquote>
 <hr>
-<h2 id="section-a-multiple-choice-20-marks">Section A — Multiple choice (20 marks)</h2>
+<h2 id="section-a-multiple-choice-20-marks">Section A — Multiple choice (20 marks)<a class="anchor" href="#section-a-multiple-choice-20-marks" aria-label="Link to this section">#</a></h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -166,10 +181,10 @@
 </tbody>
 </table></div>
 <hr>
-<h2 id="section-b-short-answers-24-marks-3-marks-each">Section B — Short answers (24 marks · 3 marks each)</h2>
+<h2 id="section-b-short-answers-24-marks-3-marks-each">Section B — Short answers (24 marks · 3 marks each)<a class="anchor" href="#section-b-short-answers-24-marks-3-marks-each" aria-label="Link to this section">#</a></h2>
 <p><em>(Each answer is shown as a complete, tested program.)</em></p>
 <p><strong>B1.</strong> <em>(2 marks for the output pair, 1 for a correct explanation.)</em></p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -183,32 +198,32 @@
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
 <span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%d</span> <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>27 10</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>27 10</code></pre></div>
 <p><code>continue</code> skips 3, 6 and 9; the loop adds 1 + 2 + 4 + 5 + 7 + 8 = 27; at <code>i = 10</code> the second test <code>i &gt; 8</code> triggers <code>break</code>, so <code>i</code> is still 10 afterwards.</p>
 <p><strong>B2.</strong></p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="fn">g</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="mi">2026</span><span class="p">));</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">g</span><span class="p">(</span><span class="mi">2026</span><span class="p">));</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>10</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>10</code></pre></div>
 <p><code>g</code> returns the <strong>sum of the digits</strong>: 6 + 2 + 0 + 2 = 10.</p>
 <p><strong>B3.</strong> <em>(1 mark for the output, 1 for &quot;it swaps&quot;, 1 for mentioning that it works through the pointers.)</em></p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
 <span class="p">{</span>
@@ -221,15 +236,15 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%d</span> <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>9 4</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>9 4</code></pre></div>
 <p><code>f</code> <strong>swaps</strong> the values of the two variables whose addresses it receives.</p>
 <p><strong>B4.</strong></p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -238,14 +253,14 @@
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">];</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>15</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>15</code></pre></div>
 <p>It adds the <strong>secondary diagonal</strong>: <code>m[0][2] + m[1][1] + m[2][0]</code> = 3 + 5 + 7.</p>
 <p><strong>B5.</strong></p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -253,33 +268,33 @@
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"KNUST"</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s %zu %zu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%s</span> <span class="si">%zu</span> <span class="si">%zu</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="fn">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>KN 2 6</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>KN 2 6</code></pre></div>
 <p>Putting <code>'\0'</code> at index 2 ends the string after <code>KN</code> (length 2), but the array is still 6 bytes.</p>
 <p><strong>B6.</strong> <em>(1 mark for each definition, 1 for a correct example.)</em> In <strong>pass by value</strong> the function receives a <strong>copy</strong> of the argument, so changes to the parameter do not affect the caller's variable: <code>void f(int n) { n = 0; }</code> called as <code>f(x)</code> leaves <code>x</code> unchanged. In <strong>pass by reference</strong> the caller passes the variable's <strong>address</strong> (<code>&amp;x</code>) and the function receives a pointer, so by writing <code>*p = 0;</code> it changes the caller's original variable: <code>void f(int *p) { *p = 0; }</code> called as <code>f(&amp;x)</code> sets <code>x</code> to 0.</p>
 <p><strong>B7.</strong> <em>(1 mark for &quot;string literal is read-only&quot;, 1 for &quot;undefined behaviour/crash&quot;, 1 for the fix.)</em> <code>char *s = &quot;hi&quot;;</code> makes <code>s</code> point to a <strong>string literal</strong>, which is stored in read-only memory; assigning to <code>s[0]</code> is <strong>undefined behaviour</strong> (usually a crash). The fix is to give the program its <strong>own modifiable copy</strong> in an array: <code>char s[] = &quot;hi&quot;;</code>.</p>
 <p><strong>B8.</strong></p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"-"</span><span class="p">);</span>
+<span class="w">            </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%d</span>"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"-"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>123-46-9-</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>123-46-9-</code></pre></div>
 <p>Row <code>i = 1</code>: j = 1, 2, 3 → 1 2 3. Row <code>i = 2</code>: j = 2, 3 → 4 6. Row <code>i = 3</code>: j = 3 → 9.</p>
 <hr>
-<h2 id="section-c-debugging-10-marks">Section C — Debugging (10 marks)</h2>
+<h2 id="section-c-debugging-10-marks">Section C — Debugging (10 marks)<a class="anchor" href="#section-c-debugging-10-marks" aria-label="Link to this section">#</a></h2>
 <p><strong>C1.</strong> <em>(1 mark per mistake found <strong>and</strong> corrected.)</em></p>
 <ol>
 <li><code>int average(...)</code> must return a <strong><code>double</code></strong> (the average is generally not a whole number).</li>
@@ -289,7 +304,7 @@
 <li>The call <code>average(marks)</code> is <strong>missing the size argument</strong> → <code>average(marks, 5)</code>.</li>
 </ol>
 <p>Corrected program:</p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">double</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
@@ -302,11 +317,11 @@
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">};</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Average = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">(</span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">));</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Average = <span class="si">%.2f</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">average</span><span class="p">(</span><span class="n">marks</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">));</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>Average = 80.00</code></pre></div>
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>Average = 80.00</code></pre></div>
 <p><strong>C2.</strong> <em>(1 mark per mistake found <strong>and</strong> fixed.)</em></p>
 <ol>
 <li><code>char city[5] = &quot;Accra&quot;;</code> — <code>&quot;Accra&quot;</code> needs <strong>6</strong> bytes (5 letters + <code>'\0'</code>) → <code>char city[] = &quot;Accra&quot;;</code>.</li>
@@ -316,7 +331,7 @@
 <li><code>gets(copy);</code> — <strong>unsafe</strong> (no size limit; removed from C11) → <code>fgets(copy, sizeof(copy), stdin);</code>.</li>
 </ol>
 <p>Corrected program:</p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -324,29 +339,29 @@
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">city</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Accra"</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">copy</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
 
-<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="n">city</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="s">"Accra"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"same</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">strcpy</span><span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="n">city</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="fn">strcmp</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="s">"Accra"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"same</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">len</span><span class="p">;</span>
-<span class="w">    </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">city</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"length = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="w">    </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="fn">strlen</span><span class="p">(</span><span class="n">city</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"length = <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">copy</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"you typed: %s"</span><span class="p">,</span><span class="w"> </span><span class="n">copy</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">fgets</span><span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">copy</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"you typed: <span class="si">%s</span>"</span><span class="p">,</span><span class="w"> </span><span class="n">copy</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>same
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>same
 length = 5
 Kumasi
 you typed: Kumasi</code></pre></div>
 <hr>
-<h2 id="section-d-programming-46-marks">Section D — Programming (46 marks)</h2>
-<h3 id="d1-8-marks">D1 (8 marks)</h3>
+<h2 id="section-d-programming-46-marks">Section D — Programming (46 marks)<a class="anchor" href="#section-d-programming-46-marks" aria-label="Link to this section">#</a></h2>
+<h3 id="d1-8-marks">D1 (8 marks)<a class="anchor" href="#d1-8-marks" aria-label="Link to this section">#</a></h3>
 <p><strong>Marking scheme:</strong> reading the line <strong>safely</strong> with <code>fgets</code> (2) · function loops until <code>'\0'</code> (2) · correct vowel test for upper <em>and</em> lower case (2) · <code>main</code> prints both counts, other = length − vowels (2).</p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">countVowels</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
@@ -369,22 +384,22 @@ you typed: Kumasi</code></pre></div>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mi">200</span><span class="p">];</span>
 
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Enter a line of text: "</span><span class="p">);</span>
-<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
-<span class="w">    </span><span class="n">line</span><span class="p">[</span><span class="n">strcspn</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span><span class="w">             </span><span class="cm">/* remove the final newline */</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Enter a line of text: "</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+<span class="w">    </span><span class="n">line</span><span class="p">[</span><span class="fn">strcspn</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'\0'</span><span class="p">;</span><span class="w">             </span><span class="cm">/* remove the final newline */</span>
 
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vowels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countVowels</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Vowels: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">vowels</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Other characters: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">vowels</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vowels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fn">countVowels</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Vowels: <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">vowels</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Other characters: <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="fn">strlen</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">vowels</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>Enter a line of text: Programming in C
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>Enter a line of text: Programming in C
 Vowels: 4
 Other characters: 12</code></pre></div>
-<h3 id="d2-10-marks">D2 (10 marks)</h3>
+<h3 id="d2-10-marks">D2 (10 marks)<a class="anchor" href="#d2-10-marks" aria-label="Link to this section">#</a></h3>
 <p><strong>Marking scheme:</strong> reading <code>n</code> and the array (2) · <code>mean</code> (2) · <code>countAbove</code> (2) · <code>sortDescending</code> (3) · correct output (1).</p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="cp">#define MAX 50</span>
 
@@ -421,30 +436,30 @@ Other characters: 12</code></pre></div>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">MAX</span><span class="p">],</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"How many numbers (max %d)? "</span><span class="p">,</span><span class="w"> </span><span class="n">MAX</span><span class="p">);</span>
-<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"How many numbers (max <span class="si">%d</span>)? "</span><span class="p">,</span><span class="w"> </span><span class="n">MAX</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">scanf</span><span class="p">(</span><span class="s">"<span class="si">%d</span>"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="fn">scanf</span><span class="p">(</span><span class="s">"<span class="si">%d</span>"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Mean = %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Numbers above the mean: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">countAbove</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">));</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fn">mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Mean = <span class="si">%.2f</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Numbers above the mean: <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">countAbove</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">));</span>
 
-<span class="w">    </span><span class="n">sortDescending</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Sorted: "</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">sortDescending</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Sorted: "</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%d</span> "</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>How many numbers (max 50)? 6 40 85 62 91 55 78
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>How many numbers (max 50)? 6 40 85 62 91 55 78
 Mean = 68.50
 Numbers above the mean: 3
 Sorted: 91 85 78 62 55 40</code></pre></div>
-<h3 id="d3-12-marks">D3 (12 marks)</h3>
+<h3 id="d3-12-marks">D3 (12 marks)<a class="anchor" href="#d3-12-marks" aria-label="Link to this section">#</a></h3>
 <p><strong>Marking scheme:</strong> parallel arrays for names/prices and a counter (2) · menu loop with <code>switch</code> and a sensible exit (3) · <code>addItem</code> with the two validations and the counter passed <strong>by pointer</strong> (3) · <code>listItems</code> (2) · <code>totalPrice</code> (2).</p>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="cp">#define MAX_ITEMS 10</span>
 <span class="cp">#define NAME_LEN 30</span>
@@ -454,30 +469,30 @@ Sorted: 91 85 78 62 55 40</code></pre></div>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="n">NAME_LEN</span><span class="p">];</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%29s %lf"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">price</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">scanf</span><span class="p">(</span><span class="s">"<span class="si">%29s</span> <span class="si">%lf</span>"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">price</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MAX_ITEMS</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"The list is full.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"The list is full.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"The price must be positive.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"The price must be positive.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="o">*</span><span class="n">count</span><span class="p">],</span><span class="w"> </span><span class="n">NAME_LEN</span><span class="p">,</span><span class="w"> </span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">snprintf</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="o">*</span><span class="n">count</span><span class="p">],</span><span class="w"> </span><span class="n">NAME_LEN</span><span class="p">,</span><span class="w"> </span><span class="s">"<span class="si">%s</span>"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
 <span class="w">    </span><span class="n">prices</span><span class="p">[</span><span class="o">*</span><span class="n">count</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
 <span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">count</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Item added.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Item added.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">listItems</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">names</span><span class="p">[][</span><span class="n">NAME_LEN</span><span class="p">],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">prices</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">%-4s %-15s %10s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"No."</span><span class="p">,</span><span class="w"> </span><span class="s">"Item"</span><span class="p">,</span><span class="w"> </span><span class="s">"Price"</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"><span class="si">%-4s</span> <span class="si">%-15s</span> <span class="si">%10s</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"No."</span><span class="p">,</span><span class="w"> </span><span class="s">"Item"</span><span class="p">,</span><span class="w"> </span><span class="s">"Price"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-4d %-15s %10.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%-4d</span> <span class="si">%-15s</span> <span class="si">%10.2f</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="p">}</span>
 
 <span class="kt">double</span><span class="w"> </span><span class="nf">totalPrice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">prices</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
@@ -497,17 +512,17 @@ Sorted: 91 85 78 62 55 40</code></pre></div>
 
 <span class="w">    </span><span class="k">do</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">1) Add item  2) List items  3) Total price  4) Exit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Choose: "</span><span class="p">);</span>
-<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">1) Add item  2) List items  3) Total price  4) Exit</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Choose: "</span><span class="p">);</span>
+<span class="w">        </span><span class="fn">scanf</span><span class="p">(</span><span class="s">"<span class="si">%d</span>"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
 
 <span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">addItem</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">listItems</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Total: GHS %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">));</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Goodbye!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"Invalid choice.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="fn">addItem</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="fn">listItems</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Total: GHS <span class="si">%.2f</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">totalPrice</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">));</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Goodbye!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="fn">printf</span><span class="p">(</span><span class="s">"Invalid choice.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
@@ -515,7 +530,7 @@ Sorted: 91 85 78 62 55 40</code></pre></div>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>1) Add item  2) List items  3) Total price  4) Exit
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>1) Add item  2) List items  3) Total price  4) Exit
 Choose: 1 Rice 12.50
 Item added.
 
@@ -541,7 +556,7 @@ Total: GHS 21.50
 1) Add item  2) List items  3) Total price  4) Exit
 Choose: 4
 Goodbye!</code></pre></div>
-<h3 id="d4-16-marks">D4 (16 marks)</h3>
+<h3 id="d4-16-marks">D4 (16 marks)<a class="anchor" href="#d4-16-marks" aria-label="Link to this section">#</a></h3>
 <p><strong>Marking scheme</strong></p>
 <ul>
 <li>(a) <code>transpose</code> <strong>in place</strong> (4): loops over the <strong>upper triangle only</strong> (<code>j &gt; i</code>) (2) and swaps <code>m[i][j]</code> with <code>m[j][i]</code> using a temporary (2). <em>(Swapping over the whole matrix would transpose it twice and change nothing — a common mistake, 0 for the logic.)</em></li>
@@ -550,15 +565,15 @@ Goodbye!</code></pre></div>
 <li>(d) recursive <code>gcd</code> (3): base case (1), recursive call <code>gcd(b, a % b)</code> (1), returns the result (1).</li>
 <li>(e) <code>main</code> (2): calls all four with sample data and prints.</li>
 </ul>
-<div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<div class="code" data-lang="C"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre class="hl"><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">printMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%3d"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="fn">printf</span><span class="p">(</span><span class="s">"<span class="si">%3d</span>"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+<span class="w">        </span><span class="fn">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -599,7 +614,7 @@ Goodbye!</code></pre></div>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="fn">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -608,21 +623,21 @@ Goodbye!</code></pre></div>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"m symmetric? %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">isSymmetric</span><span class="p">(</span><span class="n">m</span><span class="p">));</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"s symmetric? %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">isSymmetric</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"m symmetric? <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">isSymmetric</span><span class="p">(</span><span class="n">m</span><span class="p">));</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"s symmetric? <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">isSymmetric</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
 
-<span class="w">    </span><span class="n">traceAndMax</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">max</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"trace = %d, max = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">traceAndMax</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">max</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"trace = <span class="si">%d</span>, max = <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">transpose</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"transpose of m:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printMatrix</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">transpose</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"transpose of m:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="fn">printMatrix</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"gcd(48, 18) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">));</span>
+<span class="w">    </span><span class="fn">printf</span><span class="p">(</span><span class="s">"gcd(48, 18) = <span class="si">%d</span></span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="fn">gcd</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">));</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="outblock"><div class="outlabel">Output</div><pre><code>m symmetric? 0
+<div class="outblock"><div class="outlabel" aria-hidden="true">Output</div><pre><code>m symmetric? 0
 s symmetric? 1
 trace = 15, max = 9
 transpose of m:
@@ -631,7 +646,7 @@ transpose of m:
   3  6  9
 gcd(48, 18) = 6</code></pre></div>
 <hr>
-<h2 id="total-and-grading-guide">Total and grading guide</h2>
+<h2 id="total-and-grading-guide">Total and grading guide<a class="anchor" href="#total-and-grading-guide" aria-label="Link to this section">#</a></h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -693,25 +708,29 @@ gcd(48, 18) = 6</code></pre></div>
 </tbody>
 </table></div>
 <blockquote>
-<p><strong>A final word from your professor.</strong> Nobody learns programming by reading. You learn it by <strong>typing programs, breaking them, and fixing them</strong>. If you do only one thing after this course: every day, write one small program from scratch. In a month you will not recognise yourself.</p>
+<p><strong>A final word.</strong> Nobody learns programming by reading. You learn it by <strong>typing programs, breaking them, and fixing them</strong>. If you do only one thing after this course: every day, write one small program from scratch. In a month you will not recognise yourself.</p>
 </blockquote>
 <hr>
 <p><em>Back to the course index: <a href="../index.html">README</a></em></p>
 
     </article>
 <nav class="pager" aria-label="Page navigation">
-<a class="pager-main" href="../lessons/09-projects-and-final-exam.html">←  Back to the Chapter 9 lesson</a>
+<a class="pager-main" href="../lessons/09-projects-and-final-exam.html"><span>Back to the lesson</span><strong>Chapter 9 — Projects and Final Exam</strong><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
 <div class="pager-row">
-<a class="pager-prev" href="../solutions/08-pointers-and-strings.html"><small>Previous</small>Solutions — Chapter 8: Pointers and Strings</a>
+<a class="pager-prev" href="../solutions/08-pointers-and-strings.html"><small><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Previous</small>Solutions — Chapter 8: Pointers and Strings</a>
 <span></span>
 </div></nav>
     <footer class="foot">
-      <span>The Complete C Programming Course</span>
-      <a href="#top" class="totop">Back to top &uarr;</a>
+      <div class="foot-text">
+        <span class="copyright">&copy; 2026 Mrwhocancreate, founder and CEO, Behemoth Group</span>
+        <span>The Complete C Programming Course · COE 281</span>
+      </div>
+      <a href="#top" class="totop">Back to top</a>
     </footer>
   </main>
   <aside class="toc" aria-label="On this page">
 <div class="toc-title">On this page</div>
+<nav class="toc-links">
 <a class="toc-2" href="#section-a-multiple-choice-20-marks">Section A — Multiple choice (20 marks)</a>
 <a class="toc-2" href="#section-b-short-answers-24-marks-3-marks-each">Section B — Short answers (24 marks · 3 marks each)</a>
 <a class="toc-2" href="#section-c-debugging-10-marks">Section C — Debugging (10 marks)</a>
@@ -721,9 +740,10 @@ gcd(48, 18) = 6</code></pre></div>
 <a class="toc-3" href="#d3-12-marks">D3 (12 marks)</a>
 <a class="toc-3" href="#d4-16-marks">D4 (16 marks)</a>
 <a class="toc-2" href="#total-and-grading-guide">Total and grading guide</a>
+</nav>
   </aside>
 </div>
 <script>window.SITE_ROOT = "../";</script>
-<script src="../assets/app.js" defer></script>
+<script src="../assets/app.js?v=4cf0cf14be" defer></script>
 </body>
 </html>

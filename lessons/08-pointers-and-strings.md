@@ -9,6 +9,7 @@
 ## What you will learn
 
 **Part I — Pointers**
+
 1. What **memory addresses** are, and what a **pointer** is.
 2. How to **declare** a pointer, **assign** an address (`&`) and **dereference** it (`*`).
 3. How to **pass pointers to functions** (pass by reference) and **return pointers**.
@@ -16,6 +17,7 @@
 5. A first look at **function pointers** and **dynamic memory** (`malloc` / `free`).
 
 **Part II — Strings**
+
 6. What a **string** is — a character array ending in `'\0'`.
 7. How to **declare, initialise, read and print** strings.
 8. The **string library** `<string.h>`: `strlen`, `strcpy`, `strcat`, `strcmp`, `strchr`, `strstr`, `strdup`…
@@ -265,7 +267,7 @@ int main(void)
 
 ### How big is a pointer?
 
-An address needs the same number of bytes whatever it points to, so **all pointers have the same size** (8 bytes on a 64-bit computer). What differs is the size of the thing *pointed to*:
+An address needs the same number of bytes whatever it points to, so on everyday computers **all pointers have the same size** (8 bytes on a 64-bit computer, 4 on a 32-bit one). What differs is the size of the thing *pointed to*:
 
 ```c
 #include <stdio.h>
@@ -361,6 +363,8 @@ C allows you to pass a **pointer** to a function as an argument. Since a pointer
 
 - **By value:** the function receives a **copy** of the value. Changes inside the function **do not** affect the caller's variable.
 - **By reference (via a pointer):** the function receives the **address** of the caller's variable. By dereferencing it the function reads and changes the **original** variable, directly in memory.
+
+> 📝 **Strictly speaking**, C always passes arguments by value. When you pass `&m`, the function gets a *copy of the address*. But a copy of an address still leads to the original variable, so the effect is exactly that of passing by reference. That is why books (and your slides) use the name.
 
 Functions that accept pointers say so in their declaration **and** definition: the parameter is declared with a `*`.
 

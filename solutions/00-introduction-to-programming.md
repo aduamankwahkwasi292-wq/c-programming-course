@@ -415,7 +415,7 @@ Notice how many *decisions* hide inside an everyday task. This is exactly why we
 
 One weighing is not enough: a single weighing has only 3 outcomes (left lighter / right lighter / equal), so it can tell apart at most 3 coins — not 8.
 
-**Ex 0.32** **Always guess the middle of the remaining range.** Each answer cuts the possibilities in half: 100 → 50 → 25 → 13 → 7 → 4 → 2 → 1. Since 2⁷ = 128 ≥ 100, seven guesses always suffice.
+**Ex 0.32** **Always guess the middle of the remaining range.** Each wrong guess removes the guessed number *and* at least half of the rest. The worst case for 100 numbers is: 100 → at most 50 left → 25 → 12 → 6 → 3 → 1, so the 7th guess is always right. In general, *k* guesses are enough for up to 2ᵏ − 1 numbers, and 2⁷ − 1 = 127 ≥ 100. (Six guesses cover only 2⁶ − 1 = 63 numbers, so 7 is also the minimum that always works.)
 Example, secret = 73: guess 50 (higher) → 75 (lower) → 62 (higher) → 68 (higher) → 71 (higher) → 73 ✔ (6 guesses). This method is called **binary search**.
 
 **Ex 0.33** Work backwards: `58 + 6 = 64` → `64 ÷ 4 = 16` → `16 − 9 = 7`. The number was **7**. Check forwards: `7 + 9 = 16`, `16 × 4 = 64`, `64 − 6 = 58` ✔.
@@ -442,7 +442,7 @@ Example, secret = 73: guess 50 (higher) → 75 (lower) → 62 (higher) → 68 (h
 
 **Ex 0.36** *Model answer.* A **compiler** reads the entire source program and translates it into machine code (an executable file) in one go. *Advantage:* the finished program runs fast and you can ship it without the compiler. *Disadvantage:* you must recompile after each change, and the compile step may take time. An **interpreter** translates and executes one statement at a time. *Advantage:* quick to test small changes — no separate compile step. *Disadvantage:* programs generally run slower, and an error deep in the code may only show up when execution reaches it.
 
-**Ex 0.37** *Examples.* (i) **Operating systems** such as Linux, Windows and the Android kernel are written mostly in C — C talks to the hardware directly. (ii) **Embedded systems** like the controller in a washing machine, a car's engine management unit or a hospital patient monitor use C because it is small, fast and gives direct control over memory and hardware. (iii) The interpreters of **Python** and many other languages are themselves written in C.
+**Ex 0.37** *Examples.* (i) **Operating systems.** The Linux kernel (which is also the kernel inside Android) is written almost entirely in C, and the core of Windows is written in C and C++. C can talk to the hardware directly. (ii) **Embedded systems** like the controller in a washing machine, a car's engine management unit or a hospital patient monitor use C because it is small, fast and gives direct control over memory and hardware. (iii) The interpreters of **Python** and many other languages are themselves written in C.
 
 ---
 

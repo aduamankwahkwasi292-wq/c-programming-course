@@ -50,7 +50,7 @@
 | `%x` / `%X` | unsigned hexadecimal (lower / upper case) | `7fa` / `7FA` |
 | `%f` | decimal floating point | `392.650000` |
 | `%e` / `%E` | scientific notation | `3.926500e+02` |
-| `%g` / `%G` | the shorter of `%f` and `%e` | `392.65` |
+| `%g` / `%G` | 6 significant digits; `%f` style, or `%e` style for very large/small numbers; no trailing zeros | `392.65` |
 | `%a` / `%A` | hexadecimal floating point | `-0xc.90fep-2` |
 | `%c` | a character | `a` |
 | `%s` | a string | `sample` |

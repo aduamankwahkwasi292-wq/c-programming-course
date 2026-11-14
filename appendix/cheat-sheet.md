@@ -60,8 +60,11 @@ Casting: `(double) a / b`. `sizeof(x)` gives bytes (`%zu`).
  << >>
  < <= > >=
  == !=
- &   ^   |
- &&  ||
+ &
+ ^
+ |
+ &&
+ ||
  ?:                                                  (right to left)
  = += -= *= /= %= <<= >>= &= ^= |=                   (right to left)
  ,                         lowest

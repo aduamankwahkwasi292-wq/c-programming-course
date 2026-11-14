@@ -75,7 +75,7 @@ printf("I am 50 years old");
 
 ### Inserting values: format specifiers
 
-A **format specifier** (a.k.a. **control string**, **string formatter**) starts with `%` and is a *placeholder* for a value. The letter after the `%` says what **type** of value goes there.
+A **format specifier** starts with `%` and is a *placeholder* for a value. The letter after the `%` says what **type** of value goes there. (Your slides call these codes *control strings* or *string formatters*. Strictly, the control string is the whole text in quotes, and the `%` codes inside it are the format specifiers.)
 
 ```c
 int age = 50;
@@ -101,7 +101,7 @@ int main(void)
 Angela who bought 4 oranges weighs 90.61 kilograms
 ```
 
-> ⚠️ **Mix the order and you get nonsense.** The compiler will not stop you: `printf("%d %f", 2.5, 7);` prints garbage, because the *type* you promise in the specifier must match the *type* of the value you provide.
+> ⚠️ **Mix the order and you get nonsense.** The compiler still builds the program (with `-Wall`, GCC at least prints a warning): `printf("%d %f", 2.5, 7);` prints garbage, because the *type* you promise in the specifier must match the *type* of the value you provide.
 
 ### The format specifiers (control strings)
 
@@ -116,7 +116,7 @@ This is the table from your slide. Learn the first rows by heart — you will us
 | `%X` | unsigned hexadecimal, UPPERCASE | `7FA` |
 | `%f` (or `%F`) | decimal floating point | `392.650000` |
 | `%e` (or `%E`) | scientific notation | `3.926500e+02` |
-| `%g` (or `%G`) | the shorter of `%e` / `%f` | `392.65` |
+| `%g` (or `%G`) | 6 significant digits, in `%f` style or (for very large/small numbers) `%e` style, trailing zeros removed | `392.65` |
 | `%a` (or `%A`) | hexadecimal floating point | `-0xc.90fep-2` |
 | `%c` | a single **character** | `a` |
 | `%s` | a **string** of characters | `sample` |
@@ -370,7 +370,7 @@ You are 21 years old.
 
 Did you notice the `&` in `&personAge`? It is the **address-of operator**. It gives `scanf` the **memory address** of the variable — *where to put the value*.
 
-**Analogy.** If you ask a courier to deliver a parcel, you must give him the **address** of the house, not a photo of the house's current contents. `scanf` is the courier: it needs to know *where* `personAge` lives so it can drop the number inside.
+**Analogy.** If you ask a courier to deliver a parcel, you must give the courier the **address** of the house, not a photo of the house's current contents. `scanf` is the courier: it needs to know *where* `personAge` lives so it can drop the number inside.
 
 Without `&`, `scanf` would receive the *value* currently in the variable (garbage!) and try to treat it as an address — the program will usually crash or misbehave. **Forgetting the `&` is the #1 `scanf` mistake.** (There is one exception — reading strings into a char array, Chapter 8.)
 

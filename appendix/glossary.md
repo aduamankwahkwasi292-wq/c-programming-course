@@ -132,7 +132,7 @@
 
 **Memory leak** — Memory obtained with `malloc` that is never returned with `free`. *(Ch 8)*
 
-**Nested** — Placed inside another statement of the same kind (a loop in a loop, an `if` in a loop). *(Ch 5)*
+**Nested** — Placed inside another statement (a loop inside a loop, an `if` inside a loop, an `if` inside an `if`). *(Ch 5)*
 
 **Null character (`'\0'`)** — The character with code 0 that marks the end of a string. *(Ch 8)*
 

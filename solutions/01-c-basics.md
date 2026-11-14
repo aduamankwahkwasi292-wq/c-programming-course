@@ -141,7 +141,7 @@ printf("Welcome to KNUST!\n");
 
 **Ex 1.24** The closing brace `}` of `main` is missing. Add it after `return 0;`.
 
-**Ex 1.25** `Main` should be `main`. (Typical symptom: the compiler is happy, but the **linker** says "undefined reference to `main`" — there is no entry point.)
+**Ex 1.25** `Main` should be `main`. Typical symptom: the compiler is happy (`Main` is a perfectly legal name for an ordinary function), but the **linker** cannot find the entry point. On Linux/macOS it says `undefined reference to 'main'`; with MinGW on Windows it says `undefined reference to 'WinMain'`. Either way it means "there is no `main`".
 
 **Ex 1.26** Two mistakes:
 1. `'Akwaaba!\n'` uses single quotes. Strings need **double** quotes.
@@ -474,10 +474,11 @@ int main(void)
 }
 ```
 ```output
-Course:         COE 281
+Course: COE 281
 Lecturer:       Dr. Mensah
 Language:       C
 ```
+*Bonus:* a tab does not insert a fixed number of spaces; it jumps to the **next tab stop** (columns 8, 16, 24, …). `Course:` is 7 characters, so its tab moves just one place, to column 8. `Lecturer:` and `Language:` are 9 characters, already past column 8, so their tabs jump to column 16. To line all three up, write `"Course:\t\tCOE 281\n"` (two tabs). In Chapter 4 you will learn a cleaner way: field widths such as `%-12s`.
 
 ---
 
@@ -489,7 +490,7 @@ Language:       C
 
 | What I changed | Error message | Line | What it really meant |
 |---|---|---|---|
-| Removed `;` after `printf(...)` | `expected ';' before 'return'` | the line **after** the missing `;` | A statement was not ended before the next one started |
+| Removed `;` after `printf(...)` | `expected ';' before 'return'` | GCC: the `printf` line (the end of it); some compilers: the line **after** it | A statement was not ended before the next one started |
 | Removed the closing `"` | `missing terminating " character` | the `printf` line | The string never ended |
 | Wrote `printF` | `implicit declaration of function 'printF'` / `undefined reference to 'printF'` | the `printF` line | The compiler/linker does not know a function with that exact (case-sensitive) name |
 | Removed `#include <stdio.h>` | `implicit declaration of function 'printf'` | the `printf` line | The declaration of `printf` was never included |

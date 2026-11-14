@@ -287,7 +287,7 @@ inside : 15
 outside: 5
 ```
 
-> 💡 **Analogy.** You give a photocopy of your document to a clerk. He can scribble on it all he likes — your original stays clean. (In Chapter 8, with **pointers**, you will learn how to hand over the *original's address* so the function can change it.)
+> 💡 **Analogy.** You give a photocopy of your document to a clerk. The clerk can scribble on it all day, and your original stays clean. (In Chapter 8, with **pointers**, you will learn how to hand over the *original's address* so the function can change it.)
 
 ### Returning a result
 
@@ -568,7 +568,7 @@ non-recursive: 10! = 3628800
 recursive: 10! = 3628800
 ```
 
-(The slide's loop is a clever shortcut: starting from `x`, it multiplies by `x−1`, `x−2`, … `1`. A more readable loop version is `int f = 1; for (i = 2; i <= n; i++) f *= i;`.)
+(The slide's loop is a clever shortcut: starting from `x`, it multiplies by `x−1`, `x−2`, … `1`. But it has a hidden flaw: for `x = 0` the loop never runs and the function returns **0**, although `0!` is **1**. A clearer loop that is also correct for 0 is `int f = 1; for (int i = 2; i <= n; i++) f *= i;`. Also note that a 4-byte `int` overflows after `12!`.)
 
 ### How does it work? The call stack
 
@@ -740,7 +740,7 @@ Move disk 2 from B to C
 Move disk 1 from A to C
 ```
 
-Seven moves for 3 disks: in general `2ⁿ − 1`. Writing this with loops is very hard; with recursion it takes five lines — a good example of when recursion shines.
+Seven moves for 3 disks: in general `2ⁿ − 1`. A loop version exists but is much harder to invent and to understand; with recursion it takes five lines. This is a good example of when recursion shines.
 
 ### Recursion vs loops
 
@@ -804,45 +804,7 @@ To write a larger program, use **divide and conquer**: write the main idea first
 
 **Task:** read three marks, print their average and a grade.
 
-```c
-#include <stdio.h>
-
-double average(double a, double b, double c);
-char grade(double score);
-void printReport(double avg, char g);
-
-int main(void)
-{
-    double m1, m2, m3;
-
-    printf("Enter three marks: ");
-    scanf("%lf %lf %lf", &m1, &m2, &m3);
-
-    double avg = average(m1, m2, m3);
-    printReport(avg, grade(avg));
-    return 0;
-}
-
-double average(double a, double b, double c)
-{
-    return (a + b + c) / 3;
-}
-
-char grade(double score)
-{
-    if (score >= 80) return 'A';
-    if (score >= 70) return 'B';
-    if (score >= 60) return 'C';
-    if (score >= 50) return 'D';
-    return 'F';
-}
-
-void printReport(double avg, char g)
-{
-    printf("Average: %.2f\n", avg);
-    printf("Grade  : %c\n", g);
-}
-```
+Start with `main` as a short "table of contents" that calls three helpers, `average`, `grade` and `printReport`, and then write each helper on its own:
 
 <!--in: 72 65 80-->
 ```c

@@ -35,7 +35,7 @@ prog.c:7:5: error: 'total' undeclared (first use in this function)
 
 | Message (GCC style) | Microsoft style | Usual cause | Fix |
 |---|---|---|---|
-| `expected ';' before ...` | `C2143: syntax error: missing ';'` | forgot a semicolon | add `;` (on the previous line) |
+| `expected ';' before ...` | `C2143: syntax error: missing ';'` | forgot a semicolon | add the `;` at the end of the unfinished statement (GCC points right at that spot; Microsoft reports the next line) |
 | `'x' undeclared` | `C2065: undeclared identifier` | variable not declared, or misspelled / wrong case | declare it; check spelling |
 | `implicit declaration of function 'foo'` | `C4013: 'foo' undefined; assuming extern` | function used before its prototype, or missing `#include` | add the `#include` or a prototype |
 | `missing terminating " character` | `C2001: newline in constant` | unclosed string | add the closing `"` |

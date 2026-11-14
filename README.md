@@ -111,14 +111,14 @@ Test your setup with the Hello World of Chapter 1. If `math.h` functions like `s
 
 - Code blocks show **complete programs** you can copy into a `.c` file. Most are followed by an **output block** showing exactly what the program prints.
 - For interactive programs, the **text the user types is shown in the output** right after its prompt, as it appears in a terminal.
-- Boxed notes: 💡 tips · ⚠️ common mistakes · 📝 **"Note on the slide"** — places where this course gently corrects or extends a slide.
-- Tab-separated outputs are shown with spaces; the exact spacing depends on your terminal.
+- Boxed notes mark **tips**, **common mistakes** ("watch out"), **key points**, and **notes on the slides**: places where this course gently corrects or extends a slide.
+- Outputs that use `\t` are shown with the standard tab stops (every 8 columns). A few terminals use different tab stops, so the spacing on your screen may differ slightly.
 
 ---
 
 ## 6. Where this course differs from the slides (and why)
 
-Slides are summaries and a few contain slips. Wherever the course differs, it says so in a 📝 note. For the record:
+Slides are summaries and a few contain slips. Wherever the course differs, it says so in a **note on the slide**. For the record:
 
 | Slide says | The course says | Chapter |
 |---|---|---|
@@ -134,24 +134,33 @@ Slides are summaries and a few contain slips. Wherever the course differs, it sa
 | `strcmp` prints `0 111 -32 32` | only the **sign** is guaranteed (other compilers print `0 1 -1 1`) | 8 |
 | `strdup` without `free` | the copy must be freed | 8 |
 | `strstr(mainString,'ello')` with single quotes | the second argument is a string: `"ello"` | 8 |
-| Stack described as "first-in-last-out" | the usual name is **LIFO** (last in, first out) | 0 |
+| The loop version of `factorial` starts from `x` | correct for `x ≥ 1`, but it returns 0 for `0!` (which is 1); the course shows a loop that is right for 0 too | 6 |
+| Stack described as "first-in-last-out" | that is correct; the more common name is **LIFO** (last in, first out) | 0 |
 
 ---
 
 ## 7. A note on correctness
 
-Every complete program in the lessons and the solutions was **compiled and run**, and its output was compared automatically with the output printed in the text (about **580 programs** across the 10 chapters), and the "predict the output" answers were checked the same way. Errors found this way were corrected before publication — for example a miscounted vowel total and an impossible bank-withdrawal scenario.
+Every complete program in the lessons and the solutions (**619 programs**) is **compiled with warnings on (`-Wall -Wextra`) and run**:
+
+- For the **564** programs that show an output block, the real output is compared automatically with the printed one. For interactive programs the typed input is fed in and taken into account, and outputs that use `\t` are checked with real 8-column tab stops.
+- The "predict the output" fragments (**111** of them) are wrapped in a `main`, run, and compared with the answers in the solutions. Six of them read keyboard input that is described in words; those six were checked by hand.
+- The deliberately **broken** programs in the "find and fix the bugs" exercises are compiled too, to confirm that each one really fails (or misbehaves) in the way the exercise says.
+
+Errors found this way were corrected, for example a miscounted vowel total, an impossible bank-withdrawal scenario and a tab-aligned output that a real terminal cannot produce. You can repeat the whole check yourself with `python tools/check_programs.py` (see section 9).
 
 Two things to keep in mind:
 
-- The programs were checked with **GCC 14.2 (MinGW-w64, the compiler bundled with Code::Blocks)** *and* with Microsoft's C compiler, on 64-bit Windows. In this setup `int` is 4 bytes, `long` is 4 bytes and `double` is 8 bytes. On 64-bit Linux and macOS `long` is 8 bytes; the lessons point this out wherever it matters (Chapter 2). A few lines depend on the machine and are marked as such (memory addresses, `strcmp` raw values, random numbers).
-- The deliberately **broken** programs in the "find and fix the bugs" exercises were also compiled, to confirm that each one really fails (or misbehaves) in the way the exercise says.
+- The programs were checked with **GCC 14.2 (MinGW-w64, the compiler bundled with Code::Blocks)** on 64-bit Windows. In this setup `int` is 4 bytes, `long` is 4 bytes and `double` is 8 bytes. On 64-bit Linux and macOS `long` is 8 bytes; the lessons point this out wherever it matters (Chapter 2). A few lines depend on the machine and are marked as such (memory addresses, `strcmp` raw values, random numbers).
+- Compilers differ in their *messages*. Where the course quotes an error message, it uses GCC 14's wording; older versions of GCC report some of these problems as warnings instead of errors.
 
 ---
 
 ## 8. After this course
 
 You now know the whole core of C. Natural next steps: **structures** (`struct`), **file input/output**, **dynamic data structures** (linked lists, stacks, queues — Chapter 0's list), **bit manipulation for embedded systems**, then **C++** or **Python** with a much easier time. Build the project ideas in Chapter 9 — they are the best preparation.
+
+*Good luck — and remember: think first, code in small steps, test, and read the error messages.*
 
 ---
 
@@ -164,6 +173,14 @@ pip install -r tools/requirements.txt
 python tools/build_site.py
 ```
 
-GitHub Pages serves the `docs/` folder of the `main` branch. (The small HTML comments such as `<!--in: 5-->` in the Markdown are invisible test markers; the site builder removes them.)
+GitHub Pages serves the `docs/` folder of the `main` branch.
 
-*Good luck — and remember: think first, code in small steps, test, and read the error messages.*
+**Checking the programs.** After changing any code or output in the Markdown, run the checker. It finds GCC on your `PATH` (or in a standard Code::Blocks install), compiles and runs every program, and lists anything whose output no longer matches the text:
+
+```
+python tools/check_programs.py
+```
+
+The small HTML comments in the Markdown are instructions for the checker and are invisible on the site: `<!--in: 5 7-->` gives the input to type into the next program (`\n` means Enter), `<!--skip-->` marks a program that is broken on purpose or prints something different on every run, and `<!--exact-->` asks for a character-by-character comparison.
+
+**The website's look.** The site is deliberately black and white; the only colour is the syntax colouring inside code blocks. The design lives in `tools/site_assets/style.css` (colours are variables at the top, for the light and the dark theme) and `tools/site_assets/app.js`. The page template and the Markdown-to-HTML rules are in `tools/build_site.py`. Callouts are written in Markdown as quotes that start with an emoji (💡 tip, ⚠️ watch out, 📝 note, 🔑 key point); on the website the emoji is replaced by a black-and-white label.

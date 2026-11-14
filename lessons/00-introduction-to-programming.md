@@ -91,11 +91,11 @@ The CPU only understands machine language. So code written in a high-level langu
 **C is a compiled language.** The flow looks like this:
 
 ```
- your code           compiler            executable file            output
-┌───────────┐     ┌───────────┐       ┌────────────────┐        ┌──────────────┐
-│ hello.c   │ ──▶ │ gcc / cl  │ ──▶   │ hello.exe      │  ──▶   │ Hello, World!│
-│ (source)  │     │ (translator)│     │ (machine code) │        │              │
-└───────────┘     └───────────┘       └────────────────┘        └──────────────┘
+  your code          compiler            executable file         output
+┌───────────┐     ┌──────────────┐     ┌────────────────┐     ┌───────────────┐
+│ hello.c   │ ──▶ │ gcc / cl     │ ──▶ │ hello.exe      │ ──▶ │ Hello, World! │
+│ (source)  │     │ (translator) │     │ (machine code) │     │               │
+└───────────┘     └──────────────┘     └────────────────┘     └───────────────┘
 ```
 
 Generally, compiled languages are used to build software applications (operating systems, games, device software), while interpreted languages are often used for scripts, such as those that generate the content of dynamic websites. Real life has many exceptions — some languages do a bit of both — so treat this as a rule of thumb, not a law.
@@ -135,8 +135,8 @@ Every program works with **data**: names, prices, scores, temperatures. How you 
 | Inappropriate choice leads to… | Appropriate choice leads to… |
 |---|---|
 | Clumsiness | Simplicity |
-| Inefficiency | Transparency (code that is easy to understand) |
-| Difficulty | Efficiency |
+| Difficulty (code that is hard to follow) | Transparency (code that is easy to understand) |
+| Inefficiency (slow, wasteful) | Efficiency |
 
 When choosing a data structure, ask yourself:
 
@@ -303,16 +303,15 @@ Algorithm: *sum the numbers 1 to 4*
 4. PRINT total
 ```
 
-| step | count | count <= 4 ? | total after the step |
-|------|-------|--------------|----------------------|
-| start | 1 | yes | 0 |
-| loop 1 | 1 → 2 | yes | 0 + 1 = **1** |
-| loop 2 | 2 → 3 | yes | 1 + 2 = **3** |
-| loop 3 | 3 → 4 | yes | 3 + 3 = **6** |
-| loop 4 | 4 → 5 | yes | 6 + 4 = **10** |
-| check | 5 | **no** — stop | 10 |
+| pass | count at the test | count <= 4 ? | total = total + count | count = count + 1 |
+|------|-------|--------------|----------------------|-------------------|
+| 1 | 1 | yes | 0 + 1 = **1** | 2 |
+| 2 | 2 | yes | 1 + 2 = **3** | 3 |
+| 3 | 3 | yes | 3 + 3 = **6** | 4 |
+| 4 | 4 | yes | 6 + 4 = **10** | 5 |
+| 5 | 5 | **no**, so stop | (not done) | (not done) |
 
-Output: `10`. ✔
+Output: `10`. ✔ Notice that the test runs **five** times but the body runs only **four** times. The last test is the one that fails and ends the loop.
 
 ### A sneak peek: from pseudocode to C
 

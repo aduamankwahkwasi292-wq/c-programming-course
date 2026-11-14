@@ -778,16 +778,16 @@ int isPalindrome(int n)
     return n == reverseNumber(n);
 }
 
+void report(int n)                       /* one more small function: test all four on n */
+{
+    printf("%d: digits=%d sum=%d reverse=%d palindrome=%d\n",
+           n, countDigits(n), sumDigits(n), reverseNumber(n), isPalindrome(n));
+}
+
 int main(void)
 {
-    int tests[2] = {12321, 1234};
-
-    for (int i = 0; i < 2; i++)
-    {
-        int n = tests[i];
-        printf("%d: digits=%d sum=%d reverse=%d palindrome=%d\n",
-               n, countDigits(n), sumDigits(n), reverseNumber(n), isPalindrome(n));
-    }
+    report(12321);
+    report(1234);
     return 0;
 }
 ```
@@ -795,7 +795,7 @@ int main(void)
 12321: digits=5 sum=9 reverse=12321 palindrome=1
 1234: digits=4 sum=10 reverse=4321 palindrome=0
 ```
-(The little array `tests` is Chapter 7 — it just holds two numbers.)
+(Notice how the helper `report` saves us from writing the long `printf` twice.)
 
 **Ex 6.66**
 ```c
@@ -847,12 +847,19 @@ char gradeOf(int score)
     return 'F';
 }
 
+void test(int score)
+{
+    printf("%d -> %c\n", score, gradeOf(score));
+}
+
 int main(void)
 {
-    int scores[6] = {85, 72, 61, 55, 20, 105};
-
-    for (int i = 0; i < 6; i++)
-        printf("%d -> %c\n", scores[i], gradeOf(scores[i]));
+    test(85);
+    test(72);
+    test(61);
+    test(55);
+    test(20);
+    test(105);          /* outside 0-100 */
     return 0;
 }
 ```
@@ -1907,16 +1914,19 @@ void printInBase(int n, int base)
         putchar('A' + digit - 10);
 }
 
+void show(int n, int base)
+{
+    printf("%d in base %2d = ", n, base);
+    printInBase(n, base);
+    printf("\n");
+}
+
 int main(void)
 {
-    int bases[4] = {2, 8, 10, 16};
-
-    for (int i = 0; i < 4; i++)
-    {
-        printf("255 in base %2d = ", bases[i]);
-        printInBase(255, bases[i]);
-        printf("\n");
-    }
+    show(255, 2);
+    show(255, 8);
+    show(255, 10);
+    show(255, 16);
     return 0;
 }
 ```

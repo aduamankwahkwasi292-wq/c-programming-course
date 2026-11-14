@@ -583,7 +583,7 @@ gcd(48, 18) = 6
 | 50–59 | Pass — you know the basics; practise loops, arrays and pointers more. |
 | below 50 | Go back through Chapters 5–8 slowly, **writing every program yourself**. Then retake the exam. |
 
-> **A final word from your professor.** Nobody learns programming by reading. You learn it by **typing programs, breaking them, and fixing them**. If you do only one thing after this course: every day, write one small program from scratch. In a month you will not recognise yourself.
+> **A final word.** Nobody learns programming by reading. You learn it by **typing programs, breaking them, and fixing them**. If you do only one thing after this course: every day, write one small program from scratch. In a month you will not recognise yourself.
 
 ---
 

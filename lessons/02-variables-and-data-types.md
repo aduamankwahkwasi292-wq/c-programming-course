@@ -37,6 +37,7 @@ Your program must remember things: a student's age, a bank balance, the price of
 ```
 
 - The **name** (an identifier, see Chapter 1) is just a friendly *symbol* for a memory location. You do not need to remember addresses like `1000`.
+- The picture is simplified: in reality each type takes a different number of bytes (a `char` takes 1, an `int` usually 4, a `double` 8). Section 2.4 shows how to check.
 - The **value** can **change** while the program runs — that is why it is called a *variable*.
 
 ```c
@@ -113,7 +114,7 @@ Next year: 22
 
 > ⚠️ **Common mistakes**
 > 1. **Using a variable before declaring it** → compiler error (`'x' undeclared`).
-> 2. **Using an uninitialised variable.** A variable that was declared but never given a value contains **garbage** — whatever was left in that piece of memory. Always initialise: `int total = 0;`.
+> 2. **Using an uninitialised variable.** A variable declared *inside a function* that was never given a value contains **garbage**: whatever was left in that piece of memory. Sometimes the garbage happens to be 0, so the bug hides on your computer and appears on someone else's. Always initialise: `int total = 0;`.
 > 3. **Declaring the same variable twice** in the same block.
 > 4. **Wrong case**: `Age` and `age` are different variables.
 
@@ -274,7 +275,7 @@ double    : 8 bytes
 
 (`%zu` is the placeholder for the unsigned number `sizeof` returns.)
 
-> ⚠️ **Sizes depend on your computer!** C only *guarantees* that `sizeof(char)` is 1 and that `short ≤ int ≤ long ≤ long long`. The output above is typical for **Windows**. On 64-bit Linux and macOS, `long` is usually **8** bytes. **Never assume a size — ask `sizeof`.**
+> ⚠️ **Sizes depend on your computer!** C only *guarantees* that `sizeof(char)` is 1, that `short ≤ int ≤ long ≤ long long`, and some minimums: `short` and `int` have at least 16 bits, `long` at least 32 and `long long` at least 64. The output above is typical for **Windows**. On 64-bit Linux and macOS, `long` is usually **8** bytes. **Never assume a size — ask `sizeof`.**
 
 ---
 
@@ -301,7 +302,7 @@ long long int huge = 9000000000LL;   // at least 8 bytes
 They change **whether negative numbers are allowed**.
 
 - `signed` — can store **positive and negative** values (this is the default for `int`).
-- `unsigned` — can store **only zero and positive** values, but the *positive range is twice as large*, because no space is wasted on the minus sign.
+- `unsigned` — can store **only zero and positive** values, but the *positive range is about twice as large*, because no bit is spent on the sign. (A 2-byte `short` reaches 32 767; an `unsigned short` reaches 65 535.)
 
 ```c
 unsigned int students = 120;
@@ -461,7 +462,7 @@ There are two kinds of conversion.
 
 The compiler converts for you, silently.
 
-- **int → float** (safe — nothing is lost): `float f = 6;` stores `6.000000`.
+- **int → float / double** (the value is kept): `float f = 6;` stores `6.000000`. One catch: a `float` holds only about 7 significant digits, so a *very large* `int` such as 16 777 217 cannot be stored exactly in a `float` (Ex 2.45). A `double` holds every `int` value exactly.
 - **float → int** (information lost — the decimal part is **cut off**, not rounded): `int x = 9.99;` stores `9`.
 
 ```c
@@ -564,7 +565,7 @@ int rounded   = (int)(mark + 0.5);   /* 68 */
 - Use **`sizeof`** and **`<limits.h>`** to find real sizes and limits on your machine.
 - **Constants:** `const double PI = 3.14;` or `#define RATE 0.15`.
 - **Integer ÷ integer = integer** (`9 / 2 = 4`).
-- **Implicit conversion:** int → float is safe; float → int **truncates**.
+- **Implicit conversion:** int → double keeps the value; float/double → int **truncates** (cuts off the decimals).
 - **Explicit cast:** `(float) a / b`. *Where* you put the cast matters.
 
 ---
@@ -733,7 +734,7 @@ int main(void)
 }
 ```
 
-**Ex 2.25** The program prints strange numbers. Find the mistake.
+**Ex 2.25** This program has a hidden bug. On some computers it prints `4`; on others it prints a strange number. Find the mistake.
 ```c
 #include <stdio.h>
 int main(void)

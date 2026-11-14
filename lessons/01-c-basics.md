@@ -396,14 +396,18 @@ Every beginner makes mistakes. The difference between a beginner and a professio
 
 ### How to read an error
 
+Suppose line 4 of `hello.c` is `printf("Hello, World!\n")` and you forgot its semicolon. GCC says:
+
 ```
 hello.c: In function 'main':
-hello.c:5:30: error: expected ';' before 'return'
+hello.c:4:30: error: expected ';' before 'return'
 ```
 
 1. `hello.c` — the file.
-2. `5:30` — **line 5**, column 30. (The real mistake is often on the line *before* the one reported, because the compiler only notices when it reaches the next line.)
-3. `error: expected ';' before 'return'` — what it expected. It tells you what is missing.
+2. `4:30` — **line 4**, column 30: the spot right after the `)`, where the `;` should have been.
+3. `error: expected ';' before 'return'` — what it expected. It tells you what is missing, and that it only noticed when it reached the next word, `return`.
+
+> ⚠️ Not every compiler points at the same place. GCC points at the end of the line that is missing the `;`. Some other compilers (for example Microsoft's `cl`) report the **next** line, the one that starts with `return`. So always look at the reported line **and the line above it**.
 
 > 💡 **Golden rules for fixing errors**
 > 1. Fix the **first** error first. Later errors are often "echoes" of the first one.
@@ -417,12 +421,14 @@ hello.c:5:30: error: expected ';' before 'return'
 |---|---|---|
 | Missing semicolon | `printf("Hi\n")` | `expected ';' before ...` |
 | Missing closing quote | `printf("Hi\n);` | `missing terminating " character` |
-| Wrong case | `Printf("Hi\n");` | `implicit declaration of function 'Printf'` or linker `undefined reference` |
-| Forgot `#include <stdio.h>` | (line missing) | `implicit declaration of function 'printf'` |
+| Wrong case | `Printf("Hi\n");` | `implicit declaration of function 'Printf'; did you mean 'printf'?` (older compilers: a warning, then the linker's `undefined reference to 'Printf'`) |
+| Forgot `#include <stdio.h>` | (line missing) | `implicit declaration of function 'printf'` plus the hint `include '<stdio.h>'` |
 | Missing closing brace `}` | | `expected declaration or statement at end of input` |
-| Single quotes for a string | `printf('Hi');` | warnings about passing an `int` where a pointer is expected |
+| Single quotes for a string | `printf('Hi');` | `multi-character character constant`, then `passing argument 1 of 'printf' makes pointer from integer without a cast` |
 | Unclosed comment `/*` | | everything after it disappears, then `unterminated comment` |
 | Using an undeclared name | `x = 5;` without declaring `x` | `'x' undeclared (first use in this function)` |
+
+> 📝 **Newer compilers are stricter.** Since GCC 14, calling a function that was never declared (`Printf`, or `printf` without `#include <stdio.h>`) and passing a number where text is expected are **errors**, not warnings. Older compilers only warned and sometimes built a broken program. Either way, the fix is the same.
 
 ---
 
@@ -699,7 +705,7 @@ TOTAL         GHS 30.50
 
 **Ex 1.40 (preview of a surprise)** `printf` itself *returns* a value: the number of characters it printed. Write a program that prints `Hello` followed by a newline, and then prints how many characters the first `printf` printed. (Hint: `int n = printf("..."); printf("%d\n", n);` — you will learn `%d` in Chapter 4.)
 
-**Ex 1.41 (code archaeology)** The program below has **five** mistakes. Find all five and write the corrected program so it prints exactly the three lines shown.
+**Ex 1.41 (code archaeology)** The program below has **five** mistakes. Find all five and write the corrected program so it prints the three lines shown. (The gaps are tabs, shown here with the usual tab stops every 8 columns.)
 
 <!--skip-->
 ```c
@@ -715,10 +721,11 @@ Int main(void)
 ```
 Expected output:
 ```
-Course:     COE 281
-Lecturer:   Dr. Mensah
-Language:   C
+Course: COE 281
+Lecturer:       Dr. Mensah
+Language:       C
 ```
+*Bonus question:* why does the first line not line up with the other two?
 
 ## Part F — Hands-on tasks
 

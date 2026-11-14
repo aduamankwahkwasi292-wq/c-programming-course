@@ -91,7 +91,7 @@ int x = a[2] + 1;              // read
 a[i] = a[i - 1] + a[i - 2];    // the index can be any integer expression
 ```
 
-> ⚠️ **C does NOT check the index!** If you write `a[5]` for a 5-element array, the compiler says nothing and the program touches memory that is **not yours** — it may crash, silently corrupt another variable, or "seem to work". This is the **#1 array bug**. It is called an **out-of-bounds** access (or buffer overflow). *You* must keep the index between `0` and `size − 1`.
+> ⚠️ **C does NOT check the index!** If you write `a[5]` for a 5-element array, the compiler usually says nothing, and the program touches memory that is **not yours** — it may crash, silently corrupt another variable, or "seem to work". This is the **#1 array bug**. It is called an **out-of-bounds** access (or buffer overflow). *You* must keep the index between `0` and `size − 1`.
 
 ---
 
@@ -142,7 +142,7 @@ int main(void)
 b has 6 elements
 ```
 
-> ⚠️ **Uninitialised local arrays contain garbage** (whatever was in memory before) — just like uninitialised variables. And giving **more** values than the size (`int a[3] = {1,2,3,4};`) is an error.
+> ⚠️ **Uninitialised local arrays contain garbage** (whatever was in memory before) — just like uninitialised variables. And giving **more** values than the size (`int a[3] = {1,2,3,4};`) is not allowed: some compilers refuse it, and GCC warns `excess elements in array initializer` and throws the extra values away.
 
 ### Way 2 — with a loop
 
@@ -211,7 +211,7 @@ After initialisation:   0  1  2  3  4
 After values change:    5  6  7  8  9
 ```
 
-> ⚠️ `sizeof(array) / sizeof(array[0])` works **only in the same function where the array was declared**. Inside a function that *received* the array as a parameter it does **not** work (section 7.9).
+> ⚠️ `sizeof(array) / sizeof(array[0])` works **only in the same function where the array was declared**. Inside a function that *received* the array as a parameter it does **not** work (section 7.7).
 
 ---
 

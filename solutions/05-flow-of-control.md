@@ -28,7 +28,7 @@
 
 **Ex 5.10** When the body is a **single statement**. It is risky because a second statement added later is *not* part of the `if`/loop even if it is indented (and an `else` can attach to the wrong `if`). Always using braces avoids this.
 
-**Ex 5.11** A **nested statement** is a compound statement (if / switch / loop / function body) placed inside another. Example: an `if` inside a `while`, or a `for` inside a `for`.
+**Ex 5.11** A **nested statement** is a compound statement (an `if`, a `switch` or a loop) placed inside another. Example: an `if` inside a `while`, or a `for` inside a `for`.
 
 **Ex 5.12** `break` **ends the whole loop** immediately. `continue` **skips the rest of the current iteration** and jumps to the next one (re-testing the condition, or running the update in a `for`).
 
@@ -1631,19 +1631,17 @@ Sum = 2.928968
 
 int main(void)
 {
-    int terms[3] = {10, 1000, 100000};
-
-    for (int t = 0; t < 3; t++)
+    for (int terms = 10; terms <= 100000; terms *= 100)     /* 10, 1000, 100000 */
     {
         double sum = 0;
         double sign = 1;
 
-        for (int k = 0; k < terms[t]; k++)
+        for (int k = 0; k < terms; k++)
         {
             sum += sign / (2 * k + 1);      /* 1, 1/3, 1/5, 1/7, ... */
             sign = -sign;
         }
-        printf("%6d terms: pi = %.6f\n", terms[t], 4 * sum);
+        printf("%6d terms: pi = %.6f\n", terms, 4 * sum);
     }
     return 0;
 }
@@ -1653,7 +1651,7 @@ int main(void)
   1000 terms: pi = 3.140593
 100000 terms: pi = 3.141583
 ```
-(The series converges slowly: 100 000 terms give only five correct digits. Don't worry about the array `terms` — it's Chapter 7.)
+(The series converges slowly: even 100 000 terms give only five correct digits, 3.1415…, against the true value 3.14159265…)
 
 **Ex 5.93**
 <!--in: 2-->
@@ -2341,7 +2339,7 @@ Is it 71? (h = higher, l = lower, c = correct): h
 Is it 73? (h = higher, l = lower, c = correct): c
 I got it in 6 guesses!
 ```
-Seven guesses are always enough (2⁷ = 128 ≥ 100).
+Seven guesses are always enough: *k* guesses can tell apart up to 2ᵏ − 1 numbers, and 2⁷ − 1 = 127 ≥ 100.
 
 **Ex 5.112**
 <!--in: 9875-->

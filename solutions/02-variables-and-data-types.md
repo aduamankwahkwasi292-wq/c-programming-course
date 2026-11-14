@@ -127,7 +127,7 @@ int main(void)
 ```
 (Note: `(float)(a + b) / 2` casts the **sum** because of the extra brackets, so it is `15.0 / 2`.)
 
-**Ex 2.25** `total` is **never initialised**; it contains garbage, and `total + apples` is garbage + 4. Fix: `int total = 0;`.
+**Ex 2.25** `total` is **never initialised**; it contains garbage, and `total + apples` is garbage + 4. If the garbage happens to be 0 you see the correct `4`, which is exactly why this bug is dangerous: it can pass your test and fail on someone else's machine. Fix: `int total = 0;`. (Compile with `-Wall`: GCC warns `'total' is used uninitialized`.)
 
 **Ex 2.26** `DAYS` is a `const`, so it cannot be assigned a new value after it is initialised (`assignment of read-only variable 'DAYS'`). Either remove the line `DAYS = 8;` or, if the value really has to change, don't make it `const`.
 
@@ -525,7 +525,7 @@ int main(void)
 ```output
 0.30000000000000004
 ```
-It is **not** exactly `0.3`. Computers store numbers in binary, and `0.1` and `0.2` have no exact binary representation (like `1/3` has no exact decimal form: 0.3333…). Tiny rounding errors appear. Lesson: **never trust `==` to compare decimals** (you will see a better method in Chapter 3's exercises).
+It is **not** exactly `0.3`. Computers store numbers in binary, and `0.1` and `0.2` have no exact binary representation (like `1/3` has no exact decimal form: 0.3333…). Tiny rounding errors appear. Lesson: **never trust `==` to compare decimals**. Chapter 3 (section 3.5) shows the better method: check that the difference is tiny.
 
 **Ex 2.45**
 ```c
@@ -651,7 +651,7 @@ int main(void)
 1.234568e+03
 1234.57
 ```
-`%f` = fixed decimal notation (6 decimals by default); `%e` = scientific notation; `%g` = whichever of the two is **shorter**, with 6 significant digits.
+`%f` = fixed decimal notation (6 decimals by default); `%e` = scientific notation (one digit before the point, 6 after, then the power of ten); `%g` = 6 **significant** digits in total, written in the `%f` style for ordinary numbers and in the `%e` style for very large or very small ones, with trailing zeros removed. (The exact rule: `%g` switches to the `e` style when the power of ten is less than −4 or at least the precision, 6 by default.)
 
 **Ex 2.52** Other preprocessor commands: `#undef` (remove a macro definition), `#ifdef` / `#ifndef` / `#endif` (include code only if a name is / is not defined), `#if` / `#else` / `#elif`, `#pragma` (compiler-specific instructions) and `#error` (stop compiling with a message).
 
